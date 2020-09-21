@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class StarterView: UIView {
+class StarterInputView: UIView {
 
     let stackView: UIStackView
     

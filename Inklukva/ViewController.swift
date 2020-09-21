@@ -2,7 +2,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let starterView = StarterView()
+    let starterView = StarterInputView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -11,7 +11,7 @@ class ViewController: UIViewController {
         starterView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             starterView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            starterView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            starterView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 15),
             starterView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4)
         ])
     }
