@@ -64,7 +64,7 @@ class StarterView: UIView {
     
     @objc func wrap() {
         self.layoutIfNeeded()
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25) { [unowned self] in
             self.isWrapped ? self.unwrap() : self.wrapUp()
             self.layoutIfNeeded()
             self.isWrapped.toggle()
