@@ -73,9 +73,9 @@
 			children = (
 				5AD9BA99250012F600463757 /* AppDelegate.swift */,
 				5AD9BA9B250012F600463757 /* SceneDelegate.swift */,
+				5A6CA74E251943D300374AC6 /* Views */,
 				5AD9BA9D250012F600463757 /* ViewController.swift */,
 				5A3692D3250809D20029C921 /* Recipe.swift */,
-				5A6CA74E251943D300374AC6 /* Views */,
 				5A6CA74525191BE200374AC6 /* UIView.swift */,
 				5AD9BAA2250012F700463757 /* Assets.xcassets */,
 				5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */,
