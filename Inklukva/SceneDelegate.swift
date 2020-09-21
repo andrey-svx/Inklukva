@@ -1,11 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Inklukva
-//
-//  Created by Андрей Исаев on 02.09.2020.
-//  Copyright © 2020 Andrey isaev. All rights reserved.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
