@@ -43,6 +43,9 @@ class StarterView: UIView {
         levitoMadreView.isHidden = true
         
         slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 150
+        slider.value = 75
         slider.isHidden = true
         
         detailView = [plainView, levitoMadreView, slider]
@@ -51,6 +54,7 @@ class StarterView: UIView {
         stackView.axis = .vertical
         
         super.init(frame: .zero)
+        
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
         
