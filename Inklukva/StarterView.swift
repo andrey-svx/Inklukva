@@ -2,16 +2,17 @@ import Foundation
 import UIKit
 
 class StarterView: UIView {
+
+    let stackView: UIStackView
     
+    let headerView: UIStackView
     let nameLabel: UILabel
     let wrapButton: UIButton
         
-    var plainView: UILabel
-    var levitoMadreView: UILabel
-    var slider: UISlider
     let detailView: [UIView]
-
-    let stackView: UIStackView
+    let plainView: UILabel
+    let levitoMadreView: UILabel
+    let slider: UISlider
     
     var isWrapped: Bool
     
@@ -29,7 +30,7 @@ class StarterView: UIView {
         wrapButton.setImage(UIImage(systemName: "plus"), for: .normal)
         wrapButton.setContentHuggingPriority(.required, for: .horizontal)
         
-        let headerView = UIStackView(arrangedSubviews: [nameLabel, wrapButton])
+        headerView = UIStackView(arrangedSubviews: [nameLabel, wrapButton])
         headerView.axis = .horizontal
         headerView.alignment = .firstBaseline
         headerView.distribution = .fillProportionally
@@ -71,13 +72,19 @@ class StarterView: UIView {
     }
     
     func unwrap() {
-        wrapButton.transform = CGAffineTransform(rotationAngle: .pi/4)
-        _ = detailView.map({ $0.isHidden = false })
+        wrapButton.transform = CGAffineTransform(rotationAngle: .pi * 3/4)
+        _ = detailView.map {
+            $0.isHidden = false
+            $0.alpha = 1.0
+        }
     }
 
     func wrapUp() {
         wrapButton.transform = .identity
-        _ = detailView.map({ $0.isHidden = true })
+        _ = detailView.map {
+            $0.isHidden = true
+            $0.alpha = 0.0
+        }
     }
         
 }
