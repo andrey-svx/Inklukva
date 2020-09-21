@@ -11,7 +11,6 @@
 		5AD9BA9A250012F600463757 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA99250012F600463757 /* AppDelegate.swift */; };
 		5AD9BA9C250012F600463757 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA9B250012F600463757 /* SceneDelegate.swift */; };
 		5AD9BA9E250012F600463757 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA9D250012F600463757 /* ViewController.swift */; };
-		5AD9BAA1250012F600463757 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD9BA9F250012F600463757 /* Main.storyboard */; };
 		5AD9BAA3250012F700463757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD9BAA2250012F700463757 /* Assets.xcassets */; };
 		5AD9BAA6250012F700463757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -22,7 +21,6 @@
 		5AD9BA99250012F600463757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AD9BA9B250012F600463757 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5AD9BA9D250012F600463757 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5AD9BAA0250012F600463757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5AD9BAA2250012F700463757 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AD9BAA5250012F700463757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AD9BAA7250012F700463757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 				5AD9BA9B250012F600463757 /* SceneDelegate.swift */,
 				5AD9BA9D250012F600463757 /* ViewController.swift */,
 				5A3692D3250809D20029C921 /* Recipe.swift */,
-				5AD9BA9F250012F600463757 /* Main.storyboard */,
 				5AD9BAA2250012F700463757 /* Assets.xcassets */,
 				5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */,
 				5AD9BAA7250012F700463757 /* Info.plist */,
@@ -97,7 +94,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Andrey isaev";
 				TargetAttributes = {
 					5AD9BA95250012F600463757 = {
@@ -130,7 +127,6 @@
 			files = (
 				5AD9BAA6250012F700463757 /* LaunchScreen.storyboard in Resources */,
 				5AD9BAA3250012F700463757 /* Assets.xcassets in Resources */,
-				5AD9BAA1250012F600463757 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,14 +147,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5AD9BA9F250012F600463757 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5AD9BAA0250012F600463757 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -196,6 +184,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -256,6 +245,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

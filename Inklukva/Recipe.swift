@@ -12,6 +12,7 @@ struct Recipe {
     var dough: Dough {
         return Dough(starter: starter.sum, flour: 0, water: 0, salt: 0)
     }
+    
 }
 
 struct Starter {
