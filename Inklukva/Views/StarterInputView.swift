@@ -3,25 +3,28 @@ import UIKit
 
 class StarterInputView: UIView {
 
-    let stackView: UIStackView
+    private let stackView: UIStackView
     
-    let headerView: UIStackView
-    let nameLabel: UILabel
-    let wrapButton: UIButton
+    private let headerView: UIStackView
+    private let nameLabel: UILabel
+    private let wrapButton: UIButton
         
-    let detailView: [UIView]
-    let plainView: UILabel
-    let levitoMadreView: UILabel
-    let slider: UISlider
+    private let detailView: [UIView]
+    private let plainView: UILabel
+    private let levitoMadreView: UILabel
+    private let slider: UISlider
     
-    var isWrapped: Bool
+    private var isWrapped: Bool = true
+    
+    public var bakingHumidity: Float
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     init() {
-        isWrapped = true
+        
+        bakingHumidity = 75
         
         nameLabel = UILabel()
         nameLabel.text = NSLocalizedString("Starter:", comment: "")
@@ -46,7 +49,7 @@ class StarterInputView: UIView {
         slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = 150
-        slider.value = 75
+        slider.value = bakingHumidity
         slider.isHidden = true
         
         detailView = [plainView, levitoMadreView, slider]
@@ -60,6 +63,8 @@ class StarterInputView: UIView {
         stackView.pinEndgesToSuperview()
         
         wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
+        slider.addTarget(self, action: #selector(setHumidity), for: .valueChanged)
+        
     }
     
     @objc func wrap() {
@@ -73,18 +78,22 @@ class StarterInputView: UIView {
     
     func unwrap() {
         wrapButton.transform = CGAffineTransform(rotationAngle: .pi * 3/4)
-        _ = detailView.map {
-            $0.isHidden = false
-            $0.alpha = 1.0
+        for view in detailView {
+            view.isHidden = false
+            view.alpha = 1.0
         }
     }
 
     func wrapUp() {
         wrapButton.transform = .identity
-        _ = detailView.map {
-            $0.isHidden = true
-            $0.alpha = 0.0
+        for view in detailView {
+            view.isHidden = true
+            view.alpha = 0.0
         }
+    }
+    
+    @objc func setHumidity() {
+        bakingHumidity = slider.value
     }
         
 }
