@@ -2,6 +2,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let recipe = Recipe(flour: 100, humidity: 100)
+    
     let starterInputView = StarterInputView()
     let flourInputView = FlourInputView()
 
@@ -34,7 +36,7 @@ class ViewController: UIViewController {
             recipesSlideView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             recipesSlideView.topAnchor.constraint(equalTo: flourInputView.bottomAnchor, constant: view.frame.height / 10),
             recipesSlideView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
-            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/5)
+            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3)
         ])
     }
 }

@@ -58,9 +58,9 @@
 			children = (
 				5A6D34C4251914A300D9BFCE /* StarterInputView.swift */,
 				5A6CA74A2519436A00374AC6 /* FlourInputView.swift */,
-				5A13B135251A48A9002C812D /* RecipesSlideView.swift */,
-				5A13B138251A53CD002C812D /* RecipeView.swift */,
 				5AAE4434251A72F1006705A7 /* IngredientView.swift */,
+				5A13B138251A53CD002C812D /* RecipeView.swift */,
+				5A13B135251A48A9002C812D /* RecipesSlideView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -18,7 +18,12 @@ class RecipeView: UIView {
         super.init(frame: .zero)
         
         addSubview(stackView)
-        stackView.pinEndgesToSuperview()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
         
     }
     

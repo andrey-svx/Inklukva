@@ -39,7 +39,7 @@ class RecipesSlideView: UIView {
         pageController.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pageController.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pageController.centerYAnchor.constraint(equalTo: bottomAnchor, constant: 50)
+            pageController.centerYAnchor.constraint(equalTo: bottomAnchor, constant: 10)
         ])
         recipeViews.forEach { view in
             NSLayoutConstraint.activate([
