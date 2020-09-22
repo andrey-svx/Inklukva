@@ -11,6 +11,16 @@ class ViewController: UIViewController {
         view.addSubview(starterInputView)
         view.addSubview(flourInputView)
         
+        var ingredients: RecipeView.Ingredients = [:]
+        ingredients["Flour"] = 100
+        ingredients["Water"] = 100
+        ingredients["Salt"] = 100
+        let ingredientsList = [ingredients, ingredients, ingredients]
+        
+        let recipesSlideView = RecipesSlideView(ingredientsList: ingredientsList)
+        view.addSubview(recipesSlideView)
+        
+        recipesSlideView.translatesAutoresizingMaskIntoConstraints = false
         starterInputView.translatesAutoresizingMaskIntoConstraints = false
         flourInputView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -19,7 +29,12 @@ class ViewController: UIViewController {
             starterInputView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
             
             flourInputView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            flourInputView.topAnchor.constraint(equalTo: starterInputView.bottomAnchor, constant: view.frame.height / 20)
+            flourInputView.topAnchor.constraint(equalTo: starterInputView.bottomAnchor, constant: view.frame.height / 20),
+            
+            recipesSlideView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            recipesSlideView.topAnchor.constraint(equalTo: flourInputView.bottomAnchor, constant: view.frame.height / 10),
+            recipesSlideView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
+            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/5)
         ])
     }
 }

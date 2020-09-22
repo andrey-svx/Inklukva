@@ -2,10 +2,7 @@ import Foundation
 import UIKit
 
 class StarterInputView: UIView {
-
-    private let stackView: UIStackView
     
-    private let headerView: UIStackView
     private let nameLabel: UILabel
     private let wrapButton: UIButton
         
@@ -16,7 +13,7 @@ class StarterInputView: UIView {
     
     private var isWrapped: Bool = true
     
-    public var bakingHumidity: Float
+    private(set) var bakingHumidity: Float
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -27,17 +24,19 @@ class StarterInputView: UIView {
         bakingHumidity = 75
         
         nameLabel = UILabel()
+        nameLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         nameLabel.text = NSLocalizedString("Starter:", comment: "")
         
         wrapButton = UIButton()
+        wrapButton.setContentHuggingPriority(.defaultLow, for: .vertical)
+        wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         wrapButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        wrapButton.setContentHuggingPriority(.required, for: .horizontal)
         
-        headerView = UIStackView(arrangedSubviews: [nameLabel, wrapButton])
+        let headerView = UIStackView(arrangedSubviews: [nameLabel, wrapButton])
         headerView.axis = .horizontal
-        headerView.alignment = .firstBaseline
-        headerView.distribution = .fillProportionally
-        
+        headerView.alignment = .fill
+        headerView.distribution = .fill
+
         plainView = UILabel()
         plainView.text = NSLocalizedString("Plain", comment: "")
         plainView.isHidden = true
@@ -54,13 +53,17 @@ class StarterInputView: UIView {
         
         detailView = [plainView, levitoMadreView, slider]
         
-        stackView = UIStackView(arrangedSubviews: [headerView] + detailView)
+        let stackView = UIStackView(arrangedSubviews: [headerView] + detailView)
         stackView.axis = .vertical
+        stackView.spacing = 5.0
         
         super.init(frame: .zero)
         
         addSubview(stackView)
-        stackView.pinEndgesToSuperview()
+        stackView.pinEndgesToSuperview(padding: 10.0)
+        
+        layer.borderColor = UIColor.systemBlue.cgColor
+        layer.borderWidth = 1.0
         
         wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
         slider.addTarget(self, action: #selector(setHumidity), for: .valueChanged)

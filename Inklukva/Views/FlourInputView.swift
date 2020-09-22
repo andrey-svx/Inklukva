@@ -8,7 +8,11 @@ class FlourInputView: UIView {
     private let flourLabel: UILabel
     private let stepper: UIStepper
     
-    public var mass: Double
+    private(set) var mass: Double {
+        didSet {
+            flourLabel.text = "\(mass)"
+        }
+    }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -19,6 +23,7 @@ class FlourInputView: UIView {
         mass = 0
         
         flourLabel = UILabel()
+        flourLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         flourLabel.text = "\(mass)"
         
         stepper = UIStepper()
@@ -42,7 +47,6 @@ class FlourInputView: UIView {
     
     @objc func setMass() {
         mass = stepper.value
-        flourLabel.text = "\(mass)"
     }
 
 }
