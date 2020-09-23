@@ -1,15 +1,15 @@
 import Foundation
 import UIKit
 
-protocol StarterInputViewDelegate: class {
+protocol InoculateInputViewDelegate: class {
     
     func setValue(humidity: Float)
     
 }
 
-class StarterInputView: UIView {
+final class InoculateInputView: UIView {
     
-    weak var delegate: StarterInputViewDelegate?
+    weak var delegate: InoculateInputViewDelegate?
     
     private let nameLabel: UILabel
     private let wrapButton: UIButton
@@ -56,7 +56,7 @@ class StarterInputView: UIView {
         slider = UISlider()
         slider.minimumValue = 50
         slider.maximumValue = 125
-        slider.value = bakingHumidity
+        slider.value = self.bakingHumidity
         slider.isHidden = true
         
         detailView = [plainView, levitoMadreView, slider]
@@ -105,7 +105,7 @@ class StarterInputView: UIView {
     
     @objc func setHumidity() {
         guard let delegate = self.delegate else {
-            assertionFailure("No delegate set!")
+            assertionFailure("Did not set up delegate!")
             return
         }
         bakingHumidity = slider.value

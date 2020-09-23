@@ -1,25 +1,25 @@
 import Foundation
 
-struct Recipe {
+struct BreadCalculator {
     
-    var flourMass: Double
-    var humidity: Double
+    public var flourMass: Double
+    public var humidity: Double
     
-    var starter: Starter {
+    public var starter: Starter {
         let flour = flourMass * 0.2
-        let water = flour * humidity
+        let water = flour * (humidity / 100)
         let inoculate = flour * 0.2
         return Starter(flour: flour, water: water, inoculate: inoculate)
     }
     
-    var dough: Dough {
+    public var dough: Dough {
         let flour = flourMass * 0.8
-        let water = flourMass * humidity - self.starter.water
+        let water = flourMass * (humidity / 100) - self.starter.water
         let salt = flourMass * 0.02
         let starter = self.starter.total - self.starter.inoculate
         return Dough(flour: flour, water: water, salt: salt, starter: starter)
     }
     
-    static let initial = Recipe(flourMass: 0, humidity: 100)
+    public static let initial = BreadCalculator(flourMass: 100, humidity: 100)
     
 }

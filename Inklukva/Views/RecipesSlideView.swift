@@ -1,15 +1,17 @@
 import Foundation
 import UIKit
 
-class RecipesSlideView: UIView {
+final class RecipesSlideView: UIView {
+    
+    typealias Recipe = RecipeView.Ingredients
     
     private let scrollView: UIScrollView
     private let recipeViews: [RecipeView]
     private let pageController: UIPageControl
     
-    init(ingredientsList: [RecipeView.Ingredients]) {
+    init(recipes: [Recipe]) {
         
-        recipeViews = ingredientsList.map(RecipeView.init(ingredients:))
+        recipeViews = recipes.map { RecipeView(ingredients: $0) }
         
         let stackView = UIStackView(arrangedSubviews: self.recipeViews)
         stackView.axis = .horizontal
@@ -18,6 +20,8 @@ class RecipesSlideView: UIView {
         
         scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
+        scrollView.bounces = false
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.pinEndgesToSuperview()
         scrollView.addSubview(stackView)
         

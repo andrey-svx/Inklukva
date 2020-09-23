@@ -2,11 +2,11 @@ import Foundation
 
 struct Starter {
     
-    var flour: Double
-    var water: Double
-    var inoculate: Double
+    public var flour: Double
+    public var water: Double
+    public var inoculate: Double
     
-    var total: Double {
+    public var total: Double {
         return inoculate + flour + water
     }
 

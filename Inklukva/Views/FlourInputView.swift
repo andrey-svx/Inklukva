@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class FlourInputView: UIView {
+final class FlourInputView: UIView {
     
     private let stackView: UIStackView
     

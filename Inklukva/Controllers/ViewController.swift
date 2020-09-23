@@ -2,22 +2,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let recipe: Recipe
+    var breadCalculator: BreadCalculator {
+        didSet {
+            print("did set")
+        }
+    }
     
-    let starterInputView: StarterInputView
+    let inoculateInputView: InoculateInputView
     let flourInputView: FlourInputView
     let recipesSlideView: RecipesSlideView
     
-    init(recipe: Recipe) {
+    init(breadCalculator: BreadCalculator) {
         
-        self.recipe = recipe
-        
-        starterInputView = StarterInputView(humidity: Float(recipe.humidity))
-        flourInputView = FlourInputView(mass: recipe.flourMass)
-        let starter = self.recipe.starter
-        let dough = self.recipe.dough
-
-//        recipesSlideView = RecipesSlideView(ingredientsList: ingredientsList)
+        self.breadCalculator = breadCalculator
+        inoculateInputView = InoculateInputView(humidity: Float(breadCalculator.humidity))
+        flourInputView = FlourInputView(mass: breadCalculator.flourMass)
+        let starter = self.breadCalculator.starter
+        let dough = self.breadCalculator.dough
+        let starterRecipe: RecipesSlideView.Recipe = [
+            ("Flour", starter.flour),
+            ("Water", starter.water),
+            ("Inoculate", starter.inoculate)
+        ]
+        let doughRecipe: RecipesSlideView.Recipe = [
+            ("Flour", dough.flour),
+            ("Water", dough.water),
+            ("Salt", dough.salt),
+            ("Starter", dough.starter)
+        ]
+        let recipes = [starterRecipe, doughRecipe]
+        recipesSlideView = RecipesSlideView(recipes: recipes)
         
         super.init(nibName: nil, bundle: nil)
     
@@ -30,23 +44,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        starterInputView.delegate = self
+        inoculateInputView.delegate = self
         
         view.backgroundColor = .white
-        view.addSubview(starterInputView)
+        view.addSubview(inoculateInputView)
         view.addSubview(flourInputView)
         view.addSubview(recipesSlideView)
         
         recipesSlideView.translatesAutoresizingMaskIntoConstraints = false
-        starterInputView.translatesAutoresizingMaskIntoConstraints = false
+        inoculateInputView.translatesAutoresizingMaskIntoConstraints = false
         flourInputView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            starterInputView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            starterInputView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 10),
-            starterInputView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
+            inoculateInputView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            inoculateInputView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 10),
+            inoculateInputView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
             
             flourInputView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            flourInputView.topAnchor.constraint(equalTo: starterInputView.bottomAnchor, constant: view.frame.height / 20),
+            flourInputView.topAnchor.constraint(equalTo: inoculateInputView.bottomAnchor, constant: view.frame.height / 20),
             
             recipesSlideView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             recipesSlideView.topAnchor.constraint(equalTo: flourInputView.bottomAnchor, constant: view.frame.height / 10),
@@ -56,10 +70,10 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: StarterInputViewDelegate {
+extension ViewController: InoculateInputViewDelegate {
     
     func setValue(humidity: Float) {
-        
+        self.breadCalculator.humidity = Double(humidity)
     }
     
 }

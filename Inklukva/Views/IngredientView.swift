@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class IngredientView: UIView {
+final class IngredientView: UIView {
     
     public let nameLabel: UILabel
     public let amountLabel: UILabel
