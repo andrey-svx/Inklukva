@@ -18,9 +18,9 @@ class FlourInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init() {
+    init(mass: Double) {
         
-        mass = 0
+        self.mass = mass
         
         flourLabel = UILabel()
         flourLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
@@ -30,7 +30,7 @@ class FlourInputView: UIView {
         stepper.minimumValue = 0
         stepper.maximumValue = 1000
         stepper.stepValue = 50
-        stepper.value = mass
+        stepper.value = self.mass
         
         stackView = UIStackView(arrangedSubviews: [flourLabel, stepper])
         stackView.axis = .vertical

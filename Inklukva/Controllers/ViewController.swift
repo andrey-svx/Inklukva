@@ -2,24 +2,39 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let recipe = Recipe(flour: 100, humidity: 100)
+    let recipe: Recipe
     
-    let starterInputView = StarterInputView()
-    let flourInputView = FlourInputView()
+    let starterInputView: StarterInputView
+    let flourInputView: FlourInputView
+    let recipesSlideView: RecipesSlideView
+    
+    init(recipe: Recipe) {
+        
+        self.recipe = recipe
+        
+        starterInputView = StarterInputView(humidity: Float(recipe.humidity))
+        flourInputView = FlourInputView(mass: recipe.flourMass)
+        let starter = self.recipe.starter
+        let dough = self.recipe.dough
 
+//        recipesSlideView = RecipesSlideView(ingredientsList: ingredientsList)
+        
+        super.init(nibName: nil, bundle: nil)
+    
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        starterInputView.delegate = self
+        
         view.backgroundColor = .white
         view.addSubview(starterInputView)
         view.addSubview(flourInputView)
-        
-        var ingredients: RecipeView.Ingredients = [:]
-        ingredients["Flour"] = 100
-        ingredients["Water"] = 100
-        ingredients["Salt"] = 100
-        let ingredientsList = [ingredients, ingredients, ingredients]
-        
-        let recipesSlideView = RecipesSlideView(ingredientsList: ingredientsList)
         view.addSubview(recipesSlideView)
         
         recipesSlideView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,4 +54,12 @@ class ViewController: UIViewController {
             recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3)
         ])
     }
+}
+
+extension ViewController: StarterInputViewDelegate {
+    
+    func setValue(humidity: Float) {
+        
+    }
+    
 }

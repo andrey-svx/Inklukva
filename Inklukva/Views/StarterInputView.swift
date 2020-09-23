@@ -1,7 +1,15 @@
 import Foundation
 import UIKit
 
+protocol StarterInputViewDelegate: class {
+    
+    func setValue(humidity: Float)
+    
+}
+
 class StarterInputView: UIView {
+    
+    weak var delegate: StarterInputViewDelegate?
     
     private let nameLabel: UILabel
     private let wrapButton: UIButton
@@ -19,9 +27,9 @@ class StarterInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init() {
+    init(humidity: Float) {
         
-        bakingHumidity = 75
+        bakingHumidity = humidity
         
         nameLabel = UILabel()
         nameLabel.font = UIFont.preferredFont(forTextStyle: .title1)
@@ -46,8 +54,8 @@ class StarterInputView: UIView {
         levitoMadreView.isHidden = true
         
         slider = UISlider()
-        slider.minimumValue = 0
-        slider.maximumValue = 150
+        slider.minimumValue = 50
+        slider.maximumValue = 125
         slider.value = bakingHumidity
         slider.isHidden = true
         
@@ -96,7 +104,12 @@ class StarterInputView: UIView {
     }
     
     @objc func setHumidity() {
+        guard let delegate = self.delegate else {
+            assertionFailure("No delegate set!")
+            return
+        }
         bakingHumidity = slider.value
+        delegate.setValue(humidity: bakingHumidity)
     }
         
 }
