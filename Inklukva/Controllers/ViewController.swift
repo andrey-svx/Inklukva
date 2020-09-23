@@ -2,20 +2,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var breadCalculator: BreadCalculator {
-        didSet {
-            print("did set")
-        }
-    }
+    var breadCalculator: BreadCalculator
     
-    let inoculateInputView: InoculateInputView
+    let inoculateInputView: HumidityInputView
     let flourInputView: FlourInputView
     let recipesSlideView: RecipesSlideView
     
     init(breadCalculator: BreadCalculator) {
         
         self.breadCalculator = breadCalculator
-        inoculateInputView = InoculateInputView(humidity: Float(breadCalculator.humidity))
+        let presets: [HumidityInputView.Preset] = [
+            ("Plain", 100),
+            ("Levito-Madre", 50)
+        ]
+        inoculateInputView = HumidityInputView(header: "Starter", humidity: Float(breadCalculator.starterHumidity), presets: presets)
         flourInputView = FlourInputView(mass: breadCalculator.flourMass)
         let starter = self.breadCalculator.starter
         let dough = self.breadCalculator.dough
@@ -65,15 +65,15 @@ class ViewController: UIViewController {
             recipesSlideView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             recipesSlideView.topAnchor.constraint(equalTo: flourInputView.bottomAnchor, constant: view.frame.height / 10),
             recipesSlideView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
-            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3)
+            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
         ])
     }
 }
 
-extension ViewController: InoculateInputViewDelegate {
+extension ViewController: HumidityInputViewDelegate {
     
     func setValue(humidity: Float) {
-        self.breadCalculator.humidity = Double(humidity)
+        self.breadCalculator.starterHumidity = Double(humidity)
     }
     
 }

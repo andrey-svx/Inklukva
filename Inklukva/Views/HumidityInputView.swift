@@ -1,67 +1,65 @@
 import Foundation
 import UIKit
 
-protocol InoculateInputViewDelegate: class {
+protocol HumidityInputViewDelegate: class {
     
     func setValue(humidity: Float)
     
 }
 
-final class InoculateInputView: UIView {
+final class HumidityInputView: UIView {
     
-    weak var delegate: InoculateInputViewDelegate?
+    typealias Preset = (String, Double)
     
-    private let nameLabel: UILabel
-    private let wrapButton: UIButton
-        
-    private let detailView: [UIView]
-    private let plainView: UILabel
-    private let levitoMadreView: UILabel
-    private let slider: UISlider
+    weak var delegate: HumidityInputViewDelegate?
     
+    public var header: String
+    public var presets: [Preset]
+    private(set) var humidity: Float
     private var isWrapped: Bool = true
     
-    private(set) var bakingHumidity: Float
+    private let headerLabel: UILabel
+    private let wrapButton: UIButton
+        
+    private let detailViews: [UIView]
+    private let presetViews: [PresetView]
+    private let slider: UISlider
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(humidity: Float) {
+    init(header: String, humidity: Float, presets: [Preset]) {
         
-        bakingHumidity = humidity
+        self.header = header
+        self.presets = presets
+        self.humidity = humidity
         
-        nameLabel = UILabel()
-        nameLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        nameLabel.text = NSLocalizedString("Starter:", comment: "")
+        headerLabel = UILabel()
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        headerLabel.text = NSLocalizedString(self.header, comment: "")
         
         wrapButton = UIButton()
         wrapButton.setContentHuggingPriority(.defaultLow, for: .vertical)
         wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         wrapButton.setImage(UIImage(systemName: "plus"), for: .normal)
         
-        let headerView = UIStackView(arrangedSubviews: [nameLabel, wrapButton])
+        let headerView = UIStackView(arrangedSubviews: [headerLabel, wrapButton])
         headerView.axis = .horizontal
         headerView.alignment = .fill
         headerView.distribution = .fill
-
-        plainView = UILabel()
-        plainView.text = NSLocalizedString("Plain", comment: "")
-        plainView.isHidden = true
         
-        levitoMadreView = UILabel()
-        levitoMadreView.text = NSLocalizedString("Levito-Madre", comment: "")
-        levitoMadreView.isHidden = true
+        presetViews = self.presets.map { PresetView(title: $0.0, humidity: $0.1) }
         
         slider = UISlider()
         slider.minimumValue = 50
         slider.maximumValue = 125
-        slider.value = self.bakingHumidity
+        slider.value = self.humidity
         slider.isHidden = true
         
-        detailView = [plainView, levitoMadreView, slider]
+        detailViews = presetViews + [slider]
         
-        let stackView = UIStackView(arrangedSubviews: [headerView] + detailView)
+        let stackView = UIStackView(arrangedSubviews: [headerView] + detailViews)
         stackView.axis = .vertical
         stackView.spacing = 5.0
         
@@ -89,7 +87,7 @@ final class InoculateInputView: UIView {
     
     func unwrap() {
         wrapButton.transform = CGAffineTransform(rotationAngle: .pi * 3/4)
-        for view in detailView {
+        for view in detailViews {
             view.isHidden = false
             view.alpha = 1.0
         }
@@ -97,7 +95,7 @@ final class InoculateInputView: UIView {
 
     func wrapUp() {
         wrapButton.transform = .identity
-        for view in detailView {
+        for view in detailViews {
             view.isHidden = true
             view.alpha = 0.0
         }
@@ -108,8 +106,8 @@ final class InoculateInputView: UIView {
             assertionFailure("Did not set up delegate!")
             return
         }
-        bakingHumidity = slider.value
-        delegate.setValue(humidity: bakingHumidity)
+        humidity = slider.value
+        delegate.setValue(humidity: humidity)
     }
         
 }
