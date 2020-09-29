@@ -6,15 +6,15 @@ final class IngredientView: UIView {
     public let nameLabel: UILabel
     public let amountLabel: UILabel
     
-    init(name: String?, amount: Double?) {
+    init(name: String, amount: Double) {
         
         nameLabel = UILabel()
         nameLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        nameLabel.text = name ?? "No name"
+        nameLabel.text = name
         
         amountLabel = UILabel()
         amountLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        amountLabel.text = "\(amount ?? 0)"
+        amountLabel.text = "\(amount)"
         
         super.init(frame: .zero)
         
