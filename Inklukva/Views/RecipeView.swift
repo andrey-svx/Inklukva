@@ -24,9 +24,6 @@ final class RecipeView: UIView {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
-//        stackView.layer.borderColor = UIColor.systemBlue.cgColor
-//        stackView.layer.borderWidth = 1.0
-        
     }
     
     required init?(coder: NSCoder) {

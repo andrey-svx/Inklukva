@@ -20,7 +20,7 @@ final class RecipesSlideView: UIView {
         
         scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
-        scrollView.bounces = false
+        scrollView.bounces = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.pinEndgesToSuperview()
         scrollView.addSubview(stackView)
@@ -43,12 +43,11 @@ final class RecipesSlideView: UIView {
         pageController.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pageController.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pageController.centerYAnchor.constraint(equalTo: bottomAnchor, constant: 5)
+            pageController.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         recipeViews.forEach { view in
             NSLayoutConstraint.activate([
-                view.widthAnchor.constraint(equalTo: widthAnchor),
-                view.heightAnchor.constraint(equalTo: heightAnchor)
+                view.widthAnchor.constraint(equalTo: widthAnchor)
             ])
         }
     }

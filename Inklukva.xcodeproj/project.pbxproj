@@ -11,14 +11,13 @@
 		5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B135251A48A9002C812D /* RecipesSlideView.swift */; };
 		5A13B139251A53CD002C812D /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B138251A53CD002C812D /* RecipeView.swift */; };
 		5A3692D4250809D20029C921 /* BreadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3692D3250809D20029C921 /* BreadCalculator.swift */; };
-		5A65111D251BD7E70048A92A /* PresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A65111C251BD7E70048A92A /* PresetView.swift */; };
+		5A651129251CBD670048A92A /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A651128251CBD670048A92A /* PickerViewController.swift */; };
 		5A6CA74625191BE200374AC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74525191BE200374AC6 /* UIView.swift */; };
 		5A6CA74B2519436A00374AC6 /* FlourInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74A2519436A00374AC6 /* FlourInputView.swift */; };
-		5A6D34C5251914A300D9BFCE /* HumidityInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D34C4251914A300D9BFCE /* HumidityInputView.swift */; };
 		5AAE4435251A72F1006705A7 /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE4434251A72F1006705A7 /* IngredientView.swift */; };
 		5AD9BA9A250012F600463757 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA99250012F600463757 /* AppDelegate.swift */; };
 		5AD9BA9C250012F600463757 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA9B250012F600463757 /* SceneDelegate.swift */; };
-		5AD9BA9E250012F600463757 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA9D250012F600463757 /* ViewController.swift */; };
+		5AD9BA9E250012F600463757 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA9D250012F600463757 /* MainViewController.swift */; };
 		5AD9BAA3250012F700463757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD9BAA2250012F700463757 /* Assets.xcassets */; };
 		5AD9BAA6250012F700463757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */; };
 		5AFBFFD1251BACD400168007 /* Starter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBFFD0251BACD400168007 /* Starter.swift */; };
@@ -32,15 +31,14 @@
 		5A13B135251A48A9002C812D /* RecipesSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSlideView.swift; sourceTree = "<group>"; };
 		5A13B138251A53CD002C812D /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		5A3692D3250809D20029C921 /* BreadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadCalculator.swift; sourceTree = "<group>"; };
-		5A65111C251BD7E70048A92A /* PresetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetView.swift; sourceTree = "<group>"; };
+		5A651128251CBD670048A92A /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		5A6CA74525191BE200374AC6 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5A6CA74A2519436A00374AC6 /* FlourInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlourInputView.swift; sourceTree = "<group>"; };
-		5A6D34C4251914A300D9BFCE /* HumidityInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityInputView.swift; sourceTree = "<group>"; };
 		5AAE4434251A72F1006705A7 /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
 		5AD9BA96250012F600463757 /* Inklukva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inklukva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD9BA99250012F600463757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AD9BA9B250012F600463757 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5AD9BA9D250012F600463757 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5AD9BA9D250012F600463757 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5AD9BAA2250012F700463757 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AD9BAA5250012F700463757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AD9BAA7250012F700463757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,8 +60,6 @@
 		5A6CA74E251943D300374AC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5A6D34C4251914A300D9BFCE /* HumidityInputView.swift */,
-				5A65111C251BD7E70048A92A /* PresetView.swift */,
 				5A6CA74A2519436A00374AC6 /* FlourInputView.swift */,
 				5A13B135251A48A9002C812D /* RecipesSlideView.swift */,
 				5A13B138251A53CD002C812D /* RecipeView.swift */,
@@ -126,7 +122,8 @@
 		5AFBFFD8251BADC100168007 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5AD9BA9D250012F600463757 /* ViewController.swift */,
+				5AD9BA9D250012F600463757 /* MainViewController.swift */,
+				5A651128251CBD670048A92A /* PickerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -204,9 +201,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A13B139251A53CD002C812D /* RecipeView.swift in Sources */,
+				5A651129251CBD670048A92A /* PickerViewController.swift in Sources */,
 				5AFBFFD4251BACEE00168007 /* Dough.swift in Sources */,
-				5AD9BA9E250012F600463757 /* ViewController.swift in Sources */,
-				5A6D34C5251914A300D9BFCE /* HumidityInputView.swift in Sources */,
+				5AD9BA9E250012F600463757 /* MainViewController.swift in Sources */,
 				5AAE4435251A72F1006705A7 /* IngredientView.swift in Sources */,
 				5A3692D4250809D20029C921 /* BreadCalculator.swift in Sources */,
 				5A6CA74B2519436A00374AC6 /* FlourInputView.swift in Sources */,
@@ -214,7 +211,6 @@
 				5A6CA74625191BE200374AC6 /* UIView.swift in Sources */,
 				5AD9BA9C250012F600463757 /* SceneDelegate.swift in Sources */,
 				5AFBFFD1251BACD400168007 /* Starter.swift in Sources */,
-				5A65111D251BD7E70048A92A /* PresetView.swift in Sources */,
 				5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -351,7 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
