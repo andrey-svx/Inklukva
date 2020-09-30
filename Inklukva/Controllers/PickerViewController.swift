@@ -1,33 +1,38 @@
 import UIKit
 
-class PickerViewController: UIViewController {
+final class PickerViewController: UIViewController {
     
     typealias Preset = (String, Int)
     
-    let header: String
-    let presets: [Preset]
+    public let header: String
+    public let presets: [Preset]
+    
     var isWrapped: Bool {
         didSet {
             pickerView.isHidden = isWrapped
+            view.layoutIfNeeded()
         }
     }
     
-    let stackView: UIStackView
-    let headerLabel: UILabel
-    let pickerView: UIPickerView
+    private let stackView: UIStackView
+    private let headerLabel: UILabel
+    private let pickerView: UIPickerView
     
-    init(header: String, presets: [Preset]) {
+    init(header: String, presets: [Preset], isWrapped: Bool) {
         self.header = header
         self.presets = presets
-        self.isWrapped = false
+        self.isWrapped = isWrapped
         
         headerLabel = UILabel()
         headerLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        
         pickerView = UIPickerView()
+        pickerView.isHidden = isWrapped
+        
         stackView = UIStackView(arrangedSubviews: [headerLabel, pickerView])
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
-        stackView.alignment = .center
+        stackView.alignment = .leading
         stackView.spacing = 0
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,8 +43,7 @@ class PickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .body)
         headerLabel.text = header
         pickerView.dataSource = self
         pickerView.delegate = self
@@ -49,7 +53,6 @@ class PickerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         stackView.pinEndgesToSuperview()
-        
     }
 
 }

@@ -1,22 +1,22 @@
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
-    var breadCalculator: BreadCalculator
+    private var breadCalculator: BreadCalculator
     
-    let flourInputView: FlourInputView
-    let recipesSlideView: RecipesSlideView
-    let starterPickerView: UIView
+    private let flourInputView: FlourInputView
+    private let recipesSlideView: RecipesSlideView
+    private let humidityInputView: UIView
+    
+    private let stackView: UIStackView
+    private let scrollView: UIScrollView
     
     init(breadCalculator: BreadCalculator) {
         
         self.breadCalculator = breadCalculator
-
-        let starterPresets = [
-            ("25%", 25), ("Левито-Мадре (50%)", 50), ("75%", 75), ("Обычная (100%)", 100), ("125%", 125)
-        ]
-        let pickerVC = PickerViewController(header: "Starter", presets: starterPresets)
-        starterPickerView = pickerVC.view
+        
+        let humidityViewController = HumidityInputViewController()
+        humidityInputView = humidityViewController.view
         
         flourInputView = FlourInputView(mass: breadCalculator.flourMass)
         
@@ -36,10 +36,20 @@ class MainViewController: UIViewController {
         let recipes = [starterRecipe, doughRecipe]
         recipesSlideView = RecipesSlideView(recipes: recipes)
         
+        let arrangedSubviews = [humidityInputView, flourInputView, recipesSlideView]
+        stackView = UIStackView(arrangedSubviews: arrangedSubviews)
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 20
+
+        scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = true
+        
         super.init(nibName: nil, bundle: nil)
-    
-        addChild(pickerVC)
-        pickerVC.didMove(toParent: self)
+        addChild(humidityViewController)
+        didMove(toParent: humidityViewController)
     }
     
     required init?(coder: NSCoder) {
@@ -49,31 +59,23 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(starterPickerView)
-        view.addSubview(flourInputView)
-        view.addSubview(recipesSlideView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        starterPickerView.translatesAutoresizingMaskIntoConstraints = false
-        recipesSlideView.translatesAutoresizingMaskIntoConstraints = false
-        flourInputView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.pinEndgesToSuperview()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            starterPickerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0),
-            starterPickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            starterPickerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
-            starterPickerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.20),
+            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             
-            flourInputView.topAnchor.constraint(equalTo: starterPickerView.bottomAnchor),
-            flourInputView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            flourInputView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
-            flourInputView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.20),
+            stackView.widthAnchor.constraint(equalTo: view.widthAnchor),
             
-            recipesSlideView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recipesSlideView.topAnchor.constraint(equalTo: flourInputView.bottomAnchor, constant: view.frame.height / 10),
-            recipesSlideView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/4),
-            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }

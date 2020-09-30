@@ -13,19 +13,23 @@ final class RecipesSlideView: UIView {
         
         recipeViews = recipes.map { RecipeView(ingredients: $0) }
         
-        let stackView = UIStackView(arrangedSubviews: self.recipeViews)
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .top
+        let horizontalStack = UIStackView(arrangedSubviews: self.recipeViews)
+        horizontalStack.axis = .horizontal
+        horizontalStack.distribution = .fillProportionally
+        horizontalStack.alignment = .top
         
         scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
         scrollView.bounces = true
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.pinEndgesToSuperview()
-        scrollView.addSubview(stackView)
         
-        stackView.pinEndgesToSuperview()
+        scrollView.addSubview(horizontalStack)
+        horizontalStack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            horizontalStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            horizontalStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            horizontalStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
+        ])
         
         pageController = UIPageControl()
         pageController.numberOfPages = recipeViews.count
@@ -36,15 +40,16 @@ final class RecipesSlideView: UIView {
         super.init(frame: .zero)
         
         scrollView.delegate = self
-        addSubview(scrollView)
-        addSubview(pageController)
         
-        scrollView.pinEndgesToSuperview()
-        pageController.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pageController.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pageController.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        let stackView = UIStackView(arrangedSubviews: [scrollView, pageController])
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 0
+        
+        addSubview(stackView)
+        stackView.pinEndgesToSuperview()
+        
         recipeViews.forEach { view in
             NSLayoutConstraint.activate([
                 view.widthAnchor.constraint(equalTo: widthAnchor)

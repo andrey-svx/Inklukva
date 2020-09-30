@@ -6,23 +6,20 @@ final class RecipeView: UIView {
     typealias Ingredient = (String, Double)
     typealias Ingredients = [Ingredient]
 
-    let ingredientViews: [IngredientView]
+    private let ingredientViews: [IngredientView]
     
     required init(ingredients: Ingredients) {
         
         ingredientViews = ingredients.map { IngredientView(name: $0.0, amount: Double($0.1)) }
+        
         let stackView = UIStackView(arrangedSubviews: ingredientViews)
         stackView.axis = .vertical
+        stackView.spacing = 0
         
         super.init(frame: .zero)
         
         addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        stackView.pinEndgesToSuperview()
         
     }
     
