@@ -36,10 +36,9 @@ final class MainViewController: UIViewController {
         let recipes = [starterRecipe, doughRecipe]
         recipesSlideView = RecipesSlideView(recipes: recipes)
         
-        let arrangedSubviews = [humidityInputView, flourInputView, recipesSlideView]
-        stackView = UIStackView(arrangedSubviews: arrangedSubviews)
-        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        stackView = UIStackView(arrangedSubviews: [humidityInputView, flourInputView, recipesSlideView])
         stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 20

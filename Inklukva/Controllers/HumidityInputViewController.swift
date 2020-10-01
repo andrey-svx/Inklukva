@@ -22,15 +22,20 @@ final class HumidityInputViewController: UIViewController {
         wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         wrapButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         
-        let starterPresets = [("25%", 25), ("Левито-Мадре (50%)", 50), ("75%", 75), ("Обычная (100%)", 100), ("125%", 125)]
+        let starterPresets = [
+            ("25%", 25), ("Levito-Madre (50%)", 50), ("75%", 75), ("Regular(100%)", 100), ("125%", 125)
+        ]
         starterViewController = PickerViewController(header: "Starter", presets: starterPresets, isWrapped: isWrapped)
         starterInputView = starterViewController.view
         
-        let doughPresets = [("25%", 25), ("50%", 50), ("75%", 75), ("100%", 100), ("125%", 125), ("150%", 150)]
+        let doughPresets = stride(from: 50, through: 100, by: 10)
+            .compactMap { $0 }
+            .map { ("\($0)%", $0) }
         doughViewController = PickerViewController(header: "Dough", presets: doughPresets, isWrapped: isWrapped)
         doughInputView = doughViewController.view
         
         super.init(nibName: nil, bundle: nil)
+        
         addChild(starterViewController)
         didMove(toParent: starterViewController)
         
@@ -52,6 +57,7 @@ final class HumidityInputViewController: UIViewController {
         let headerStack = UIStackView(arrangedSubviews: [headerLabel, wrapButton])
         headerStack.axis = .horizontal
         headerStack.distribution = .fill
+        headerStack.alignment = .center
         headerStack.spacing = 0
         
         let stackView = UIStackView(arrangedSubviews: [headerStack, starterInputView, doughInputView])

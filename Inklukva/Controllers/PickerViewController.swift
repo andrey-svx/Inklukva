@@ -76,7 +76,7 @@ extension PickerViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        headerLabel.text = presets[row].0
+        headerLabel.text = header + ": " + presets[row].0
     }
     
 }
