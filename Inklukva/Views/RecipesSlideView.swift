@@ -6,14 +6,16 @@ final class RecipesSlideView: UIView {
     typealias Recipe = RecipeView.Ingredients
     
     private let scrollView: UIScrollView
-    private let recipeViews: [RecipeView]
+    private let starterView: RecipeView
+    private let doughView: RecipeView
     private let pageController: UIPageControl
     
-    init(recipes: [Recipe]) {
+    init(starterRecipe: Recipe, doughRecipe: Recipe) {
         
-        recipeViews = recipes.map { RecipeView(ingredients: $0) }
+        starterView = RecipeView(header: "Starter", ingredients: starterRecipe)
+        doughView = RecipeView(header: "Dough", ingredients: doughRecipe)
         
-        let horizontalStack = UIStackView(arrangedSubviews: self.recipeViews)
+        let horizontalStack = UIStackView(arrangedSubviews: [starterView, doughView])
         horizontalStack.axis = .horizontal
         horizontalStack.distribution = .fillProportionally
         horizontalStack.alignment = .top
@@ -32,7 +34,7 @@ final class RecipesSlideView: UIView {
         ])
         
         pageController = UIPageControl()
-        pageController.numberOfPages = recipeViews.count
+        pageController.numberOfPages = 2
         pageController.currentPage = 0
         pageController.pageIndicatorTintColor = .lightGray
         pageController.currentPageIndicatorTintColor = .darkGray
@@ -43,9 +45,18 @@ final class RecipesSlideView: UIView {
         
         let headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = "Take:"
+        headerLabel.text = "Take ingredients"
         
-        let stackView = UIStackView(arrangedSubviews: [headerLabel, scrollView, pageController])
+        let headerView = UIView(frame: .zero)
+        headerView.addSubview(headerLabel)
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            headerLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
+        ])
+        
+        let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, pageController])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill
@@ -54,11 +65,13 @@ final class RecipesSlideView: UIView {
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
         
-        recipeViews.forEach { view in
-            NSLayoutConstraint.activate([
-                view.widthAnchor.constraint(equalTo: widthAnchor)
-            ])
-        }
+        starterView.translatesAutoresizingMaskIntoConstraints = false
+        doughView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            starterView.widthAnchor.constraint(equalTo: widthAnchor),
+            doughView.widthAnchor.constraint(equalTo: widthAnchor)
+        ])
+        
     }
     
     required init?(coder: NSCoder) {

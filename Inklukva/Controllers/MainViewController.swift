@@ -32,8 +32,7 @@ final class MainViewController: UIViewController {
             ("Salt", dough.salt),
             ("Starter", dough.starter)
         ]
-        let recipes = [starterRecipe, doughRecipe]
-        recipesSlideView = RecipesSlideView(recipes: recipes)
+        recipesSlideView = RecipesSlideView(starterRecipe: starterRecipe, doughRecipe: doughRecipe)
         
         stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView])
         stackView.isLayoutMarginsRelativeArrangement = true

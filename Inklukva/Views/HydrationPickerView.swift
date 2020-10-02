@@ -7,6 +7,7 @@ class HydrationPickerView: UIView {
     
     public let header: String
     public let presets: [Preset]
+    public let hydration: Int
     
     var isWrapped: Bool {
         didSet {
@@ -23,6 +24,10 @@ class HydrationPickerView: UIView {
         
         self.header = header
         self.presets = presets
+        
+        let initialIndex = presets.firstIndex { $0 == initialPreset } ?? 0
+        hydration = presets[initialIndex].1
+        
         self.isWrapped = isWrapped
         
         headerLabel = UILabel()
@@ -47,8 +52,7 @@ class HydrationPickerView: UIView {
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
         
-        let initialRow = presets.firstIndex { $0 == initialPreset } ?? 0
-        pickerView.selectRow(initialRow, inComponent: 0, animated: false)
+        pickerView.selectRow(initialIndex, inComponent: 0, animated: false)
         
     }
     

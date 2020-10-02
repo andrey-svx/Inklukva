@@ -32,7 +32,16 @@ final class FlourInputView: UIView {
         
         let headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = "Set:"
+        headerLabel.text = "Set flour wheight"
+        
+        let headerView = UIView(frame: .zero)
+        headerView.addSubview(headerLabel)
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            headerLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
+        ])
         
         let stackView = UIStackView(arrangedSubviews: [headerLabel, flourLabel, stepper])
         stackView.axis = .vertical

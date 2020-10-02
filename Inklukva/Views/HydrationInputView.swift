@@ -15,7 +15,7 @@ class HydrationInputView: UIView {
         
         headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = "Properties"
+        headerLabel.text = "Pick hydraition level"
         
         let headerView = UIView(frame: .zero)
         headerView.addSubview(headerLabel)
