@@ -3,14 +3,11 @@ import UIKit
 final class HumidityInputViewController: UIViewController {
     
     public var isWrapped: Bool
-    
-    private let starterViewController: PickerViewController
-    private let doughViewController: PickerViewController
 
     private let headerLabel: UILabel
     private let wrapButton: UIButton
-    private let starterInputView: UIView
-    private let doughInputView: UIView
+    private let starterInputView: HydratationPickerView
+    private let doughInputView: HydratationPickerView
     
     init() {
         isWrapped = true
@@ -28,22 +25,14 @@ final class HumidityInputViewController: UIViewController {
         let starterPresets = [
             ("25%", 25), ("Levito-Madre (50%)", 50), ("75%", 75), ("Regular (100%)", 100), ("125%", 125)
         ]
-        starterViewController = PickerViewController(header: "Starter", presets: starterPresets, isWrapped: isWrapped)
-        starterInputView = starterViewController.view
+        starterInputView = HydratationPickerView(header: "Starter", presets: starterPresets, initialPreset: ("Regular (100%)", 100), isWrapped: self.isWrapped)
         
         let doughPresets = stride(from: 50, through: 100, by: 10)
             .compactMap { $0 }
             .map { ("\($0)%", $0) }
-        doughViewController = PickerViewController(header: "Dough", presets: doughPresets, isWrapped: isWrapped)
-        doughInputView = doughViewController.view
+        doughInputView = HydratationPickerView(header: "Dough", presets: doughPresets, isWrapped: self.isWrapped)
         
         super.init(nibName: nil, bundle: nil)
-        
-        addChild(starterViewController)
-        didMove(toParent: starterViewController)
-        
-        addChild(doughViewController)
-        didMove(toParent: doughViewController)
         
         wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
     }
@@ -92,15 +81,15 @@ final class HumidityInputViewController: UIViewController {
     
     func unwrap() {
         wrapButton.transform = CGAffineTransform(rotationAngle: .pi * 3/4)
-        for viewController in [starterViewController, doughViewController] {
-            viewController.isWrapped = !self.isWrapped
+        for pickerView in [starterInputView, doughInputView] {
+            pickerView.isWrapped = !self.isWrapped
         }
     }
 
     func wrapUp() {
         wrapButton.transform = .identity
-        for viewController in [starterViewController, doughViewController] {
-            viewController.isWrapped = !self.isWrapped
+        for pickerView in [starterInputView, doughInputView] {
+            pickerView.isWrapped = !self.isWrapped
         }
     }
 
