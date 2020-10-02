@@ -16,6 +16,15 @@ class HydrationInputView: UIView {
         headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         headerLabel.text = "Properties"
+        
+        let headerView = UIView(frame: .zero)
+        headerView.addSubview(headerLabel)
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            headerLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
+        ])
             
         wrapButton = UIButton()
         wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -25,7 +34,6 @@ class HydrationInputView: UIView {
         
         let footerView = UIView(frame: .zero)
         footerView.addSubview(wrapButton)
-        footerView.translatesAutoresizingMaskIntoConstraints = false
         wrapButton.pinEndgesToSuperview()
         
         let starterPresets = [
@@ -38,7 +46,7 @@ class HydrationInputView: UIView {
             .map { ("\($0)%", $0) }
         doughInputView = HydrationPickerView(header: "Dough", presets: doughPresets, isWrapped: self.isWrapped)
         
-        let stackView = UIStackView(arrangedSubviews: [headerLabel, starterInputView, doughInputView, footerView])
+        let stackView = UIStackView(arrangedSubviews: [headerView, starterInputView, doughInputView, footerView])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 5
