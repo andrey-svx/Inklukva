@@ -41,7 +41,11 @@ final class RecipesSlideView: UIView {
         
         scrollView.delegate = self
         
-        let stackView = UIStackView(arrangedSubviews: [scrollView, pageController])
+        let headerLabel = UILabel()
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        headerLabel.text = "Take:"
+        
+        let stackView = UIStackView(arrangedSubviews: [headerLabel, scrollView, pageController])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill

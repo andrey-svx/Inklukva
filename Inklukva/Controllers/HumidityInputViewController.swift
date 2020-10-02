@@ -16,14 +16,17 @@ final class HumidityInputViewController: UIViewController {
         isWrapped = true
         
         headerLabel = UILabel()
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         headerLabel.text = "Properties"
             
         wrapButton = UIButton()
         wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        wrapButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        let imageConfiguration = UIImage.SymbolConfiguration(scale: .large)
+        let buttonImage = UIImage(systemName: "plus.circle", withConfiguration: imageConfiguration)
+        wrapButton.setImage(buttonImage, for: .normal)
         
         let starterPresets = [
-            ("25%", 25), ("Levito-Madre (50%)", 50), ("75%", 75), ("Regular(100%)", 100), ("125%", 125)
+            ("25%", 25), ("Levito-Madre (50%)", 50), ("75%", 75), ("Regular (100%)", 100), ("125%", 125)
         ]
         starterViewController = PickerViewController(header: "Starter", presets: starterPresets, isWrapped: isWrapped)
         starterInputView = starterViewController.view
@@ -51,8 +54,6 @@ final class HumidityInputViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        wrapButton.translatesAutoresizingMaskIntoConstraints = false
         
         let headerStack = UIStackView(arrangedSubviews: [headerLabel, wrapButton])
         headerStack.axis = .horizontal

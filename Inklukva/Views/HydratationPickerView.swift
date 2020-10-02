@@ -1,6 +1,7 @@
+import Foundation
 import UIKit
 
-final class PickerViewController: UIViewController {
+class HydratationPickerView: UIView {
     
     typealias Preset = (String, Int)
     
@@ -10,7 +11,7 @@ final class PickerViewController: UIViewController {
     var isWrapped: Bool {
         didSet {
             pickerView.isHidden = isWrapped
-            view.layoutIfNeeded()
+            layoutIfNeeded()
         }
     }
     
@@ -18,13 +19,15 @@ final class PickerViewController: UIViewController {
     private let headerLabel: UILabel
     private let pickerView: UIPickerView
     
-    init(header: String, presets: [Preset], isWrapped: Bool) {
+    init(header: String, presets: [Preset], initialPreset: Preset, isWrapped: Bool) {
         self.header = header
         self.presets = presets
         self.isWrapped = isWrapped
         
         headerLabel = UILabel()
         headerLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        headerLabel.text = header
         
         pickerView = UIPickerView()
         pickerView.isHidden = isWrapped
@@ -34,30 +37,23 @@ final class PickerViewController: UIViewController {
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         stackView.spacing = 0
-        super.init(nibName: nil, bundle: nil)
+        
+        super.init(frame: .zero)
+        
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        addSubview(stackView)
+        stackView.pinEndgesToSuperview()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .title3)
-        headerLabel.text = header
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        view.addSubview(stackView)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        stackView.pinEndgesToSuperview()
-    }
-
 }
 
-extension PickerViewController: UIPickerViewDataSource {
+extension HydratationPickerView: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -69,7 +65,7 @@ extension PickerViewController: UIPickerViewDataSource {
     
 }
 
-extension PickerViewController: UIPickerViewDelegate {
+extension HydratationPickerView: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         presets[row].0

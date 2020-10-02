@@ -3,8 +3,6 @@ import UIKit
 
 final class FlourInputView: UIView {
     
-    private let stackView: UIStackView
-    
     private let flourLabel: UILabel
     private let stepper: UIStepper
     
@@ -32,7 +30,11 @@ final class FlourInputView: UIView {
         stepper.stepValue = 50
         stepper.value = self.mass
         
-        stackView = UIStackView(arrangedSubviews: [flourLabel, stepper])
+        let headerLabel = UILabel()
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        headerLabel.text = "Set:"
+        
+        let stackView = UIStackView(arrangedSubviews: [headerLabel, flourLabel, stepper])
         stackView.axis = .vertical
         stackView.alignment = .center
             
