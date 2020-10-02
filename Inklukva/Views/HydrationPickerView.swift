@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class HydratationPickerView: UIView {
+class HydrationPickerView: UIView {
     
     typealias Preset = (String, Int)
     
@@ -58,7 +58,7 @@ class HydratationPickerView: UIView {
     
 }
 
-extension HydratationPickerView: UIPickerViewDataSource {
+extension HydrationPickerView: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -70,7 +70,7 @@ extension HydratationPickerView: UIPickerViewDataSource {
     
 }
 
-extension HydratationPickerView: UIPickerViewDelegate {
+extension HydrationPickerView: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         presets[row].0

@@ -6,7 +6,7 @@ final class MainViewController: UIViewController {
     
     private let flourInputView: FlourInputView
     private let recipesSlideView: RecipesSlideView
-    private let hydratationInputView: UIView
+    private let hydrationInputView: UIView
     
     private let stackView: UIStackView
     private let scrollView: UIScrollView
@@ -15,7 +15,7 @@ final class MainViewController: UIViewController {
         
         self.breadCalculator = breadCalculator
         
-        hydratationInputView = HydratationInputView()
+        hydrationInputView = HydrationInputView()
         
         flourInputView = FlourInputView(mass: breadCalculator.flourMass)
         
@@ -35,7 +35,7 @@ final class MainViewController: UIViewController {
         let recipes = [starterRecipe, doughRecipe]
         recipesSlideView = RecipesSlideView(recipes: recipes)
         
-        stackView = UIStackView(arrangedSubviews: [hydratationInputView, flourInputView, recipesSlideView])
+        stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView])
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 30, bottom: 20, right: 30)
         stackView.axis = .vertical
