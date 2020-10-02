@@ -15,6 +15,7 @@
 		5A6CA74625191BE200374AC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74525191BE200374AC6 /* UIView.swift */; };
 		5A6CA74B2519436A00374AC6 /* FlourInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74A2519436A00374AC6 /* FlourInputView.swift */; };
 		5A79C55D25279F3B00DCD2D2 /* HydratationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A79C55C25279F3B00DCD2D2 /* HydratationPickerView.swift */; };
+		5A79C5612527A75E00DCD2D2 /* HydratationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A79C5602527A75E00DCD2D2 /* HydratationInputView.swift */; };
 		5AAE4435251A72F1006705A7 /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE4434251A72F1006705A7 /* IngredientView.swift */; };
 		5AD9BA9A250012F600463757 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA99250012F600463757 /* AppDelegate.swift */; };
 		5AD9BA9C250012F600463757 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9BA9B250012F600463757 /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 		5A6CA74525191BE200374AC6 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5A6CA74A2519436A00374AC6 /* FlourInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlourInputView.swift; sourceTree = "<group>"; };
 		5A79C55C25279F3B00DCD2D2 /* HydratationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydratationPickerView.swift; sourceTree = "<group>"; };
+		5A79C5602527A75E00DCD2D2 /* HydratationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydratationInputView.swift; sourceTree = "<group>"; };
 		5AAE4434251A72F1006705A7 /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
 		5AD9BA96250012F600463757 /* Inklukva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inklukva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD9BA99250012F600463757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		5A6CA74E251943D300374AC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A79C5602527A75E00DCD2D2 /* HydratationInputView.swift */,
 				5A79C55C25279F3B00DCD2D2 /* HydratationPickerView.swift */,
 				5A6CA74A2519436A00374AC6 /* FlourInputView.swift */,
 				5A13B135251A48A9002C812D /* RecipesSlideView.swift */,
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A67EDF02524EA5D00ABF4A5 /* HumidityInputViewController.swift in Sources */,
+				5A79C5612527A75E00DCD2D2 /* HydratationInputView.swift in Sources */,
 				5A13B139251A53CD002C812D /* RecipeView.swift in Sources */,
 				5AFBFFD4251BACEE00168007 /* Dough.swift in Sources */,
 				5AD9BA9E250012F600463757 /* MainViewController.swift in Sources */,

@@ -6,7 +6,7 @@ final class MainViewController: UIViewController {
     
     private let flourInputView: FlourInputView
     private let recipesSlideView: RecipesSlideView
-    private let humidityInputView: UIView
+    private let hydratationInputView: UIView
     
     private let stackView: UIStackView
     private let scrollView: UIScrollView
@@ -15,8 +15,7 @@ final class MainViewController: UIViewController {
         
         self.breadCalculator = breadCalculator
         
-        let humidityViewController = HumidityInputViewController()
-        humidityInputView = humidityViewController.view
+        hydratationInputView = HydratationInputView()
         
         flourInputView = FlourInputView(mass: breadCalculator.flourMass)
         
@@ -36,7 +35,7 @@ final class MainViewController: UIViewController {
         let recipes = [starterRecipe, doughRecipe]
         recipesSlideView = RecipesSlideView(recipes: recipes)
         
-        stackView = UIStackView(arrangedSubviews: [humidityInputView, flourInputView, recipesSlideView])
+        stackView = UIStackView(arrangedSubviews: [hydratationInputView, flourInputView, recipesSlideView])
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 30, bottom: 20, right: 30)
         stackView.axis = .vertical
@@ -47,8 +46,7 @@ final class MainViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = true
         
         super.init(nibName: nil, bundle: nil)
-        addChild(humidityViewController)
-        didMove(toParent: humidityViewController)
+
     }
     
     required init?(coder: NSCoder) {
