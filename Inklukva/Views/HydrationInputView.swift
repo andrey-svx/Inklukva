@@ -10,6 +10,8 @@ class HydrationInputView: UIView {
     private let starterInputView: HydrationPickerView
     private let doughInputView: HydrationPickerView
     
+    private let tapGestureRecognizer: UITapGestureRecognizer
+    
     init() {
         isWrapped = true
         
@@ -42,7 +44,7 @@ class HydrationInputView: UIView {
         starterInputView = HydrationPickerView(
             header: NSLocalizedString("Starter", comment: ""),
             presets: starterPresets,
-            initialPreset: (" (100%)", 100),
+            initialPreset: (regularString, 100),
             isWrapped: self.isWrapped
         )
         
@@ -61,10 +63,16 @@ class HydrationInputView: UIView {
         stackView.spacing = 5
 //        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
 //        stackView.isLayoutMarginsRelativeArrangement = true
-
+        
+        tapGestureRecognizer = UITapGestureRecognizer()
+        
         super.init(frame: .zero)
         
         wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
+        
+        tapGestureRecognizer.addTarget(self, action: #selector(wrap))
+        tapGestureRecognizer.delegate = self
+        addGestureRecognizer(tapGestureRecognizer)
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
@@ -89,4 +97,10 @@ class HydrationInputView: UIView {
         }
     }
     
+}
+
+extension HydrationInputView: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        isWrapped ? true : false
+    }
 }
