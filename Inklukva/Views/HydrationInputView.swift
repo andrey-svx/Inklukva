@@ -69,22 +69,11 @@ class HydrationInputView: UIView {
     @objc func wrap() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { assertionFailure("Could not set self"); return }
-            self.isWrapped ? self.unwrap() : self.wrapUp()
+            self.wrapButton.transform = self.isWrapped ? CGAffineTransform(rotationAngle: .pi) : .identity
+            for pickerView in [self.starterInputView, self.doughInputView] {
+                pickerView.isWrapped = !self.isWrapped
+            }
             self.isWrapped.toggle()
-        }
-    }
-    
-    func unwrap() {
-        wrapButton.transform = CGAffineTransform(rotationAngle: .pi)
-        for pickerView in [starterInputView, doughInputView] {
-            pickerView.isWrapped = !self.isWrapped
-        }
-    }
-
-    func wrapUp() {
-        wrapButton.transform = .identity
-        for pickerView in [starterInputView, doughInputView] {
-            pickerView.isWrapped = !self.isWrapped
         }
     }
     

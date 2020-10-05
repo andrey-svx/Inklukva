@@ -64,8 +64,6 @@ final class MainViewController: UIViewController {
         stackView.pinEndgesToSuperview()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            recipesSlideView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
-            
             stackView.widthAnchor.constraint(equalTo: view.widthAnchor),
             
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

@@ -11,6 +11,7 @@ final class RecipeView: UIView {
     
     private let headerLabel: UILabel
     private let ingredientViews: [IngredientView]
+    public let stackView: UIStackView
     
     required init(header: String, ingredients: Ingredients) {
         
@@ -23,7 +24,7 @@ final class RecipeView: UIView {
         
         ingredientViews = ingredients.map { IngredientView(name: $0.0, amount: Double($0.1)) }
         
-        let stackView = UIStackView(arrangedSubviews: [headerLabel] + ingredientViews)
+        stackView = UIStackView(arrangedSubviews: [headerLabel] + ingredientViews)
         stackView.axis = .vertical
         stackView.spacing = 0
         
@@ -31,7 +32,7 @@ final class RecipeView: UIView {
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
-        
+    
     }
     
     required init?(coder: NSCoder) {

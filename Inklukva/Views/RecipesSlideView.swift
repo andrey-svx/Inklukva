@@ -13,25 +13,24 @@ final class RecipesSlideView: UIView {
     init(starterRecipe: Recipe, doughRecipe: Recipe) {
         
         starterView = RecipeView(header: "Starter", ingredients: starterRecipe)
+        starterView.translatesAutoresizingMaskIntoConstraints = false
         doughView = RecipeView(header: "Dough", ingredients: doughRecipe)
+        doughView.translatesAutoresizingMaskIntoConstraints = false
+        doughView.setNeedsLayout()
+        doughView.layoutIfNeeded()
         
         let horizontalStack = UIStackView(arrangedSubviews: [starterView, doughView])
         horizontalStack.axis = .horizontal
         horizontalStack.distribution = .fillProportionally
         horizontalStack.alignment = .top
+        horizontalStack.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
         scrollView.bounces = true
         scrollView.showsHorizontalScrollIndicator = false
-        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(horizontalStack)
-        horizontalStack.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            horizontalStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            horizontalStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            horizontalStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
-        ])
         
         pageController = UIPageControl()
         pageController.numberOfPages = 2
@@ -40,7 +39,6 @@ final class RecipesSlideView: UIView {
         pageController.currentPageIndicatorTintColor = .darkGray
         
         super.init(frame: .zero)
-        
         scrollView.delegate = self
         
         let headerLabel = UILabel()
@@ -61,16 +59,22 @@ final class RecipesSlideView: UIView {
         stackView.distribution = .fill
         stackView.alignment = .fill
         stackView.spacing = 0
-        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
-        stackView.pinEndgesToSuperview()
         
-        starterView.translatesAutoresizingMaskIntoConstraints = false
-        doughView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let doughHeight = doughView.frame.height
         NSLayoutConstraint.activate([
+            horizontalStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            horizontalStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            horizontalStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            
+            scrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: doughHeight),
+            
             starterView.widthAnchor.constraint(equalTo: widthAnchor),
             doughView.widthAnchor.constraint(equalTo: widthAnchor)
         ])
+        stackView.pinEndgesToSuperview()
         
     }
     

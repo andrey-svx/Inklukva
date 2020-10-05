@@ -42,7 +42,7 @@ class HydrationPickerView: UIView {
         stackView = UIStackView(arrangedSubviews: [headerLabel, pickerView])
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
-        stackView.alignment = .leading
+        stackView.alignment = .center
         stackView.spacing = 0
         
         super.init(frame: .zero)
@@ -54,11 +54,10 @@ class HydrationPickerView: UIView {
         stackView.pinEndgesToSuperview()
         
         pickerView.selectRow(initialIndex, inComponent: 0, animated: false)
-//        pickerView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            pickerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 3/4),
-//            pickerView.centerXAnchor.constraint(equalTo: centerXAnchor)
-//        ])
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pickerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 3/4)
+        ])
         
     }
     
