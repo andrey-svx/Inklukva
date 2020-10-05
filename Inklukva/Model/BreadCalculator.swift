@@ -15,7 +15,7 @@ struct BreadCalculator {
     
     public var dough: Dough {
         let flour = flourMass * 0.8
-        let water = flourMass * (starterHumidity / 100) - self.starter.water
+        let water = flourMass * (doughHumidity / 100) - self.starter.water
         let salt = flourMass * 0.02
         let starter = self.starter.total - self.starter.inoculate
         return Dough(flour: flour, water: water, salt: salt, starter: starter)

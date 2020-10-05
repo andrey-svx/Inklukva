@@ -15,7 +15,7 @@ class HydrationInputView: UIView {
         
         headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = "Pick hydraition level"
+        headerLabel.text = NSLocalizedString("Select hydraition level", comment: "")
         
         let headerView = UIView(frame: .zero)
         headerView.addSubview(headerLabel)
@@ -36,15 +36,24 @@ class HydrationInputView: UIView {
         footerView.addSubview(wrapButton)
         wrapButton.pinEndgesToSuperview()
         
-        let starterPresets = [
-            ("25%", 25), ("Levito-Madre (50%)", 50), ("75%", 75), ("Regular (100%)", 100), ("125%", 125)
-        ]
-        starterInputView = HydrationPickerView(header: "Starter", presets: starterPresets, initialPreset: ("Regular (100%)", 100), isWrapped: self.isWrapped)
+        let lmString = NSLocalizedString("Levito-Madre", comment: "") + " (50%)"
+        let regularString = NSLocalizedString("Regular", comment: "") + " (100%)"
+        let starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
+        starterInputView = HydrationPickerView(
+            header: NSLocalizedString("Starter", comment: ""),
+            presets: starterPresets,
+            initialPreset: (" (100%)", 100),
+            isWrapped: self.isWrapped
+        )
         
         let doughPresets = stride(from: 50, through: 100, by: 10)
             .compactMap { $0 }
             .map { ("\($0)%", $0) }
-        doughInputView = HydrationPickerView(header: "Dough", presets: doughPresets, isWrapped: self.isWrapped)
+        doughInputView = HydrationPickerView(
+            header: NSLocalizedString("Dough", comment: ""),
+            presets: doughPresets,
+            isWrapped: self.isWrapped
+        )
         
         let stackView = UIStackView(arrangedSubviews: [headerView, starterInputView, doughInputView, footerView])
         stackView.axis = .vertical
@@ -59,6 +68,9 @@ class HydrationInputView: UIView {
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
+        
+        backgroundColor = .systemGreen
+        layer.cornerRadius = 10
         
     }
     

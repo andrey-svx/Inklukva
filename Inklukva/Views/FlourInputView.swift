@@ -32,7 +32,7 @@ final class FlourInputView: UIView {
         
         let headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = "Set flour wheight"
+        headerLabel.text = NSLocalizedString("Set flour wheight", comment: "")
         
         let headerView = UIView(frame: .zero)
         headerView.addSubview(headerLabel)
@@ -53,7 +53,10 @@ final class FlourInputView: UIView {
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
-    
+        
+        backgroundColor = .systemGreen
+        layer.cornerRadius = 10
+        
     }
     
     @objc func setMass() {

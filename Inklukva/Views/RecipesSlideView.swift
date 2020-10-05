@@ -12,9 +12,15 @@ final class RecipesSlideView: UIView {
     
     init(starterRecipe: Recipe, doughRecipe: Recipe) {
         
-        starterView = RecipeView(header: "Starter", ingredients: starterRecipe)
+        starterView = RecipeView(
+            header: NSLocalizedString("Starter", comment: ""),
+            ingredients: starterRecipe
+        )
         starterView.translatesAutoresizingMaskIntoConstraints = false
-        doughView = RecipeView(header: "Dough", ingredients: doughRecipe)
+        doughView = RecipeView(
+            header: NSLocalizedString("Dough", comment: ""),
+            ingredients: doughRecipe
+        )
         doughView.translatesAutoresizingMaskIntoConstraints = false
         doughView.setNeedsLayout()
         doughView.layoutIfNeeded()
@@ -43,7 +49,7 @@ final class RecipesSlideView: UIView {
         
         let headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = "Take ingredients"
+        headerLabel.text = NSLocalizedString("Here are your ingredients", comment: "")
         
         let headerView = UIView(frame: .zero)
         headerView.addSubview(headerLabel)
@@ -75,6 +81,9 @@ final class RecipesSlideView: UIView {
             doughView.widthAnchor.constraint(equalTo: widthAnchor)
         ])
         stackView.pinEndgesToSuperview()
+        
+        backgroundColor = .systemGreen
+        layer.cornerRadius = 10
         
     }
     

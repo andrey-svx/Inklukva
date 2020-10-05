@@ -1,3 +1,8 @@
-"Starter:" = "Закваска:";
-"Plain" = "Простая (100%)";
-"Levito-Madre" = "Левито-Мадре (50%)";
+"Starter" = "Закваска";
+"Dough" = "Тесто";
+"Regular" = "Обычная";
+"Levito-Madre" = "Левито-Мадре";
+
+"Select hydraition level" = "Выберите влажность";
+"Set flour wheight" = "Установите массу муки";
+"Here are your ingredients" = "Вот ваши ингредиенты";
