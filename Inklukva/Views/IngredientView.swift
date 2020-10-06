@@ -9,8 +9,8 @@ final class IngredientView: UIView {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    public let nameLabel: UILabel
-    public let amountLabel: UILabel
+    private let nameLabel: UILabel
+    private let amountLabel: UILabel
     
     init(name: String, amount: Double) {
         
@@ -19,12 +19,13 @@ final class IngredientView: UIView {
         
         nameLabel = UILabel()
         nameLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        nameLabel.text = name
         
         amountLabel = UILabel()
         amountLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        amountLabel.text = "\(amount)"
         
         super.init(frame: .zero)
-        nameLabel.text = self.name
         $amount.sink { [weak self] value in
             guard let self = self else { assertionFailure("Could not set self"); return }
             self.amountLabel.text = "\(self.amount)"

@@ -2,7 +2,7 @@ import Combine
 import Foundation
 import UIKit
 
-class HydrationPickerView: UIView {
+final class HydrationPickerView: UIView {
     
     typealias Preset = (String, Int)
     
@@ -35,7 +35,6 @@ class HydrationPickerView: UIView {
         
         pickerView = UIPickerView()
         pickerView.isHidden = isWrapped
-
         
         stackView = UIStackView(arrangedSubviews: [headerLabel, pickerView])
         stackView.axis = .vertical

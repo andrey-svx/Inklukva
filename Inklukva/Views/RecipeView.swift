@@ -13,7 +13,6 @@ final class RecipeView: UIView {
     
     private let headerLabel: UILabel
     private let ingredientViews: [IngredientView]
-    public let stackView: UIStackView
     
     required init(header: String, ingredients: [Ingredient]) {
         
@@ -22,11 +21,11 @@ final class RecipeView: UIView {
         
         headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = self.header
+        headerLabel.text = header
         
         ingredientViews = ingredients.map { IngredientView(name: $0.0, amount: Double($0.1)) }
         
-        stackView = UIStackView(arrangedSubviews: [headerLabel] + ingredientViews)
+        let stackView = UIStackView(arrangedSubviews: [headerLabel] + ingredientViews)
         stackView.axis = .vertical
         stackView.spacing = 0
         

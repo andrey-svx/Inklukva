@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class HydrationInputView: UIView {
+final class HydrationInputView: UIView {
     
     public var isWrapped: Bool
 
@@ -42,6 +42,7 @@ class HydrationInputView: UIView {
         doughInputView = HydrationPickerView(
             header: NSLocalizedString("Dough", comment: ""),
             presets: doughPresets,
+            initialPreset: ("100%", 100),
             isWrapped: self.isWrapped
         )
         
@@ -64,9 +65,6 @@ class HydrationInputView: UIView {
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
-        
-        backgroundColor = .systemGreen
-        layer.cornerRadius = 10
         
     }
     

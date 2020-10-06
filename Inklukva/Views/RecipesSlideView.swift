@@ -54,18 +54,7 @@ final class RecipesSlideView: UIView {
         super.init(frame: .zero)
         scrollView.delegate = self
         
-        let headerLabel = UILabel()
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = NSLocalizedString("Here are your ingredients", comment: "")
-        
-        let headerView = UIView(frame: .zero)
-        headerView.addSubview(headerLabel)
-        headerLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
-            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
-            headerLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
-        ])
+        let headerView = UIView.instantiateHeaderView(header: "Here are your ingredients")
         
         let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, pageController])
         stackView.axis = .vertical
@@ -88,9 +77,6 @@ final class RecipesSlideView: UIView {
             doughView.widthAnchor.constraint(equalTo: widthAnchor)
         ])
         stackView.pinEndgesToSuperview()
-        
-        backgroundColor = .systemGreen
-        layer.cornerRadius = 10
         
     }
     

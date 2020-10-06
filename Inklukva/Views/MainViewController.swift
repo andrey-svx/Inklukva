@@ -1,7 +1,9 @@
+import Combine
 import UIKit
 
 final class MainViewController: UIViewController {
     
+    private var viewModel: BreadCalculatorViewModel
     private var breadCalculator: BreadCalculator
     
     private let flourInputView: FlourInputView
@@ -11,9 +13,10 @@ final class MainViewController: UIViewController {
     private let stackView: UIStackView
     private let scrollView: UIScrollView
     
-    init(breadCalculator: BreadCalculator) {
+    init(viewModel: BreadCalculatorViewModel) {
         
-        self.breadCalculator = breadCalculator
+        self.viewModel = viewModel
+        self.breadCalculator = self.viewModel.breadCalculator
         
         hydrationInputView = HydrationInputView()
         flourInputView = FlourInputView(mass: breadCalculator.flourMass)
@@ -55,6 +58,10 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(scrollView)
+        stackView.arrangedSubviews.forEach {
+            $0.backgroundColor = .systemGreen
+            $0.layer.cornerRadius = 10
+        }
         scrollView.addSubview(stackView)
     }
     

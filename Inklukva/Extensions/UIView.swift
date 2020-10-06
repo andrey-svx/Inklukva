@@ -17,7 +17,7 @@ extension UIView {
     static func instantiateHeaderView(header: String) -> UIView {
         let headerLabel = UILabel()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = NSLocalizedString("Select hydraition level", comment: "")
+        headerLabel.text = header
         
         let headerView = UIView(frame: .zero)
         headerView.addSubview(headerLabel)
