@@ -16,7 +16,6 @@ final class MainViewController: UIViewController {
         self.breadCalculator = breadCalculator
         
         hydrationInputView = HydrationInputView()
-        
         flourInputView = FlourInputView(mass: breadCalculator.flourMass)
         
         let starter = self.breadCalculator.starter

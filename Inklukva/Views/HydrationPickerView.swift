@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import UIKit
 
@@ -9,12 +10,9 @@ class HydrationPickerView: UIView {
     public let presets: [Preset]
     public let hydration: Int
     
-    var isWrapped: Bool {
-        didSet {
-            pickerView.isHidden = isWrapped
-            layoutIfNeeded()
-        }
-    }
+    @Published public var isWrapped: Bool
+    
+    private var subscriptions = Set<AnyCancellable>()
     
     private let stackView: UIStackView
     private let headerLabel: UILabel
@@ -46,6 +44,12 @@ class HydrationPickerView: UIView {
         stackView.spacing = 0
         
         super.init(frame: .zero)
+        
+        $isWrapped.sink { [weak self] value in
+            guard let self = self else { assertionFailure("Could not set self"); return }
+            self.pickerView.isHidden = value
+        }
+        .store(in: &subscriptions)
         
         pickerView.dataSource = self
         pickerView.delegate = self

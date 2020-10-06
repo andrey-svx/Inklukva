@@ -3,7 +3,10 @@ import UIKit
 
 final class RecipesSlideView: UIView {
     
-    typealias Recipe = RecipeView.Ingredients
+    typealias Recipe = [RecipeView.Ingredient]
+    
+    public var starterRecipe: Recipe
+    public var doughRecipe: Recipe
     
     private let scrollView: UIScrollView
     private let starterView: RecipeView
@@ -12,11 +15,15 @@ final class RecipesSlideView: UIView {
     
     init(starterRecipe: Recipe, doughRecipe: Recipe) {
         
+        self.starterRecipe = starterRecipe
+        self.doughRecipe = doughRecipe
+        
         starterView = RecipeView(
             header: NSLocalizedString("Starter", comment: ""),
             ingredients: starterRecipe
         )
         starterView.translatesAutoresizingMaskIntoConstraints = false
+        
         doughView = RecipeView(
             header: NSLocalizedString("Dough", comment: ""),
             ingredients: doughRecipe

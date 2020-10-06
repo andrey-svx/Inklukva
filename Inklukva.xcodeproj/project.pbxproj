@@ -11,6 +11,7 @@
 		5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B135251A48A9002C812D /* RecipesSlideView.swift */; };
 		5A13B139251A53CD002C812D /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B138251A53CD002C812D /* RecipeView.swift */; };
 		5A3692D4250809D20029C921 /* BreadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3692D3250809D20029C921 /* BreadCalculator.swift */; };
+		5A463B22252D08F70058F454 /* BreadCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */; };
 		5A6CA74625191BE200374AC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74525191BE200374AC6 /* UIView.swift */; };
 		5A6CA74B2519436A00374AC6 /* FlourInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74A2519436A00374AC6 /* FlourInputView.swift */; };
 		5A79C55D25279F3B00DCD2D2 /* HydrationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A79C55C25279F3B00DCD2D2 /* HydrationPickerView.swift */; };
@@ -32,6 +33,7 @@
 		5A13B135251A48A9002C812D /* RecipesSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSlideView.swift; sourceTree = "<group>"; };
 		5A13B138251A53CD002C812D /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		5A3692D3250809D20029C921 /* BreadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadCalculator.swift; sourceTree = "<group>"; };
+		5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadCalculatorViewModel.swift; sourceTree = "<group>"; };
 		5A6CA74525191BE200374AC6 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5A6CA74A2519436A00374AC6 /* FlourInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlourInputView.swift; sourceTree = "<group>"; };
 		5A79C55C25279F3B00DCD2D2 /* HydrationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationPickerView.swift; sourceTree = "<group>"; };
@@ -59,9 +61,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A463B24252D093A0058F454 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5A6CA74E251943D300374AC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5AD9BA9D250012F600463757 /* MainViewController.swift */,
 				5A79C5602527A75E00DCD2D2 /* HydrationInputView.swift */,
 				5A79C55C25279F3B00DCD2D2 /* HydrationPickerView.swift */,
 				5A6CA74A2519436A00374AC6 /* FlourInputView.swift */,
@@ -95,7 +106,7 @@
 				5AD9BA9B250012F600463757 /* SceneDelegate.swift */,
 				5AFBFFCF251BACBE00168007 /* Model */,
 				5A6CA74E251943D300374AC6 /* Views */,
-				5AFBFFD8251BADC100168007 /* Controllers */,
+				5A463B24252D093A0058F454 /* ViewModel */,
 				5AFBFFD7251BAD0F00168007 /* Extensions */,
 				5AD9BAA2250012F700463757 /* Assets.xcassets */,
 				5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */,
@@ -121,14 +132,6 @@
 				5A6CA74525191BE200374AC6 /* UIView.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		5AFBFFD8251BADC100168007 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				5AD9BA9D250012F600463757 /* MainViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +219,7 @@
 				5AD9BA9C250012F600463757 /* SceneDelegate.swift in Sources */,
 				5AFBFFD1251BACD400168007 /* Starter.swift in Sources */,
 				5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */,
+				5A463B22252D08F70058F454 /* BreadCalculatorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
