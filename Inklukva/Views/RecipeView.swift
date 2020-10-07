@@ -7,6 +7,7 @@ final class RecipeView: UIView {
     typealias Ingredient = (String, Double)
     
     public let header: String
+    
     @Published public var ingredients: [Ingredient]
     
     private var subscriptions = Set<AnyCancellable>()

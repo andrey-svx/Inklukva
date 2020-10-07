@@ -54,6 +54,15 @@ final class HydrationInputView: UIView {
         super.init(frame: .zero)
         
         wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
+        starterInputView.selectionHandler = { [weak self] hydration in
+            guard let self = self else { assertionFailure("Could not set self"); return }
+            self.viewModel.setStarterHydration(Double(hydration))
+            
+        }
+        doughInputView.selectionHandler = { [weak self] hydration in
+            guard let self = self else { assertionFailure("Could not set self"); return }
+            self.viewModel.setDoughHydration(Double(hydration))
+        }
         
         tapGestureRecognizer.addTarget(self, action: #selector(wrap))
         tapGestureRecognizer.delegate = self
@@ -75,7 +84,7 @@ final class HydrationInputView: UIView {
             for pickerView in [self.starterInputView, self.doughInputView] {
                 pickerView.isWrapped = !self.viewModel.isWrapped
             }
-            self.viewModel.isWrapped.toggle()
+            self.viewModel.wrap()
         }
     }
     

@@ -53,7 +53,7 @@ final class FlourInputView: UIView {
     }
     
     @objc func setMass() {
-        self.viewModel.setFlourMass(mass: stepper.value)
+        self.viewModel.setFlourMass(stepper.value)
     }
 
 }

@@ -55,7 +55,7 @@ final class RecipesSlideView: UIView {
         super.init(frame: .zero)
         scrollView.delegate = self
         
-        let headerView = UIView.instantiateHeaderView(header: "Here are your ingredients")
+        let headerView = UIView.instantiateHeaderView(header: NSLocalizedString("Here are your ingredients", comment: ""))
         
         let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, pageController])
         stackView.axis = .vertical

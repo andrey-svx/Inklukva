@@ -6,11 +6,9 @@ final class HydrationPickerView: UIView {
     
     typealias Preset = (String, Int)
     
-//    private let viewModel: BreadCalculatorViewModel
-    
-    public let header: String
-    public let presets: [Preset]
-    public let hydration: Int
+    private let header: String
+    private let presets: [Preset]
+    public var selectionHandler: ((Int) -> ())?
     
     @Published public var isWrapped: Bool
     
@@ -20,15 +18,16 @@ final class HydrationPickerView: UIView {
     private let headerLabel: UILabel
     private let pickerView: UIPickerView
     
-    init(header: String, presets: [Preset], initialPreset: Preset = ("0%", 0), isWrapped: Bool) {
+    init(header: String, presets: [Preset], initialPreset: Preset = ("0%", 0), isWrapped: Bool, selectionHandler: ((Int) -> ())? = nil) {
         
         self.header = header
         self.presets = presets
         
         let initialIndex = presets.firstIndex { $0 == initialPreset } ?? 0
-        hydration = presets[initialIndex].1
         
         self.isWrapped = isWrapped
+        
+        self.selectionHandler = selectionHandler
         
         headerLabel = UILabel()
         headerLabel.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -92,6 +91,7 @@ extension HydrationPickerView: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         headerLabel.text = header + ": " + presets[row].0
+        selectionHandler?(presets[row].1)
     }
     
 }
