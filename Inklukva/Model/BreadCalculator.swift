@@ -1,8 +1,9 @@
+import Combine
 import Foundation
 
 struct BreadCalculator {
     
-    public var flourMass: Double
+    public var flourMass: Double 
     public var starterHumidity: Double
     public var doughHumidity: Double
     

@@ -38,11 +38,12 @@ final class FlourInputView: UIView {
         super.init(frame: .zero)
         
         stepper.addTarget(self, action: #selector(setMass), for: .valueChanged)
+        
         self.$viewModel
-            .flatMap { $0.$breadCalculator }
-            .sink { [weak self] breadCalculator in
+            .flatMap { $0.$flourMass }
+            .sink { [weak self] value in
                 guard let self = self else { assertionFailure("Could not set self"); return }
-                self.massLabel.text = "\(breadCalculator.flourMass)"
+                self.massLabel.text = "\(value)"
             }
             .store(in: &subscriptions)
         

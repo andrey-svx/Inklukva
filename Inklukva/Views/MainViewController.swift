@@ -15,7 +15,7 @@ final class MainViewController: UIViewController {
     init(viewModel: BreadCalculatorViewModel) {
         
         self.viewModel = viewModel
-        let breadCalculator = self.viewModel.breadCalculator
+        let breadCalculator = viewModel.breadCalculator
         
         hydrationInputView = HydrationInputView()
         flourInputView = FlourInputView(viewModel: viewModel)
