@@ -1,5 +1,5 @@
-import Combine
 import Foundation
+import Combine
 
 final class BreadCalculatorViewModel {
     
@@ -18,6 +18,8 @@ final class BreadCalculatorViewModel {
     public let doughHeader: String = NSLocalizedString("Dough", comment: "")
     public let doughPresets: [Preset]
     public let doughInitialPreset: Preset
+    
+    // TODO: Recipes properties
     
     @Published public var flourMass: Double = BreadCalculator.initial.flourMass
 
