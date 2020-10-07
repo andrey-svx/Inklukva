@@ -1,22 +1,36 @@
+import Combine
 import Foundation
 import UIKit
 
 final class IngredientView: UIView {
     
-    public let nameLabel: UILabel
-    public let amountLabel: UILabel
+    public let name: String
+    @Published public var amount: Double
     
-    init(name: String?, amount: Double?) {
+    private var subscriptions = Set<AnyCancellable>()
+    
+    private let nameLabel: UILabel
+    private let amountLabel: UILabel
+    
+    init(name: String, amount: Double) {
+        
+        self.name = name
+        self.amount = amount
         
         nameLabel = UILabel()
         nameLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        nameLabel.text = name ?? "No name"
+        nameLabel.text = name
         
         amountLabel = UILabel()
         amountLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        amountLabel.text = "\(amount ?? 0)"
+        amountLabel.text = "\(amount)"
         
         super.init(frame: .zero)
+        $amount.sink { [weak self] value in
+            guard let self = self else { assertionFailure("Could not set self"); return }
+            self.amountLabel.text = "\(self.amount)"
+        }
+        .store(in: &subscriptions)
         
         let stackView = UIStackView(arrangedSubviews: [nameLabel, amountLabel])
         stackView.axis = .vertical

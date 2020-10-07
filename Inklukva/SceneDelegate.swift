@@ -8,7 +8,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController(breadCalculator: BreadCalculator.initial)
+        let breadCalculatorViewModel = BreadCalculatorViewModel()
+        window?.rootViewController = MainViewController(viewModel: breadCalculatorViewModel)
         window?.makeKeyAndVisible()
     }
 

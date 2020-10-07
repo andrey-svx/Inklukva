@@ -3,54 +3,81 @@ import UIKit
 
 final class RecipesSlideView: UIView {
     
-    typealias Recipe = RecipeView.Ingredients
+    typealias Recipe = [RecipeView.Ingredient]
+    
+    public var starterRecipe: Recipe
+    public var doughRecipe: Recipe
     
     private let scrollView: UIScrollView
-    private let recipeViews: [RecipeView]
+    private let starterView: RecipeView
+    private let doughView: RecipeView
     private let pageController: UIPageControl
     
-    init(recipes: [Recipe]) {
+    init(starterRecipe: Recipe, doughRecipe: Recipe) {
         
-        recipeViews = recipes.map { RecipeView(ingredients: $0) }
+        self.starterRecipe = starterRecipe
+        self.doughRecipe = doughRecipe
         
-        let stackView = UIStackView(arrangedSubviews: self.recipeViews)
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .top
+        starterView = RecipeView(
+            header: NSLocalizedString("Starter", comment: ""),
+            ingredients: starterRecipe
+        )
+        starterView.translatesAutoresizingMaskIntoConstraints = false
+        
+        doughView = RecipeView(
+            header: NSLocalizedString("Dough", comment: ""),
+            ingredients: doughRecipe
+        )
+        doughView.translatesAutoresizingMaskIntoConstraints = false
+        doughView.setNeedsLayout()
+        doughView.layoutIfNeeded()
+        
+        let horizontalStack = UIStackView(arrangedSubviews: [starterView, doughView])
+        horizontalStack.axis = .horizontal
+        horizontalStack.distribution = .fillProportionally
+        horizontalStack.alignment = .top
+        horizontalStack.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
-        scrollView.bounces = false
+        scrollView.bounces = true
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.pinEndgesToSuperview()
-        scrollView.addSubview(stackView)
-        
-        stackView.pinEndgesToSuperview()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(horizontalStack)
         
         pageController = UIPageControl()
-        pageController.numberOfPages = recipeViews.count
+        pageController.numberOfPages = 2
         pageController.currentPage = 0
         pageController.pageIndicatorTintColor = .lightGray
         pageController.currentPageIndicatorTintColor = .darkGray
         
         super.init(frame: .zero)
-        
         scrollView.delegate = self
-        addSubview(scrollView)
-        addSubview(pageController)
         
-        scrollView.pinEndgesToSuperview()
-        pageController.translatesAutoresizingMaskIntoConstraints = false
+        let headerView = UIView.instantiateHeaderView(header: "Here are your ingredients")
+        
+        let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, pageController])
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
+        
+        
+        let doughHeight = doughView.frame.height
         NSLayoutConstraint.activate([
-            pageController.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pageController.centerYAnchor.constraint(equalTo: bottomAnchor, constant: 5)
+            horizontalStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            horizontalStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            horizontalStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            
+            scrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: doughHeight),
+            
+            starterView.widthAnchor.constraint(equalTo: widthAnchor),
+            doughView.widthAnchor.constraint(equalTo: widthAnchor)
         ])
-        recipeViews.forEach { view in
-            NSLayoutConstraint.activate([
-                view.widthAnchor.constraint(equalTo: widthAnchor),
-                view.heightAnchor.constraint(equalTo: heightAnchor)
-            ])
-        }
+        stackView.pinEndgesToSuperview()
+        
     }
     
     required init?(coder: NSCoder) {

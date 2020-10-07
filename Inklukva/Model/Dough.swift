@@ -7,4 +7,8 @@ struct Dough {
     public var salt: Double
     public var starter: Double
     
+    public var total: Double {
+        return flour + water + salt + starter
+    }
+    
 }

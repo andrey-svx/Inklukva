@@ -1,32 +1,47 @@
+import Combine
 import Foundation
 import UIKit
 
 final class RecipeView: UIView {
     
     typealias Ingredient = (String, Double)
-    typealias Ingredients = [Ingredient]
-
-    let ingredientViews: [IngredientView]
     
-    required init(ingredients: Ingredients) {
+    public let header: String
+    @Published public var ingredients: [Ingredient]
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
+    private let headerLabel: UILabel
+    private let ingredientViews: [IngredientView]
+    
+    required init(header: String, ingredients: [Ingredient]) {
+        
+        self.header = header
+        self.ingredients = ingredients
+        
+        headerLabel = UILabel()
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        headerLabel.text = header
         
         ingredientViews = ingredients.map { IngredientView(name: $0.0, amount: Double($0.1)) }
-        let stackView = UIStackView(arrangedSubviews: ingredientViews)
+        
+        let stackView = UIStackView(arrangedSubviews: [headerLabel] + ingredientViews)
         stackView.axis = .vertical
+        stackView.spacing = 0
         
         super.init(frame: .zero)
         
+        $ingredients.sink { [weak self] ingredients in
+            guard let self = self else { assertionFailure("Could not set self"); return }
+            for var (i, view) in self.ingredientViews.enumerated() {
+                view.amount = ingredients[i].1
+            }
+        }
+        .store(in: &subscriptions)
+        
         addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
-//        stackView.layer.borderColor = UIColor.systemBlue.cgColor
-//        stackView.layer.borderWidth = 1.0
-        
+        stackView.pinEndgesToSuperview()
+    
     }
     
     required init?(coder: NSCoder) {

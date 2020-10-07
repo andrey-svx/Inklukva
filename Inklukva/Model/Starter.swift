@@ -7,7 +7,7 @@ struct Starter {
     public var inoculate: Double
     
     public var total: Double {
-        return inoculate + flour + water
+        return flour + water + inoculate
     }
 
 }
