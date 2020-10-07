@@ -6,6 +6,8 @@ final class HydrationPickerView: UIView {
     
     typealias Preset = (String, Int)
     
+//    private let viewModel: BreadCalculatorViewModel
+    
     public let header: String
     public let presets: [Preset]
     public let hydration: Int

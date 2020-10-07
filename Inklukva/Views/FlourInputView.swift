@@ -7,7 +7,7 @@ final class FlourInputView: UIView {
     private let massLabel: UILabel
     private let stepper: UIStepper
     
-    private var viewModel: BreadCalculatorViewModel
+    private let viewModel: BreadCalculatorViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     required init(coder: NSCoder) {

@@ -3,7 +3,7 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    private var viewModel: BreadCalculatorViewModel
+    private let viewModel: BreadCalculatorViewModel
     
     private let flourInputView: FlourInputView
     private let recipesSlideView: RecipesSlideView

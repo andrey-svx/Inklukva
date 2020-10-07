@@ -50,6 +50,7 @@ final class RecipesSlideView: UIView {
         pageController.currentPage = 0
         pageController.pageIndicatorTintColor = .lightGray
         pageController.currentPageIndicatorTintColor = .darkGray
+        pageController.isUserInteractionEnabled = false
         
         super.init(frame: .zero)
         scrollView.delegate = self
@@ -63,7 +64,6 @@ final class RecipesSlideView: UIView {
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
-        
         
         let doughHeight = doughView.frame.height
         NSLayoutConstraint.activate([
