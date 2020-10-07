@@ -6,7 +6,7 @@ final class BreadCalculatorViewModel {
     @Published public var breadCalculator: BreadCalculator
     private var subscriptions = Set<AnyCancellable>()
     
-    public var flourMass: Double = 0
+    @Published public var flourMass: Double = 0 { didSet { print(flourMass) } }
     
     init() {
         self.breadCalculator = BreadCalculator.initial

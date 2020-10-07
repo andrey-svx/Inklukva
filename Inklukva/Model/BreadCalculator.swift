@@ -21,6 +21,12 @@ struct BreadCalculator {
         return Dough(flour: flour, water: water, salt: salt, starter: starter)
     }
     
+    init(flourMass: Double, starterHumidity: Double, doughHumidity: Double) {
+        self.flourMass = flourMass
+        self.starterHumidity = starterHumidity
+        self.doughHumidity = doughHumidity
+    }
+    
     public static let initial = BreadCalculator(flourMass: 100, starterHumidity: 100, doughHumidity: 100)
     
 }
