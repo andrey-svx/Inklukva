@@ -1,9 +1,14 @@
+import Combine
 import Foundation
 import UIKit
 
 final class HydrationInputView: UIView {
     
     public var isWrapped: Bool
+    
+    private var viewModel: BreadCalculatorViewModel
+    
+    private var subscriptions = Set<AnyCancellable>()
 
     private let wrapButton: UIButton
     private let starterInputView: HydrationPickerView
@@ -11,8 +16,11 @@ final class HydrationInputView: UIView {
     
     private let tapGestureRecognizer: UITapGestureRecognizer
     
-    init() {
+    init(viewModel: BreadCalculatorViewModel) {
+        
         isWrapped = true
+        
+        self.viewModel = viewModel
         
         let headerView = UIView.instantiateHeaderView(header: NSLocalizedString("Select hydration level", comment: ""))
             
