@@ -7,17 +7,17 @@ final class FlourInputView: UIView {
     private let massLabel: UILabel
     private let stepper: UIStepper
     
-    @Published private var mass: Double
-    
+    @Published private var viewModel: BreadCalculatorViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(mass: Double) {
+    init(viewModel: BreadCalculatorViewModel) {
         
-        self.mass = mass
+        self.viewModel = viewModel
+        let mass = viewModel.flourMass
         
         massLabel = UILabel()
         massLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
@@ -38,11 +38,13 @@ final class FlourInputView: UIView {
         super.init(frame: .zero)
         
         stepper.addTarget(self, action: #selector(setMass), for: .valueChanged)
-        $mass.sink { [weak self] value in
-            guard let self = self else { assertionFailure("Could not set self"); return }
-            self.massLabel.text = "\(value)"
-        }
-        .store(in: &subscriptions)
+        self.$viewModel
+            .flatMap { $0.$breadCalculator }
+            .sink { [weak self] breadCalculator in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                self.massLabel.text = "\(breadCalculator.flourMass)"
+            }
+            .store(in: &subscriptions)
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
@@ -50,7 +52,7 @@ final class FlourInputView: UIView {
     }
     
     @objc func setMass() {
-        self.mass = stepper.value
+        self.viewModel.setFlourMass(mass: stepper.value)
     }
 
 }

@@ -4,7 +4,6 @@ import UIKit
 final class MainViewController: UIViewController {
     
     private var viewModel: BreadCalculatorViewModel
-    private var breadCalculator: BreadCalculator
     
     private let flourInputView: FlourInputView
     private let recipesSlideView: RecipesSlideView
@@ -16,13 +15,13 @@ final class MainViewController: UIViewController {
     init(viewModel: BreadCalculatorViewModel) {
         
         self.viewModel = viewModel
-        self.breadCalculator = self.viewModel.breadCalculator
+        let breadCalculator = self.viewModel.breadCalculator
         
         hydrationInputView = HydrationInputView()
-        flourInputView = FlourInputView(mass: breadCalculator.flourMass)
+        flourInputView = FlourInputView(viewModel: viewModel)
         
-        let starter = self.breadCalculator.starter
-        let dough = self.breadCalculator.dough
+        let starter = breadCalculator.starter
+        let dough = breadCalculator.dough
         let starterRecipe: RecipesSlideView.Recipe = [
             ("Flour", starter.flour),
             ("Water", starter.water),
