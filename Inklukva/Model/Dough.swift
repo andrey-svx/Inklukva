@@ -1,5 +1,3 @@
-import Foundation
-
 struct Dough {
     
     public var flour: Double

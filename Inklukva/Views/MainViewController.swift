@@ -3,7 +3,7 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    private var viewModel: BreadCalculatorViewModel
+    private let viewModel: BreadCalculatorViewModel
     
     private let flourInputView: FlourInputView
     private let recipesSlideView: RecipesSlideView
@@ -17,7 +17,7 @@ final class MainViewController: UIViewController {
         self.viewModel = viewModel
         let breadCalculator = viewModel.breadCalculator
         
-        hydrationInputView = HydrationInputView()
+        hydrationInputView = HydrationInputView(viewModel: viewModel)
         flourInputView = FlourInputView(viewModel: viewModel)
         
         let starter = breadCalculator.starter

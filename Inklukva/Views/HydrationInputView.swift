@@ -1,9 +1,11 @@
-import Foundation
+import Combine
 import UIKit
 
 final class HydrationInputView: UIView {
     
-    public var isWrapped: Bool
+    private let viewModel: BreadCalculatorViewModel
+    
+    private var subscriptions = Set<AnyCancellable>()
 
     private let wrapButton: UIButton
     private let starterInputView: HydrationPickerView
@@ -11,8 +13,9 @@ final class HydrationInputView: UIView {
     
     private let tapGestureRecognizer: UITapGestureRecognizer
     
-    init() {
-        isWrapped = true
+    init(viewModel: BreadCalculatorViewModel) {
+                
+        self.viewModel = viewModel
         
         let headerView = UIView.instantiateHeaderView(header: NSLocalizedString("Select hydration level", comment: ""))
             
@@ -26,38 +29,39 @@ final class HydrationInputView: UIView {
         footerView.addSubview(wrapButton)
         wrapButton.pinEndgesToSuperview()
         
-        let lmString = NSLocalizedString("Levito-Madre", comment: "") + " (50%)"
-        let regularString = NSLocalizedString("Regular", comment: "") + " (100%)"
-        let starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
         starterInputView = HydrationPickerView(
-            header: NSLocalizedString("Starter", comment: ""),
-            presets: starterPresets,
-            initialPreset: (regularString, 100),
-            isWrapped: self.isWrapped
+            header: viewModel.starterHeader,
+            presets: viewModel.starterPresets,
+            initialPreset: viewModel.starterInitialPreset,
+            isWrapped: viewModel.isWrapped
         )
         
-        let doughPresets = stride(from: 50, through: 100, by: 10)
-            .compactMap { $0 }
-            .map { ("\($0)%", $0) }
         doughInputView = HydrationPickerView(
-            header: NSLocalizedString("Dough", comment: ""),
-            presets: doughPresets,
-            initialPreset: ("100%", 100),
-            isWrapped: self.isWrapped
+            header: viewModel.doughHeader,
+            presets: viewModel.doughPresets,
+            initialPreset: viewModel.doughInitialPreset,
+            isWrapped: viewModel.isWrapped
         )
         
         let stackView = UIStackView(arrangedSubviews: [headerView, starterInputView, doughInputView, footerView])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 5
-//        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-//        stackView.isLayoutMarginsRelativeArrangement = true
         
         tapGestureRecognizer = UITapGestureRecognizer()
         
         super.init(frame: .zero)
         
         wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
+        starterInputView.selectionHandler = { [weak self] hydration in
+            guard let self = self else { assertionFailure("Could not set self"); return }
+            self.viewModel.setStarterHydration(Double(hydration))
+            
+        }
+        doughInputView.selectionHandler = { [weak self] hydration in
+            guard let self = self else { assertionFailure("Could not set self"); return }
+            self.viewModel.setDoughHydration(Double(hydration))
+        }
         
         tapGestureRecognizer.addTarget(self, action: #selector(wrap))
         tapGestureRecognizer.delegate = self
@@ -75,11 +79,11 @@ final class HydrationInputView: UIView {
     @objc func wrap() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { assertionFailure("Could not set self"); return }
-            self.wrapButton.transform = self.isWrapped ? CGAffineTransform(rotationAngle: .pi) : .identity
+            self.wrapButton.transform = self.viewModel.isWrapped ? CGAffineTransform(rotationAngle: .pi) : .identity
             for pickerView in [self.starterInputView, self.doughInputView] {
-                pickerView.isWrapped = !self.isWrapped
+                pickerView.isWrapped = !self.viewModel.isWrapped
             }
-            self.isWrapped.toggle()
+            self.viewModel.wrap()
         }
     }
     
@@ -87,6 +91,6 @@ final class HydrationInputView: UIView {
 
 extension HydrationInputView: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        isWrapped ? true : false
+        viewModel.isWrapped ? true : false
     }
 }

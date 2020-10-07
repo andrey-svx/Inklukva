@@ -1,5 +1,4 @@
 import Combine
-import Foundation
 import UIKit
 
 final class FlourInputView: UIView {
@@ -7,7 +6,7 @@ final class FlourInputView: UIView {
     private let massLabel: UILabel
     private let stepper: UIStepper
     
-    @Published private var viewModel: BreadCalculatorViewModel
+    private let viewModel: BreadCalculatorViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     required init(coder: NSCoder) {
@@ -39,8 +38,8 @@ final class FlourInputView: UIView {
         
         stepper.addTarget(self, action: #selector(setMass), for: .valueChanged)
         
-        self.$viewModel
-            .flatMap { $0.$flourMass }
+        self.viewModel
+            .$flourMass
             .sink { [weak self] value in
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 self.massLabel.text = "\(value)"
@@ -53,7 +52,7 @@ final class FlourInputView: UIView {
     }
     
     @objc func setMass() {
-        self.viewModel.setFlourMass(mass: stepper.value)
+        self.viewModel.setFlourMass(stepper.value)
     }
 
 }

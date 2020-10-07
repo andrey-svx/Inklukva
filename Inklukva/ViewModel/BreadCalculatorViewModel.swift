@@ -1,41 +1,75 @@
-import Combine
 import Foundation
+import Combine
 
 final class BreadCalculatorViewModel {
     
     @Published private(set) var breadCalculator: BreadCalculator
     
-    @Published public var flourMass: Double
-    @Published public var starterHumidity: Double
-    @Published public var doughHumidity: Double
+    typealias Preset = (String, Int)
+    
+    private(set) var isWrapped: Bool = true
+    
+    private(set) var starterHydration: Double = BreadCalculator.initial.starterHydration
+    public let starterHeader: String = NSLocalizedString("Starter", comment: "")
+    public let starterPresets: [Preset]
+    public let starterInitialPreset: Preset
+    
+    private(set) var doughHydration: Double = BreadCalculator.initial.doughHydration
+    public let doughHeader: String = NSLocalizedString("Dough", comment: "")
+    public let doughPresets: [Preset]
+    public let doughInitialPreset: Preset
+    
+    // TODO: Recipes properties
+    
+    @Published public var flourMass: Double = BreadCalculator.initial.flourMass
 
     private var subscriptions = Set<AnyCancellable>()
     
     init() {
         
-        self.flourMass = BreadCalculator.initial.flourMass
-        self.starterHumidity = BreadCalculator.initial.starterHumidity
-        self.doughHumidity = BreadCalculator.initial.doughHumidity
-        
         let flourMass = BreadCalculator.initial.flourMass
-        let starterHumidity = BreadCalculator.initial.starterHumidity
-        let doughHumidity = BreadCalculator.initial.doughHumidity
+        let starterHumidity = BreadCalculator.initial.starterHydration
+        let doughHumidity = BreadCalculator.initial.doughHydration
         self.breadCalculator = BreadCalculator(
             flourMass: flourMass,
             starterHumidity: starterHumidity,
             doughHumidity: doughHumidity
         )
-        self.$breadCalculator.sink { [weak self] breadCalculator in
-            guard let self = self else { assertionFailure("Could not set self"); return }
-            self.flourMass = breadCalculator.flourMass
-            self.starterHumidity = breadCalculator.starterHumidity
-            self.doughHumidity = breadCalculator.doughHumidity
-        }
-        .store(in: &subscriptions)
+        
+        let lmString = NSLocalizedString("Levito-Madre", comment: "") + " (50%)"
+        let regularString = NSLocalizedString("Regular", comment: "") + " (100%)"
+        self.starterInitialPreset = (regularString, 100)
+        self.starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
+        
+        self.doughPresets = stride(from: 50, through: 100, by: 10)
+            .compactMap { $0 }
+            .map { ("\($0)%", $0) }
+        self.doughInitialPreset = ("100%", 100)
+        
+        self.$breadCalculator
+            .sink { [weak self] breadCalculator in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                self.flourMass = breadCalculator.flourMass
+                self.starterHydration = breadCalculator.starterHydration
+                self.doughHydration = breadCalculator.doughHydration
+            }
+            .store(in: &subscriptions)
         
     }
     
-    public func setFlourMass(mass: Double) {
+    public func wrap() {
+        isWrapped.toggle()
+    }
+    
+    public func setStarterHydration(_ hydration: Double) {
+        breadCalculator.starterHydration = hydration
+    }
+    
+    public func setDoughHydration(_ hydration: Double) {
+        breadCalculator.doughHydration = hydration
+    }
+    
+    public func setFlourMass(_ mass: Double) {
         breadCalculator.flourMass = mass
     }
     

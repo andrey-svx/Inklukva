@@ -1,10 +1,10 @@
 import Combine
-import Foundation
 import UIKit
 
 final class IngredientView: UIView {
     
     public let name: String
+    
     @Published public var amount: Double
     
     private var subscriptions = Set<AnyCancellable>()

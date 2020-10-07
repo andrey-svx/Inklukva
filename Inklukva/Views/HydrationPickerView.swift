@@ -1,14 +1,14 @@
 import Combine
-import Foundation
 import UIKit
 
 final class HydrationPickerView: UIView {
     
     typealias Preset = (String, Int)
     
-    public let header: String
-    public let presets: [Preset]
-    public let hydration: Int
+    private let header: String
+    private let presets: [Preset]
+    
+    public var selectionHandler: ((Int) -> ())?
     
     @Published public var isWrapped: Bool
     
@@ -24,7 +24,6 @@ final class HydrationPickerView: UIView {
         self.presets = presets
         
         let initialIndex = presets.firstIndex { $0 == initialPreset } ?? 0
-        hydration = presets[initialIndex].1
         
         self.isWrapped = isWrapped
         
@@ -90,6 +89,8 @@ extension HydrationPickerView: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         headerLabel.text = header + ": " + presets[row].0
+        guard let selectionHandler = selectionHandler else { assertionFailure("Handler has not been set"); return }
+        selectionHandler(presets[row].1)
     }
     
 }
