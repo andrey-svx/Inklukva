@@ -20,15 +20,15 @@ final class BreadCalculatorViewModel {
     public let doughPresets: [Preset]
     public let doughInitialPreset: Preset
     
-    @Published public var flourMass: Double = BreadCalculator.initial.flourMass
+    @Published private(set) var flourMass: Double = BreadCalculator.initial.flourMass
     
-    @Published public var starterRecipe: Recipe = [
+    @Published private(set) var starterRecipe: Recipe = [
         (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.starter.flour),
         (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.starter.water),
         (NSLocalizedString("Inoculate", comment: ""), BreadCalculator.initial.starter.inoculate)
     ]
     
-    @Published public var doughRecipe: Recipe = [
+    @Published private(set) var doughRecipe: Recipe = [
         (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.dough.flour),
         (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.dough.water),
         (NSLocalizedString("Salt", comment: ""), BreadCalculator.initial.dough.salt),
@@ -55,10 +55,12 @@ final class BreadCalculatorViewModel {
         self.starterInitialPreset = starterPresets.first { Double($0.1) == BreadCalculator.initial.starterHydration }
             ?? (regularString, 100)
         
-        self.doughPresets = stride(from: 50, through: 100, by: 10)
+        let doughPresets = stride(from: 50, through: 100, by: 10)
             .compactMap { $0 }
             .map { ("\($0)%", $0) }
-        self.doughInitialPreset = ("100%", 100)
+        self.doughPresets = doughPresets
+        self.doughInitialPreset = doughPresets.first { Double($0.1) == BreadCalculator.initial.doughHydration }
+            ?? ("100%", 100)
         
         self.$breadCalculator
             .sink { [weak self] breadCalculator in

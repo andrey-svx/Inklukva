@@ -7,10 +7,12 @@ struct BreadCalculator: Codable {
     public var doughHydration: Double 
     
     public var starter: Starter {
+        
         let flour = flourMass * 0.2
         let water = flour * (starterHydration / 100)
         let inoculate = flour * 0.2
         return Starter(flour: flour, water: water, inoculate: inoculate)
+    
     }
     
     public var dough: Dough {
