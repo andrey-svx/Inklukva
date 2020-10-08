@@ -55,8 +55,7 @@ final class BreadCalculatorViewModel {
         self.starterInitialPreset = starterPresets.first { Double($0.1) == BreadCalculator.initial.starterHydration }
             ?? (regularString, 100)
         
-        let doughPresets = stride(from: 50, through: 100, by: 10)
-            .compactMap { $0 }
+        let doughPresets = stride(from: 50, through: 100, by: 10).compactMap { $0 }
             .map { ("\($0)%", $0) }
         self.doughPresets = doughPresets
         self.doughInitialPreset = doughPresets.first { Double($0.1) == BreadCalculator.initial.doughHydration }
@@ -65,10 +64,11 @@ final class BreadCalculatorViewModel {
         self.$breadCalculator
             .sink { [weak self] breadCalculator in
                 guard let self = self else { assertionFailure("Could not set self"); return }
-                self.flourMass = breadCalculator.flourMass
                 
                 self.starterHydration = breadCalculator.starterHydration
                 self.doughHydration = breadCalculator.doughHydration
+                
+                self.flourMass = breadCalculator.flourMass
                 
                 let starter = breadCalculator.starter
                 let starterNames = self.starterRecipe.map { $0.0 }

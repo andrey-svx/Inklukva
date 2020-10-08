@@ -47,7 +47,7 @@ final class HydrationPickerView: UIView {
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 self.pickerView.isHidden = value
             }
-        .store(in: &subscriptions)
+            .store(in: &subscriptions)
         
         pickerView.dataSource = self
         pickerView.delegate = self

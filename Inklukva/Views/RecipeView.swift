@@ -36,8 +36,8 @@ final class RecipeView: UIView {
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 zip(self.ingredientViews, ingredients).compactMap { $0 }
                     .forEach { $0.ingredient = $1 }
-        }
-        .store(in: &subscriptions)
+            }
+            .store(in: &subscriptions)
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
