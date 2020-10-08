@@ -71,14 +71,14 @@ final class BreadCalculatorViewModel {
                 self.doughHydration = breadCalculator.doughHydration
                 
                 let starter = breadCalculator.starter
-                for (i, value) in [starter.flour, starter.water, starter.inoculate].enumerated() {
-                    self.starterRecipe[i].1 = value
-                }
+                let starterNames = self.starterRecipe.map { $0.0 }
+                let starterAmounts = [starter.flour, starter.water, starter.inoculate]
+                self.starterRecipe = zip(starterNames, starterAmounts).compactMap { $0 }
                 
                 let dough = breadCalculator.dough
-                for (i, value) in [dough.flour, dough.water, dough.salt, dough.starter].enumerated() {
-                    self.doughRecipe[i].1 = value
-                }
+                let doughNames = self.doughRecipe.map { $0.0 }
+                let doughAmounts = [dough.flour, dough.water, dough.salt, dough.starter]
+                self.doughRecipe = zip(doughNames, doughAmounts).compactMap { $0 }
             }
             .store(in: &subscriptions)
         

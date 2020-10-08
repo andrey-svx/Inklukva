@@ -75,9 +75,7 @@ final class HydrationInputView: UIView {
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { assertionFailure("Could not set self"); return }
             self.wrapButton.transform = self.viewModel.isWrapped ? CGAffineTransform(rotationAngle: .pi) : .identity
-            for pickerView in [self.starterInputView, self.doughInputView] {
-                pickerView.isWrapped = !self.viewModel.isWrapped
-            }
+            [self.starterInputView, self.doughInputView].forEach { $0.isWrapped = !self.viewModel.isWrapped }
             self.viewModel.wrap()
         }
     }
