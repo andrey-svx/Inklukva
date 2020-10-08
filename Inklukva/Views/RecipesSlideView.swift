@@ -2,7 +2,7 @@ import UIKit
 
 final class RecipesSlideView: UIView {
     
-    typealias Recipe = [RecipeView.Ingredient]
+    typealias Recipe = RecipeView.Recipe
     
     public var starterRecipe: Recipe
     public var doughRecipe: Recipe

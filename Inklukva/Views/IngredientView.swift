@@ -3,32 +3,31 @@ import UIKit
 
 final class IngredientView: UIView {
     
-    public let name: String
+    typealias Ingredient = (String, Double)
     
-    @Published public var amount: Double
-    
+    @Published public var ingredient: Ingredient
     private var subscriptions = Set<AnyCancellable>()
     
     private let nameLabel: UILabel
     private let amountLabel: UILabel
     
-    init(name: String, amount: Double) {
+    init(ingredient: Ingredient) {
         
-        self.name = name
-        self.amount = amount
+        self.ingredient = ingredient
         
         nameLabel = UILabel()
         nameLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        nameLabel.text = name
+        nameLabel.text = ingredient.0
         
         amountLabel = UILabel()
         amountLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        amountLabel.text = "\(amount)"
+        amountLabel.text = "\(ingredient.1)"
         
         super.init(frame: .zero)
-        $amount.sink { [weak self] value in
+        $ingredient.sink { [weak self] value in
             guard let self = self else { assertionFailure("Could not set self"); return }
-            self.amountLabel.text = "\(self.amount)"
+            self.nameLabel.text = "\(self.ingredient.0)"
+            self.amountLabel.text = "\(self.ingredient.1)"
         }
         .store(in: &subscriptions)
         

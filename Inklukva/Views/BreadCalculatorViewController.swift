@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-final class MainViewController: UIViewController {
+final class BreadCalculatorViewController: UIViewController {
     
     private let viewModel: BreadCalculatorViewModel
     
@@ -57,11 +57,11 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
         stackView.arrangedSubviews.forEach {
             $0.backgroundColor = .systemGreen
             $0.layer.cornerRadius = 10
         }
-        scrollView.addSubview(stackView)
     }
     
     override func viewWillAppear(_ animated: Bool) {

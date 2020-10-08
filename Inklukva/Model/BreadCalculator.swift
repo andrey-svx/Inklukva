@@ -1,6 +1,6 @@
 import Combine
 
-struct BreadCalculator {
+struct BreadCalculator: Codable {
     
     public var flourMass: Double 
     public var starterHydration: Double

@@ -1,11 +1,8 @@
-import Combine
 import UIKit
 
 final class HydrationInputView: UIView {
     
     private let viewModel: BreadCalculatorViewModel
-    
-    private var subscriptions = Set<AnyCancellable>()
 
     private let wrapButton: UIButton
     private let starterInputView: HydrationPickerView

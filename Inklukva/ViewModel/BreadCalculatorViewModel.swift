@@ -5,7 +5,8 @@ final class BreadCalculatorViewModel {
     
     @Published private(set) var breadCalculator: BreadCalculator
     
-    typealias Preset = (String, Int)
+    typealias Preset = HydrationPickerView.Preset
+    typealias Recipe = RecipesSlideView
     
     private(set) var isWrapped: Bool = true
     
@@ -19,9 +20,10 @@ final class BreadCalculatorViewModel {
     public let doughPresets: [Preset]
     public let doughInitialPreset: Preset
     
-    // TODO: Recipes properties
-    
     @Published public var flourMass: Double = BreadCalculator.initial.flourMass
+    
+//    @Published public var starterRecipe: RecipesSlideView.Recipe
+//    @Published public var doughRecipe: RecipesSlideView.Recipe
 
     private var subscriptions = Set<AnyCancellable>()
     
@@ -56,6 +58,18 @@ final class BreadCalculatorViewModel {
             .store(in: &subscriptions)
         
     }
+    
+    private func saveModel() {
+        
+    }
+    
+    private func loadModel() -> BreadCalculator? {
+        return BreadCalculator.initial
+    }
+    
+}
+
+extension BreadCalculatorViewModel {
     
     public func wrap() {
         isWrapped.toggle()
