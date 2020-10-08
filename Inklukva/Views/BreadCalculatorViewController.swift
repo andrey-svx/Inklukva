@@ -24,7 +24,7 @@ final class BreadCalculatorViewController: UIViewController {
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 30, bottom: 20, right: 30)
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = 20
+        stackView.spacing = 21
 
         scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
