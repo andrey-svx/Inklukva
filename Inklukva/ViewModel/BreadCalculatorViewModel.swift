@@ -71,18 +71,14 @@ final class BreadCalculatorViewModel {
                 self.doughHydration = breadCalculator.doughHydration
                 
                 let starter = breadCalculator.starter
-                self.starterRecipe = [
-                    (NSLocalizedString("Flour", comment: ""), starter.flour),
-                    (NSLocalizedString("Water", comment: ""), starter.water),
-                    (NSLocalizedString("Inoculate", comment: ""), starter.inoculate)
-                ]
+                for (i, value) in [starter.flour, starter.water, starter.inoculate].enumerated() {
+                    self.starterRecipe[i].1 = value
+                }
+                
                 let dough = breadCalculator.dough
-                self.doughRecipe = [
-                    (NSLocalizedString("Flour", comment: ""), dough.flour),
-                    (NSLocalizedString("Water", comment: ""), dough.water),
-                    (NSLocalizedString("Salt", comment: ""), dough.salt),
-                    (NSLocalizedString("Starter", comment: ""), dough.starter)
-                ]
+                for (i, value) in [dough.flour, dough.water, dough.salt, dough.starter].enumerated() {
+                    self.doughRecipe[i].1 = value
+                }
             }
             .store(in: &subscriptions)
         
