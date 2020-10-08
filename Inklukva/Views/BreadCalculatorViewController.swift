@@ -4,9 +4,9 @@ final class BreadCalculatorViewController: UIViewController {
     
     private let viewModel: BreadCalculatorViewModel
     
+    private let hydrationInputView: HydrationInputView
     private let flourInputView: FlourInputView
     private let recipesSlideView: RecipesSlideView
-    private let hydrationInputView: UIView
     
     private let stackView: UIStackView
     private let scrollView: UIScrollView
