@@ -5,7 +5,8 @@ final class BreadCalculatorViewModel {
     
     @Published private(set) var breadCalculator: BreadCalculator
     
-    typealias Preset = (String, Int)
+    typealias Preset = HydrationPickerView.Preset
+    typealias Recipe = RecipesSlideView.Recipe
     
     private(set) var isWrapped: Bool = true
     
@@ -19,9 +20,20 @@ final class BreadCalculatorViewModel {
     public let doughPresets: [Preset]
     public let doughInitialPreset: Preset
     
-    // TODO: Recipes properties
+    @Published private(set) var flourMass: Double = BreadCalculator.initial.flourMass
     
-    @Published public var flourMass: Double = BreadCalculator.initial.flourMass
+    @Published private(set) var starterRecipe: Recipe = [
+        (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.starter.flour),
+        (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.starter.water),
+        (NSLocalizedString("Inoculate", comment: ""), BreadCalculator.initial.starter.inoculate)
+    ]
+    
+    @Published private(set) var doughRecipe: Recipe = [
+        (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.dough.flour),
+        (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.dough.water),
+        (NSLocalizedString("Salt", comment: ""), BreadCalculator.initial.dough.salt),
+        (NSLocalizedString("Starter", comment: ""), BreadCalculator.initial.dough.starter)
+    ]
 
     private var subscriptions = Set<AnyCancellable>()
     
@@ -38,24 +50,43 @@ final class BreadCalculatorViewModel {
         
         let lmString = NSLocalizedString("Levito-Madre", comment: "") + " (50%)"
         let regularString = NSLocalizedString("Regular", comment: "") + " (100%)"
-        self.starterInitialPreset = (regularString, 100)
-        self.starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
+        let starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
+        self.starterPresets = starterPresets
+        self.starterInitialPreset = starterPresets.first { Double($0.1) == BreadCalculator.initial.starterHydration }
+            ?? (regularString, 100)
         
-        self.doughPresets = stride(from: 50, through: 100, by: 10)
+        let doughPresets = stride(from: 50, through: 100, by: 10)
             .compactMap { $0 }
             .map { ("\($0)%", $0) }
-        self.doughInitialPreset = ("100%", 100)
+        self.doughPresets = doughPresets
+        self.doughInitialPreset = doughPresets.first { Double($0.1) == BreadCalculator.initial.doughHydration }
+            ?? ("100%", 100)
         
         self.$breadCalculator
             .sink { [weak self] breadCalculator in
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 self.flourMass = breadCalculator.flourMass
+                
                 self.starterHydration = breadCalculator.starterHydration
                 self.doughHydration = breadCalculator.doughHydration
+                
+                let starter = breadCalculator.starter
+                for (i, value) in [starter.flour, starter.water, starter.inoculate].enumerated() {
+                    self.starterRecipe[i].1 = value
+                }
+                
+                let dough = breadCalculator.dough
+                for (i, value) in [dough.flour, dough.water, dough.salt, dough.starter].enumerated() {
+                    self.doughRecipe[i].1 = value
+                }
             }
             .store(in: &subscriptions)
         
     }
+    
+}
+
+extension BreadCalculatorViewModel {
     
     public func wrap() {
         isWrapped.toggle()

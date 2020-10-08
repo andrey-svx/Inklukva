@@ -1,7 +1,6 @@
-import Combine
 import UIKit
 
-final class MainViewController: UIViewController {
+final class BreadCalculatorViewController: UIViewController {
     
     private let viewModel: BreadCalculatorViewModel
     
@@ -15,25 +14,10 @@ final class MainViewController: UIViewController {
     init(viewModel: BreadCalculatorViewModel) {
         
         self.viewModel = viewModel
-        let breadCalculator = viewModel.breadCalculator
         
         hydrationInputView = HydrationInputView(viewModel: viewModel)
         flourInputView = FlourInputView(viewModel: viewModel)
-        
-        let starter = breadCalculator.starter
-        let dough = breadCalculator.dough
-        let starterRecipe: RecipesSlideView.Recipe = [
-            ("Flour", starter.flour),
-            ("Water", starter.water),
-            ("Inoculate", starter.inoculate)
-        ]
-        let doughRecipe: RecipesSlideView.Recipe = [
-            ("Flour", dough.flour),
-            ("Water", dough.water),
-            ("Salt", dough.salt),
-            ("Starter", dough.starter)
-        ]
-        recipesSlideView = RecipesSlideView(starterRecipe: starterRecipe, doughRecipe: doughRecipe)
+        recipesSlideView = RecipesSlideView(viewModel: viewModel)
         
         stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView])
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -57,11 +41,11 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
         stackView.arrangedSubviews.forEach {
             $0.backgroundColor = .systemGreen
             $0.layer.cornerRadius = 10
         }
-        scrollView.addSubview(stackView)
     }
     
     override func viewWillAppear(_ animated: Bool) {

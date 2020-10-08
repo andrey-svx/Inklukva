@@ -1,11 +1,8 @@
-import Combine
 import UIKit
 
 final class HydrationInputView: UIView {
     
     private let viewModel: BreadCalculatorViewModel
-    
-    private var subscriptions = Set<AnyCancellable>()
 
     private let wrapButton: UIButton
     private let starterInputView: HydrationPickerView
@@ -56,13 +53,11 @@ final class HydrationInputView: UIView {
         starterInputView.selectionHandler = { [weak self] hydration in
             guard let self = self else { assertionFailure("Could not set self"); return }
             self.viewModel.setStarterHydration(Double(hydration))
-            
         }
         doughInputView.selectionHandler = { [weak self] hydration in
             guard let self = self else { assertionFailure("Could not set self"); return }
             self.viewModel.setDoughHydration(Double(hydration))
         }
-        
         tapGestureRecognizer.addTarget(self, action: #selector(wrap))
         tapGestureRecognizer.delegate = self
         addGestureRecognizer(tapGestureRecognizer)
