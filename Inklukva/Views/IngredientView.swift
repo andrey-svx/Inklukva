@@ -24,11 +24,12 @@ final class IngredientView: UIView {
         amountLabel.text = "\(ingredient.1)"
         
         super.init(frame: .zero)
-        $ingredient.sink { [weak self] value in
-            guard let self = self else { assertionFailure("Could not set self"); return }
-            self.nameLabel.text = "\(value.0)"
-            self.amountLabel.text = "\(value.1)"
-        }
+        self.$ingredient
+            .sink { [weak self] value in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                self.nameLabel.text = "\(value.0)"
+                self.amountLabel.text = "\(value.1)"
+            }
         .store(in: &subscriptions)
         
         let stackView = UIStackView(arrangedSubviews: [nameLabel, amountLabel])

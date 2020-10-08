@@ -42,10 +42,11 @@ final class HydrationPickerView: UIView {
         
         super.init(frame: .zero)
         
-        $isWrapped.sink { [weak self] value in
-            guard let self = self else { assertionFailure("Could not set self"); return }
-            self.pickerView.isHidden = value
-        }
+        self.$isWrapped
+            .sink { [weak self] value in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                self.pickerView.isHidden = value
+            }
         .store(in: &subscriptions)
         
         pickerView.dataSource = self

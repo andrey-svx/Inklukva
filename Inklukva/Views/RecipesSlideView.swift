@@ -47,15 +47,15 @@ final class RecipesSlideView: UIView {
         
         super.init(frame: .zero)
         
-        self.viewModel
-            .$starterRecipe.sink { [weak self] starterRecipe in
+        self.viewModel.$starterRecipe
+            .sink { [weak self] starterRecipe in
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 self.starterView.ingredients = starterRecipe
             }
             .store(in: &subscriptions)
         
-        self.viewModel
-            .$doughRecipe.sink { [weak self] doughRecipe in
+        self.viewModel.$doughRecipe
+            .sink { [weak self] doughRecipe in
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 self.doughView.ingredients = doughRecipe
             }

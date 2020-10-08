@@ -37,8 +37,8 @@ final class FlourInputView: UIView {
         
         stepper.addTarget(self, action: #selector(setMass), for: .valueChanged)
         
-        self.viewModel
-            .$flourMass.sink { [weak self] value in
+        self.viewModel.$flourMass
+            .sink { [weak self] value in
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 self.massLabel.text = "\(value)"
             }

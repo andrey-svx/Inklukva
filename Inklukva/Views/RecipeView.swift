@@ -31,11 +31,11 @@ final class RecipeView: UIView {
         
         super.init(frame: .zero)
         
-        self.$ingredients.sink { [weak self] ingredients in
-            guard let self = self else { assertionFailure("Could not set self"); return }
-            for var (i, view) in self.ingredientViews.enumerated() {
-                view.ingredient = ingredients[i]
-            }
+        self.$ingredients
+            .sink { [weak self] ingredients in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                zip(self.ingredientViews, ingredients).compactMap { $0 }
+                    .forEach { $0.ingredient = $1 }
         }
         .store(in: &subscriptions)
         
