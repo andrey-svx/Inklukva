@@ -27,6 +27,6 @@ struct BreadCalculator: Codable {
         self.doughHydration = doughHumidity
     }
     
-    public static let initial = BreadCalculator(flourMass: 100, starterHumidity: 100, doughHumidity: 100)
+    public static let initial = BreadCalculator(flourMass: 0, starterHumidity: 100, doughHumidity: 100)
     
 }

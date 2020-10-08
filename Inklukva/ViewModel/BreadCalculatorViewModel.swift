@@ -6,7 +6,7 @@ final class BreadCalculatorViewModel {
     @Published private(set) var breadCalculator: BreadCalculator
     
     typealias Preset = HydrationPickerView.Preset
-    typealias Recipe = RecipesSlideView
+    typealias Recipe = RecipesSlideView.Recipe
     
     private(set) var isWrapped: Bool = true
     
@@ -22,8 +22,18 @@ final class BreadCalculatorViewModel {
     
     @Published public var flourMass: Double = BreadCalculator.initial.flourMass
     
-//    @Published public var starterRecipe: RecipesSlideView.Recipe
-//    @Published public var doughRecipe: RecipesSlideView.Recipe
+    @Published public var starterRecipe: Recipe = [
+        (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.starter.flour),
+        (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.starter.water),
+        (NSLocalizedString("Inoculate", comment: ""), BreadCalculator.initial.starter.inoculate)
+    ]
+    
+    @Published public var doughRecipe: Recipe = [
+        (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.dough.flour),
+        (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.dough.water),
+        (NSLocalizedString("Salt", comment: ""), BreadCalculator.initial.dough.salt),
+        (NSLocalizedString("Starter", comment: ""), BreadCalculator.initial.dough.starter)
+    ]
 
     private var subscriptions = Set<AnyCancellable>()
     
@@ -52,8 +62,23 @@ final class BreadCalculatorViewModel {
             .sink { [weak self] breadCalculator in
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 self.flourMass = breadCalculator.flourMass
+                
                 self.starterHydration = breadCalculator.starterHydration
                 self.doughHydration = breadCalculator.doughHydration
+                
+                let starter = breadCalculator.starter
+                self.starterRecipe = [
+                    (NSLocalizedString("Flour", comment: ""), starter.flour),
+                    (NSLocalizedString("Water", comment: ""), starter.water),
+                    (NSLocalizedString("Inoculate", comment: ""), starter.inoculate)
+                ]
+                let dough = breadCalculator.dough
+                self.doughRecipe = [
+                    (NSLocalizedString("Flour", comment: ""), dough.flour),
+                    (NSLocalizedString("Water", comment: ""), dough.water),
+                    (NSLocalizedString("Salt", comment: ""), dough.salt),
+                    (NSLocalizedString("Starter", comment: ""), dough.starter)
+                ]
             }
             .store(in: &subscriptions)
         
