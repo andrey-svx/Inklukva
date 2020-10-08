@@ -2,7 +2,7 @@ import Combine
 
 struct BreadCalculator: Codable {
     
-    public var flourMass: Double 
+    public var flourMass: Double
     public var starterHydration: Double
     public var doughHydration: Double 
     

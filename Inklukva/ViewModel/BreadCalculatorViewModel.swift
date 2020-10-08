@@ -50,8 +50,10 @@ final class BreadCalculatorViewModel {
         
         let lmString = NSLocalizedString("Levito-Madre", comment: "") + " (50%)"
         let regularString = NSLocalizedString("Regular", comment: "") + " (100%)"
-        self.starterInitialPreset = (regularString, 100)
-        self.starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
+        let starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
+        self.starterPresets = starterPresets
+        self.starterInitialPreset = starterPresets.first { Double($0.1) == BreadCalculator.initial.starterHydration }
+            ?? (regularString, 100)
         
         self.doughPresets = stride(from: 50, through: 100, by: 10)
             .compactMap { $0 }
@@ -82,14 +84,6 @@ final class BreadCalculatorViewModel {
             }
             .store(in: &subscriptions)
         
-    }
-    
-    private func saveModel() {
-        
-    }
-    
-    private func loadModel() -> BreadCalculator? {
-        return BreadCalculator.initial
     }
     
 }

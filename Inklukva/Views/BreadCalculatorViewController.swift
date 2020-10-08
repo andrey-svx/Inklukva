@@ -15,25 +15,10 @@ final class BreadCalculatorViewController: UIViewController {
     init(viewModel: BreadCalculatorViewModel) {
         
         self.viewModel = viewModel
-        let breadCalculator = viewModel.breadCalculator
         
         hydrationInputView = HydrationInputView(viewModel: viewModel)
         flourInputView = FlourInputView(viewModel: viewModel)
-        
-        let starter = breadCalculator.starter
-        let dough = breadCalculator.dough
-        let starterRecipe: RecipesSlideView.Recipe = [
-            ("Flour", starter.flour),
-            ("Water", starter.water),
-            ("Inoculate", starter.inoculate)
-        ]
-        let doughRecipe: RecipesSlideView.Recipe = [
-            ("Flour", dough.flour),
-            ("Water", dough.water),
-            ("Salt", dough.salt),
-            ("Starter", dough.starter)
-        ]
-        recipesSlideView = RecipesSlideView(starterRecipe: starterRecipe, doughRecipe: doughRecipe)
+        recipesSlideView = RecipesSlideView(viewModel: viewModel)
         
         stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView])
         stackView.isLayoutMarginsRelativeArrangement = true

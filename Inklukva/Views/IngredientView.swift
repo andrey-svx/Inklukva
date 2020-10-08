@@ -26,8 +26,8 @@ final class IngredientView: UIView {
         super.init(frame: .zero)
         $ingredient.sink { [weak self] value in
             guard let self = self else { assertionFailure("Could not set self"); return }
-            self.nameLabel.text = "\(self.ingredient.0)"
-            self.amountLabel.text = "\(self.ingredient.1)"
+            self.nameLabel.text = "\(value.0)"
+            self.amountLabel.text = "\(value.1)"
         }
         .store(in: &subscriptions)
         

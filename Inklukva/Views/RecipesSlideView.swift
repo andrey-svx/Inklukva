@@ -1,32 +1,26 @@
+import Combine
 import UIKit
 
 final class RecipesSlideView: UIView {
     
     typealias Recipe = RecipeView.Recipe
     
-    public var starterRecipe: Recipe
-    public var doughRecipe: Recipe
+    private let viewModel: BreadCalculatorViewModel
+    private var subscriptions = Set<AnyCancellable>()
     
     private let scrollView: UIScrollView
     private let starterView: RecipeView
     private let doughView: RecipeView
     private let pageController: UIPageControl
     
-    init(starterRecipe: Recipe, doughRecipe: Recipe) {
+    init(viewModel: BreadCalculatorViewModel) {
         
-        self.starterRecipe = starterRecipe
-        self.doughRecipe = doughRecipe
+        self.viewModel = viewModel
         
-        starterView = RecipeView(
-            header: NSLocalizedString("Starter", comment: ""),
-            ingredients: starterRecipe
-        )
+        starterView = RecipeView(header: viewModel.starterHeader, ingredients: viewModel.starterRecipe)
         starterView.translatesAutoresizingMaskIntoConstraints = false
         
-        doughView = RecipeView(
-            header: NSLocalizedString("Dough", comment: ""),
-            ingredients: doughRecipe
-        )
+        doughView = RecipeView(header: viewModel.doughHeader, ingredients: viewModel.doughRecipe)
         doughView.translatesAutoresizingMaskIntoConstraints = false
         doughView.setNeedsLayout()
         doughView.layoutIfNeeded()
@@ -52,6 +46,21 @@ final class RecipesSlideView: UIView {
         pageController.isUserInteractionEnabled = false
         
         super.init(frame: .zero)
+        
+        self.viewModel
+            .$starterRecipe.sink { [weak self] starterRecipe in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                self.starterView.ingredients = starterRecipe
+            }
+            .store(in: &subscriptions)
+        
+        self.viewModel
+            .$doughRecipe.sink { [weak self] doughRecipe in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                self.doughView.ingredients = doughRecipe
+            }
+            .store(in: &subscriptions)
+        
         scrollView.delegate = self
         
         let headerView = UIView.instantiateHeaderView(header: NSLocalizedString("Here are your ingredients", comment: ""))
