@@ -3,7 +3,7 @@ import Combine
 
 final class BreadCalculatorViewModel {
     
-    @Published private(set) var breadCalculator: BreadCalculator
+    @Published private(set) var breadCalculator: BreadCalculator = BreadCalculator.initial
     
     typealias Preset = HydrationPickerView.Preset
     typealias Recipe = RecipesSlideView.Recipe
@@ -38,15 +38,6 @@ final class BreadCalculatorViewModel {
     private var subscriptions = Set<AnyCancellable>()
     
     init() {
-        
-        let flourMass = BreadCalculator.initial.flourMass
-        let starterHumidity = BreadCalculator.initial.starterHydration
-        let doughHumidity = BreadCalculator.initial.doughHydration
-        self.breadCalculator = BreadCalculator(
-            flourMass: flourMass,
-            starterHumidity: starterHumidity,
-            doughHumidity: doughHumidity
-        )
         
         let lmString = NSLocalizedString("Levito-Madre", comment: "") + " (50%)"
         let regularString = NSLocalizedString("Regular", comment: "") + " (100%)"
