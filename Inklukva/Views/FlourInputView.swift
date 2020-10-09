@@ -13,7 +13,7 @@ final class FlourInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(viewModel: BreadCalculatorViewModel) {
+    init(viewModel: BreadCalculatorViewModel, header: String) {
         
         self.viewModel = viewModel
         
@@ -27,7 +27,7 @@ final class FlourInputView: UIView {
         stepper.stepValue = 50
         stepper.value = viewModel.flourMass
         
-        let headerLabel = UIView.instantiateHeaderView(header: NSLocalizedString("Set flour wheight", comment: ""))
+        let headerLabel = UIView.instantiateHeaderView(header: header)
         
         let stackView = UIStackView(arrangedSubviews: [headerLabel, massLabel, stepper])
         stackView.axis = .vertical

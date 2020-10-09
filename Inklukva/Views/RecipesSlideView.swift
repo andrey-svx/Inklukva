@@ -13,7 +13,7 @@ final class RecipesSlideView: UIView {
     private let doughView: RecipeView
     private let pageController: UIPageControl
     
-    init(viewModel: BreadCalculatorViewModel) {
+    init(viewModel: BreadCalculatorViewModel, header: String) {
         
         self.viewModel = viewModel
         
@@ -63,7 +63,7 @@ final class RecipesSlideView: UIView {
         
         scrollView.delegate = self
         
-        let headerView = UIView.instantiateHeaderView(header: NSLocalizedString("Here are your ingredients", comment: ""))
+        let headerView = UIView.instantiateHeaderView(header: header)
         
         let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, pageController])
         stackView.axis = .vertical

@@ -10,11 +10,11 @@ final class HydrationInputView: UIView {
     
     private let tapGestureRecognizer: UITapGestureRecognizer
     
-    init(viewModel: BreadCalculatorViewModel) {
+    init(viewModel: BreadCalculatorViewModel, header: String) {
                 
         self.viewModel = viewModel
         
-        let headerView = UIView.instantiateHeaderView(header: NSLocalizedString("Select hydration level", comment: ""))
+        let headerView = UIView.instantiateHeaderView(header: header)
             
         wrapButton = UIButton()
         wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)

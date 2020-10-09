@@ -15,9 +15,18 @@ final class BreadCalculatorViewController: UIViewController {
         
         self.viewModel = viewModel
         
-        hydrationInputView = HydrationInputView(viewModel: viewModel)
-        flourInputView = FlourInputView(viewModel: viewModel)
-        recipesSlideView = RecipesSlideView(viewModel: viewModel)
+        hydrationInputView = HydrationInputView(
+            viewModel: viewModel,
+            header: NSLocalizedString("Select hydration level", comment: "")
+        )
+        flourInputView = FlourInputView(
+            viewModel: viewModel,
+            header: NSLocalizedString("Set flour wheight", comment: "")
+        )
+        recipesSlideView = RecipesSlideView(
+            viewModel: viewModel,
+            header: NSLocalizedString("Here are your ingredients", comment: "")
+        )
         
         stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView])
         stackView.isLayoutMarginsRelativeArrangement = true
