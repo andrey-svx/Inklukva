@@ -6,10 +6,10 @@ extension UIView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: padding),
             self.topAnchor.constraint(equalTo: superview.topAnchor, constant: padding),
-            self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -padding),
-            self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -padding)
+            self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: padding),
+            self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -padding),
+            self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -padding)
         ])
         return true
     }
@@ -28,5 +28,6 @@ extension UIView {
             headerLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
         ])
         return headerView
+
     }
 }

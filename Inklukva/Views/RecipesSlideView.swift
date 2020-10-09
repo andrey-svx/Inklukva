@@ -81,10 +81,10 @@ final class RecipesSlideView: UIView {
             
             scrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: doughHeight),
             
-            starterView.widthAnchor.constraint(equalTo: widthAnchor),
-            doughView.widthAnchor.constraint(equalTo: widthAnchor)
+            starterView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20),
+            doughView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20)
         ])
-        stackView.pinEndgesToSuperview()
+        stackView.pinEndgesToSuperview(padding: 10)
         
     }
     

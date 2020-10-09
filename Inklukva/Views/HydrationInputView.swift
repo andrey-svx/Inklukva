@@ -63,7 +63,7 @@ final class HydrationInputView: UIView {
         addGestureRecognizer(tapGestureRecognizer)
         
         addSubview(stackView)
-        stackView.pinEndgesToSuperview()
+        stackView.pinEndgesToSuperview(padding: 10)
         
     }
     

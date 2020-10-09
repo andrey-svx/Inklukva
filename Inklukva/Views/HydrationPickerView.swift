@@ -58,7 +58,7 @@ final class HydrationPickerView: UIView {
         pickerView.selectRow(initialIndex, inComponent: 0, animated: false)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            pickerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 3/4)
+            pickerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 4/5)
         ])
         
     }

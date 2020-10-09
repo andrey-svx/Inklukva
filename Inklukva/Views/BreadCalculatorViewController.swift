@@ -52,8 +52,10 @@ final class BreadCalculatorViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         stackView.arrangedSubviews.forEach {
+            $0.layer.borderColor = UIColor.systemGreen.cgColor
+            $0.layer.borderWidth = 0
             $0.backgroundColor = .systemGreen
-            $0.layer.cornerRadius = 10
+            $0.layer.cornerRadius = 7.5
         }
     }
     
