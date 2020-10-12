@@ -5,7 +5,7 @@ final class IngredientView: UIView {
     
     typealias Ingredient = (String, Double)
     
-    @Published public var ingredient: Ingredient
+    @Published var ingredient: Ingredient
     private var subscriptions = Set<AnyCancellable>()
     
     private let nameLabel: UILabel

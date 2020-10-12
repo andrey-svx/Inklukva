@@ -28,6 +28,5 @@ extension UIView {
             headerLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
         ])
         return headerView
-
     }
 }

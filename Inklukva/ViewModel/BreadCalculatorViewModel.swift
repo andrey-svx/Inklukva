@@ -11,14 +11,14 @@ final class BreadCalculatorViewModel {
     private(set) var isWrapped: Bool = true
     
     private(set) var starterHydration: Double = BreadCalculator.initial.starterHydration
-    public let starterHeader: String = NSLocalizedString("Starter", comment: "")
-    public let starterPresets: [Preset]
-    public let starterInitialPreset: Preset
+    let starterHeader: String = NSLocalizedString("Starter", comment: "")
+    let starterPresets: [Preset]
+    let starterInitialPreset: Preset
     
     private(set) var doughHydration: Double = BreadCalculator.initial.doughHydration
-    public let doughHeader: String = NSLocalizedString("Dough", comment: "")
-    public let doughPresets: [Preset]
-    public let doughInitialPreset: Preset
+    let doughHeader: String = NSLocalizedString("Dough", comment: "")
+    let doughPresets: [Preset]
+    let doughInitialPreset: Preset
     
     @Published private(set) var flourMass: Double = BreadCalculator.initial.flourMass
     

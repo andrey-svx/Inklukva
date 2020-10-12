@@ -5,13 +5,13 @@ final class HydrationPickerView: UIView {
     
     typealias Preset = (String, Int)
     
-    @Published public var isWrapped: Bool
+    @Published var isWrapped: Bool
     private var subscriptions = Set<AnyCancellable>()
 
     private let header: String
     private let presets: [Preset]
     
-    public var selectionHandler: ((Int) -> ())?
+    var selectionHandler: ((Int) -> ())?
     
     private let stackView: UIStackView
     private let headerLabel: UILabel
