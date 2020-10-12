@@ -35,7 +35,10 @@ final class RecipeView: UIView {
             .sink { [weak self] ingredients in
                 guard let self = self else { assertionFailure("Could not set self"); return }
                 zip(self.ingredientViews, ingredients).compactMap { $0 }
-                    .forEach { $0.ingredient = $1 }
+                    .forEach {
+                        $0.nameLabel.text = $1.0
+                        $0.amountLabel.text = "\($1.1)"
+                    }
             }
             .store(in: &subscriptions)
         
