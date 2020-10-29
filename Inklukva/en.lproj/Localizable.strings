@@ -1,13 +1,13 @@
-"Starter" = "Закваска";
-"Dough" = "Тесто";
-"Regular" = "Обычная";
-"Levito-Madre" = "Левито-Мадре";
+"calculator.starter-label" = "Starter";
+"calculator.dough-label" = "Dough";
+"calculator.regular-starter-label" = "Regular";
+"calculator.levito-madre-starter-label" = "Levito-Madre";
 
-"Flour" = "Мука";
-"Water" = "Вода";
-"Inoculate" = "Инокулят";
-"Salt" = "Соль";
+"calculator.flour-label" = "Flour";
+"calculator.water-label" = "Water";
+"calculator.inoculate-label" = "Inoculate";
+"calculator.salt-label" = "Salt";
 
-"Select hydration level" = "Выберите влажность";
-"Set flour wheight" = "Установите массу муки";
-"Here are your ingredients" = "Вот ваши ингредиенты";
+"calculator.hydration-title" = "Select hydration level";
+"calculator.wheight-title" = "Set flour wheight";
+"calculator.ingredients-title" = "Here are your ingredients";

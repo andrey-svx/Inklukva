@@ -11,36 +11,36 @@ final class BreadCalculatorViewModel {
     private(set) var isWrapped: Bool = true
     
     private(set) var starterHydration: Double = BreadCalculator.initial.starterHydration
-    let starterHeader: String = NSLocalizedString("Starter", comment: "")
+    let starterHeader: String = NSLocalizedString("calculator.starter-label", comment: "")
     let starterPresets: [Preset]
     let starterInitialPreset: Preset
     
     private(set) var doughHydration: Double = BreadCalculator.initial.doughHydration
-    let doughHeader: String = NSLocalizedString("Dough", comment: "")
+    let doughHeader: String = NSLocalizedString("calculator.dough-label", comment: "")
     let doughPresets: [Preset]
     let doughInitialPreset: Preset
     
     @Published private(set) var flourMass: Double = BreadCalculator.initial.flourMass
     
     @Published private(set) var starterRecipe: Recipe = [
-        (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.starter.flour),
-        (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.starter.water),
-        (NSLocalizedString("Inoculate", comment: ""), BreadCalculator.initial.starter.inoculate)
+        (NSLocalizedString("calculator.flour-label", comment: ""), BreadCalculator.initial.starter.flour),
+        (NSLocalizedString("calculator.water-label", comment: ""), BreadCalculator.initial.starter.water),
+        (NSLocalizedString("calculator.inoculate-label", comment: ""), BreadCalculator.initial.starter.inoculate)
     ]
     
     @Published private(set) var doughRecipe: Recipe = [
-        (NSLocalizedString("Flour", comment: ""), BreadCalculator.initial.dough.flour),
-        (NSLocalizedString("Water", comment: ""), BreadCalculator.initial.dough.water),
-        (NSLocalizedString("Salt", comment: ""), BreadCalculator.initial.dough.salt),
-        (NSLocalizedString("Starter", comment: ""), BreadCalculator.initial.dough.starter)
+        (NSLocalizedString("calculator.flour-label", comment: ""), BreadCalculator.initial.dough.flour),
+        (NSLocalizedString("calculator.water-label", comment: ""), BreadCalculator.initial.dough.water),
+        (NSLocalizedString("calculator.salt-label", comment: ""), BreadCalculator.initial.dough.salt),
+        (NSLocalizedString("calculator.starter-label", comment: ""), BreadCalculator.initial.dough.starter)
     ]
 
     private var subscriptions = Set<AnyCancellable>()
     
     init() {
         
-        let lmString = NSLocalizedString("Levito-Madre", comment: "") + " (50%)"
-        let regularString = NSLocalizedString("Regular", comment: "") + " (100%)"
+        let lmString = NSLocalizedString("calculator.levito-madre-starter-label", comment: "") + " (50%)"
+        let regularString = NSLocalizedString("calculator.regular-starter-label", comment: "") + " (100%)"
         let starterPresets = [ ("25%", 25), (lmString, 50), ("75%", 75), (regularString, 100), ("125%", 125) ]
         self.starterPresets = starterPresets
         self.starterInitialPreset = starterPresets.first { Double($0.1) == BreadCalculator.initial.starterHydration }
@@ -52,6 +52,11 @@ final class BreadCalculatorViewModel {
         self.doughInitialPreset = doughPresets.first { Double($0.1) == BreadCalculator.initial.doughHydration }
             ?? ("100%", 100)
         
+        bind()
+        
+    }
+    
+    func bind() {
         self.$breadCalculator
             .sink { [weak self] breadCalculator in
                 guard let self = self else { assertionFailure("Could not set self"); return }
@@ -72,7 +77,6 @@ final class BreadCalculatorViewModel {
                 self.doughRecipe = zip(doughNames, doughAmounts).compactMap { $0 }
             }
             .store(in: &subscriptions)
-        
     }
     
 }

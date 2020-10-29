@@ -14,7 +14,7 @@ final class RecipeView: UIView {
     private let headerLabel: UILabel
     private let ingredientViews: [IngredientView]
     
-    required init(header: String, ingredients: Recipe) {
+    init(header: String, ingredients: Recipe) {
         
         self.header = header
         self.ingredients = ingredients

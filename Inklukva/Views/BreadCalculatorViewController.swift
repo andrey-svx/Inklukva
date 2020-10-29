@@ -17,15 +17,15 @@ final class BreadCalculatorViewController: UIViewController {
         
         hydrationInputView = HydrationInputView(
             viewModel: viewModel,
-            header: NSLocalizedString("Select hydration level", comment: "")
+            header: NSLocalizedString("calculator.hydration-title", comment: "")
         )
         flourInputView = FlourInputView(
             viewModel: viewModel,
-            header: NSLocalizedString("Set flour wheight", comment: "")
+            header: NSLocalizedString("calculator.wheight-title", comment: "")
         )
         recipesSlideView = RecipesSlideView(
             viewModel: viewModel,
-            header: NSLocalizedString("Here are your ingredients", comment: "")
+            header: NSLocalizedString("calculator.ingredients-title", comment: "")
         )
         
         stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView])
