@@ -37,7 +37,7 @@ final class RecipeView: UIView {
                 zip(self.ingredientViews, ingredients).compactMap { $0 }
                     .forEach {
                         $0.nameLabel.text = $1.0
-                        $0.amountLabel.text = "\($1.1)"
+                        $0.amountLabel.text = String(format: "%.1f", $1.1)
                     }
             }
             .store(in: &subscriptions)

@@ -21,7 +21,7 @@ final class IngredientView: UIView {
         
         amountLabel = UILabel()
         amountLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        amountLabel.text = "\(ingredient.1)"
+        amountLabel.text = String(format: "%.1f", ingredient.1)
         
         super.init(frame: .zero)
 //        self.$ingredient

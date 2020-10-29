@@ -54,7 +54,7 @@ final class BreadCalculatorViewController: UIViewController {
         stackView.arrangedSubviews.forEach {
             $0.layer.borderColor = UIColor.systemGreen.cgColor
             $0.layer.borderWidth = 0
-            $0.backgroundColor = .systemGreen
+            $0.backgroundColor = UIColor(red: 187/256, green: 183/256, blue: 164/256, alpha: 1.0)
             $0.layer.cornerRadius = 7.5
         }
     }

@@ -10,6 +10,7 @@
 		5A02CCBC25194E5600C7D5EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A02CCBE25194E5600C7D5EA /* Localizable.strings */; };
 		5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B135251A48A9002C812D /* RecipesSlideView.swift */; };
 		5A13B139251A53CD002C812D /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B138251A53CD002C812D /* RecipeView.swift */; };
+		5A35981E254B3BD000EB94ED /* InklukvaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35981D254B3BD000EB94ED /* InklukvaTests.swift */; };
 		5A3692D4250809D20029C921 /* BreadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3692D3250809D20029C921 /* BreadCalculator.swift */; };
 		5A463B22252D08F70058F454 /* BreadCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */; };
 		5A6CA74625191BE200374AC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74525191BE200374AC6 /* UIView.swift */; };
@@ -26,12 +27,26 @@
 		5AFBFFD4251BACEE00168007 /* Dough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBFFD3251BACEE00168007 /* Dough.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5A359820254B3BD000EB94ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD9BA8E250012F600463757 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AD9BA95250012F600463757;
+			remoteInfo = Inklukva;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5A02CCB725194E1D00C7D5EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A02CCBD25194E5600C7D5EA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A02CCC225194FDE00C7D5EA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A13B135251A48A9002C812D /* RecipesSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSlideView.swift; sourceTree = "<group>"; };
 		5A13B138251A53CD002C812D /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		5A35981B254B3BD000EB94ED /* InklukvaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InklukvaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A35981D254B3BD000EB94ED /* InklukvaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InklukvaTests.swift; sourceTree = "<group>"; };
+		5A35981F254B3BD000EB94ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A359829254B55BB00EB94ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A3692D3250809D20029C921 /* BreadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadCalculator.swift; sourceTree = "<group>"; };
 		5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadCalculatorViewModel.swift; sourceTree = "<group>"; };
 		5A6CA74525191BE200374AC6 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -51,6 +66,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5A359818254B3BD000EB94ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD9BA93250012F600463757 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A35981C254B3BD000EB94ED /* InklukvaTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A35981D254B3BD000EB94ED /* InklukvaTests.swift */,
+				5A35981F254B3BD000EB94ED /* Info.plist */,
+			);
+			path = InklukvaTests;
+			sourceTree = "<group>";
+		};
 		5A463B24252D093A0058F454 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				5AD9BA98250012F600463757 /* Inklukva */,
+				5A35981C254B3BD000EB94ED /* InklukvaTests */,
 				5AD9BA97250012F600463757 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				5AD9BA96250012F600463757 /* Inklukva.app */,
+				5A35981B254B3BD000EB94ED /* InklukvaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +170,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5A35981A254B3BD000EB94ED /* InklukvaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A359824254B3BD000EB94ED /* Build configuration list for PBXNativeTarget "InklukvaTests" */;
+			buildPhases = (
+				5A359817254B3BD000EB94ED /* Sources */,
+				5A359818254B3BD000EB94ED /* Frameworks */,
+				5A359819254B3BD000EB94ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A359821254B3BD000EB94ED /* PBXTargetDependency */,
+			);
+			name = InklukvaTests;
+			productName = InklukvaTests;
+			productReference = 5A35981B254B3BD000EB94ED /* InklukvaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5AD9BA95250012F600463757 /* Inklukva */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5AD9BAAA250012F700463757 /* Build configuration list for PBXNativeTarget "Inklukva" */;
@@ -160,10 +211,14 @@
 		5AD9BA8E250012F600463757 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Andrey isaev";
 				TargetAttributes = {
+					5A35981A254B3BD000EB94ED = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 5AD9BA95250012F600463757;
+					};
 					5AD9BA95250012F600463757 = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -184,11 +239,19 @@
 			projectRoot = "";
 			targets = (
 				5AD9BA95250012F600463757 /* Inklukva */,
+				5A35981A254B3BD000EB94ED /* InklukvaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5A359819254B3BD000EB94ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD9BA94250012F600463757 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +265,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5A359817254B3BD000EB94ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A35981E254B3BD000EB94ED /* InklukvaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD9BA92250012F600463757 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,11 +296,20 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5A359821254B3BD000EB94ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AD9BA95250012F600463757 /* Inklukva */;
+			targetProxy = 5A359820254B3BD000EB94ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		5A02CCBE25194E5600C7D5EA /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5A02CCBD25194E5600C7D5EA /* ru */,
+				5A359829254B55BB00EB94ED /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -247,6 +327,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5A359822254B3BD000EB94ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MXX32M3GG6;
+				INFOPLIST_FILE = InklukvaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = andrey.svx.InklukvaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Inklukva.app/Inklukva";
+			};
+			name = Debug;
+		};
+		5A359823254B3BD000EB94ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MXX32M3GG6;
+				INFOPLIST_FILE = InklukvaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = andrey.svx.InklukvaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Inklukva.app/Inklukva";
+			};
+			name = Release;
+		};
 		5AD9BAA8250012F700463757 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -404,6 +526,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A359824254B3BD000EB94ED /* Build configuration list for PBXNativeTarget "InklukvaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A359822254B3BD000EB94ED /* Debug */,
+				5A359823254B3BD000EB94ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5AD9BA91250012F600463757 /* Build configuration list for PBXProject "Inklukva" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
