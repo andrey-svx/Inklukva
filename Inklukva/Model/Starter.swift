@@ -1,3 +1,5 @@
+import Foundation
+
 struct Starter {
     
     public var flour: Double

@@ -11,7 +11,7 @@ final class RecipeView: UIView {
     @Published var ingredients: [Ingredient]
     private var subscriptions = Set<AnyCancellable>()
     
-    private let headerLabel: UILabel
+    private let headerView: UIView
     private let ingredientViews: [IngredientView]
     
     init(header: String, ingredients: Recipe) {
@@ -19,13 +19,10 @@ final class RecipeView: UIView {
         self.header = header
         self.ingredients = ingredients
         
-        headerLabel = UILabel()
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        headerLabel.text = header
-        
+        headerView = UIView.instantiateHeaderView(header: header)
         ingredientViews = ingredients.map { IngredientView(ingredient: $0) }
         
-        let stackView = UIStackView(arrangedSubviews: [headerLabel] + ingredientViews)
+        let stackView = UIStackView(arrangedSubviews: [headerView] + ingredientViews)
         stackView.axis = .vertical
         stackView.spacing = 0
         

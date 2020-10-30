@@ -1,5 +1,5 @@
-import Foundation
 import Combine
+import Foundation
 
 final class BreadCalculatorViewModel {
     
@@ -52,7 +52,7 @@ final class BreadCalculatorViewModel {
         self.doughInitialPreset = doughPresets.first { Double($0.1) == BreadCalculator.initial.doughHydration }
             ?? ("100%", 100)
         
-        bind()
+        self.bind()
         
     }
     
