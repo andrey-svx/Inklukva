@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,22 +20,22 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calculator" translatesAutoresizingMaskIntoConstraints="NO" id="oXm-Sv-xjd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bread calculator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R38-2K-7nb">
-                                <rect key="frame" x="109.5" y="813" width="195" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bread Calculator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZW5-oD-7w1">
+                                <rect key="frame" x="107" y="803" width="200" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZW5-oD-7w1" secondAttribute="bottom" constant="25" id="4kG-or-brm"/>
                             <constraint firstAttribute="bottom" secondItem="oXm-Sv-xjd" secondAttribute="bottom" id="4rp-Zs-Zp0"/>
                             <constraint firstItem="oXm-Sv-xjd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PUe-7o-LIZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oXm-Sv-xjd" secondAttribute="trailing" id="UWK-Dd-vqg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="R38-2K-7nb" secondAttribute="bottom" constant="15" id="Wj9-dk-omg"/>
                             <constraint firstItem="oXm-Sv-xjd" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="iC0-D7-XJU"/>
-                            <constraint firstItem="R38-2K-7nb" firstAttribute="centerX" secondItem="oXm-Sv-xjd" secondAttribute="centerX" id="pa7-gh-m2M"/>
+                            <constraint firstItem="ZW5-oD-7w1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="r0H-2n-MW1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oXm-Sv-xjd" secondAttribute="bottom" constant="-34" id="tSK-7g-cuv"/>
                         </constraints>
                     </view>

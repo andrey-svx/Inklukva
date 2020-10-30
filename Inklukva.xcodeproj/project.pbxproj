@@ -11,6 +11,7 @@
 		5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B135251A48A9002C812D /* RecipesSlideView.swift */; };
 		5A13B139251A53CD002C812D /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B138251A53CD002C812D /* RecipeView.swift */; };
 		5A35981E254B3BD000EB94ED /* InklukvaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35981D254B3BD000EB94ED /* InklukvaTests.swift */; };
+		5A35982D254B6E5400EB94ED /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35982C254B6E5400EB94ED /* RecipeViewModel.swift */; };
 		5A3692D4250809D20029C921 /* BreadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3692D3250809D20029C921 /* BreadCalculator.swift */; };
 		5A463B22252D08F70058F454 /* BreadCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */; };
 		5A6CA74625191BE200374AC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74525191BE200374AC6 /* UIView.swift */; };
@@ -47,6 +48,7 @@
 		5A35981D254B3BD000EB94ED /* InklukvaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InklukvaTests.swift; sourceTree = "<group>"; };
 		5A35981F254B3BD000EB94ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A359829254B55BB00EB94ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A35982C254B6E5400EB94ED /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		5A3692D3250809D20029C921 /* BreadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadCalculator.swift; sourceTree = "<group>"; };
 		5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadCalculatorViewModel.swift; sourceTree = "<group>"; };
 		5A6CA74525191BE200374AC6 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */,
+				5A35982C254B6E5400EB94ED /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				5AD9BA9C250012F600463757 /* SceneDelegate.swift in Sources */,
 				5AFBFFD1251BACD400168007 /* Starter.swift in Sources */,
 				5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */,
+				5A35982D254B6E5400EB94ED /* RecipeViewModel.swift in Sources */,
 				5A463B22252D08F70058F454 /* BreadCalculatorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

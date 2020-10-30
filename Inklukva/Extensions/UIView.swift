@@ -11,6 +11,7 @@ extension UIView {
             self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -padding),
             self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -padding)
         ])
+        
         return true
     }
     
@@ -27,6 +28,7 @@ extension UIView {
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             headerLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor)
         ])
+        
         return headerView
     }
 }
