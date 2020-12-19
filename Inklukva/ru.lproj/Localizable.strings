@@ -5,9 +5,9 @@
 
 "calculator.flour-label" = "Мука";
 "calculator.water-label" = "Вода";
-"calculator.inoculate-label" = "Инокулят";
+"calculator.inoculate-label" = "Стартер";
 "calculator.salt-label" = "Соль";
 
 "calculator.hydration-title" = "Выберите влажность";
-"calculator.wheight-title" = "Установите массу муки";
+"calculator.wheight-title" = "Установите общую массу муки";
 "calculator.ingredients-title" = "Вот ваши ингредиенты";

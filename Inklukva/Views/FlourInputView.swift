@@ -24,7 +24,7 @@ final class FlourInputView: UIView {
         stepper = UIStepper()
         stepper.minimumValue = 0
         stepper.maximumValue = 1000
-        stepper.stepValue = 50
+        stepper.stepValue = 10
         stepper.value = viewModel.flourMass
         
         let headerLabel = UIView.instantiateHeaderView(header: header)

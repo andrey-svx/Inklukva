@@ -11,6 +11,8 @@ final class BreadCalculatorViewController: UIViewController {
     private let stackView: UIStackView
     private let scrollView: UIScrollView
     
+    private let linkView: LinkView
+    
     init(viewModel: BreadCalculatorViewModel) {
         
         self.viewModel = viewModel
@@ -28,7 +30,9 @@ final class BreadCalculatorViewController: UIViewController {
             header: NSLocalizedString("calculator.ingredients-title", comment: "")
         )
         
-        stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView])
+        linkView = LinkView()
+        
+        stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView, linkView])
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 30, bottom: 20, right: 30)
         stackView.axis = .vertical
@@ -37,6 +41,7 @@ final class BreadCalculatorViewController: UIViewController {
 
         scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
+        
         
         super.init(nibName: nil, bundle: nil)
 

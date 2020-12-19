@@ -46,7 +46,7 @@ final class BreadCalculatorViewModel {
         self.starterInitialPreset = starterPresets.first { Double($0.1) == BreadCalculator.initial.starterHydration }
             ?? (regularString, 100)
         
-        let doughPresets = stride(from: 50, through: 100, by: 10).compactMap { $0 }
+        let doughPresets = stride(from: 50, through: 100, by: 5).compactMap { $0 }
             .map { ("\($0)%", $0) }
         self.doughPresets = doughPresets
         self.doughInitialPreset = doughPresets.first { Double($0.1) == BreadCalculator.initial.doughHydration }
@@ -63,14 +63,14 @@ final class BreadCalculatorViewModel {
                 
                 self.starterHydration = breadCalculator.starterHydration
                 self.doughHydration = breadCalculator.doughHydration
-                
+
                 self.flourMass = breadCalculator.flourMass
-                
+
                 let starter = breadCalculator.starter
                 let starterNames = self.starterRecipe.map { $0.0 }
                 let starterAmounts = [starter.flour, starter.water, starter.inoculate]
                 self.starterRecipe = zip(starterNames, starterAmounts).compactMap { $0 }
-                
+
                 let dough = breadCalculator.dough
                 let doughNames = self.doughRecipe.map { $0.0 }
                 let doughAmounts = [dough.flour, dough.water, dough.salt, dough.starter]
