@@ -5,12 +5,15 @@ final class RecipesSlideView: UIView {
     
     typealias Recipe = RecipeView.Recipe
     
+    @Published private var stepNumber: Int
+    
     private let viewModel: BreadCalculatorViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     private let scrollView: UIScrollView
     private let starterView: RecipeView
     private let doughView: RecipeView
+    private var stepLabel: UILabel
     private let pageController: UIPageControl
     
     init(viewModel: BreadCalculatorViewModel, header: String) {
@@ -37,15 +40,22 @@ final class RecipesSlideView: UIView {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(horizontalStack)
+
+        self.stepNumber = 0
+        
+        stepLabel = UILabel()
+        stepLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        stepLabel.textAlignment = .center
         
         pageController = UIPageControl()
         pageController.numberOfPages = 2
-        pageController.currentPage = 0
         pageController.pageIndicatorTintColor = .lightGray
         pageController.currentPageIndicatorTintColor = .darkGray
         pageController.isUserInteractionEnabled = false
-        
+
         super.init(frame: .zero)
+
+        pageController.currentPage = self.stepNumber
         
         self.viewModel.$starterRecipe
             .sink { [weak self] starterRecipe in
@@ -61,11 +71,21 @@ final class RecipesSlideView: UIView {
             }
             .store(in: &subscriptions)
         
+        self.$stepNumber
+            .sink { [weak self] stepNumber in
+                guard let self = self else { assertionFailure("Could not set self"); return }
+                self.pageController.currentPage = stepNumber
+                let stepHeader = NSLocalizedString("calculator.step-number-title", comment: "")
+                    + " \(self.pageController.currentPage + 1)"
+                self.stepLabel.text = stepHeader
+            }
+            .store(in: &subscriptions)
+        
         scrollView.delegate = self
         
         let headerView = UIView.instantiateHeaderView(header: header)
         
-        let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, pageController])
+        let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, stepLabel, pageController])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .fill
@@ -97,7 +117,6 @@ final class RecipesSlideView: UIView {
 extension RecipesSlideView: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let relativeOffset = scrollView.contentOffset.x / frame.width
-        let pageNumber = Int(round(relativeOffset))
-        pageController.currentPage = pageNumber
+        stepNumber = Int(round(relativeOffset))
     }
 }
