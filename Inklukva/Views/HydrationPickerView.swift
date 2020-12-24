@@ -13,34 +13,41 @@ final class HydrationPickerView: UIView {
     
     var selectionHandler: ((Int) -> ())?
     
-    private let stackView: UIStackView
-    private let headerLabel: UILabel
-    private let pickerView: UIPickerView
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [headerLabel, pickerView])
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .center
+        stackView.spacing = 0
+        return stackView
+    }()
+    
+    private lazy var headerLabel: UILabel = {
+        let headerLabel = UILabel()
+        headerLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        return headerLabel
+    }()
+    
+    private lazy var pickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.isHidden = isWrapped
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        return pickerView
+    }()
     
     init(header: String, presets: [Preset], initialPreset: Preset, isWrapped: Bool) {
         
         self.header = header
         self.presets = presets
-        
-        let initialIndex = presets.firstIndex { $0 == initialPreset } ?? 0
-        
         self.isWrapped = isWrapped
         
-        headerLabel = UILabel()
-        headerLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .title3)
-        headerLabel.text = header + ": " + presets[initialIndex].0
-        
-        pickerView = UIPickerView()
-        pickerView.isHidden = isWrapped
-        
-        stackView = UIStackView(arrangedSubviews: [headerLabel, pickerView])
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .center
-        stackView.spacing = 0
-        
         super.init(frame: .zero)
+        
+        let initialIndex = presets.firstIndex { $0 == initialPreset } ?? 0
+        headerLabel.text = header + ": " + presets[initialIndex].0
         
         self.$isWrapped
             .sink { [weak self] value in
@@ -49,14 +56,11 @@ final class HydrationPickerView: UIView {
             }
             .store(in: &subscriptions)
         
-        pickerView.dataSource = self
-        pickerView.delegate = self
+        pickerView.selectRow(initialIndex, inComponent: 0, animated: false)
         
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
         
-        pickerView.selectRow(initialIndex, inComponent: 0, animated: false)
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pickerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 4/5)
         ])

@@ -25,11 +25,13 @@ final class IngredientView: UIView {
     }()
     
     init(ingredient: Ingredient) {
+        
         super.init(frame: .zero)
         nameLabel.text = ingredient.0
         amountLabel.text = String(format: "%.1f", ingredient.1)
         addSubview(stackView)
         stackView.pinEndgesToSuperview()
+    
     }
     
     required init?(coder: NSCoder) {

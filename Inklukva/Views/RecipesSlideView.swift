@@ -16,6 +16,7 @@ final class RecipesSlideView: UIView {
         scrollView.bounces = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delegate = self
         return scrollView
     }()
     
@@ -46,7 +47,17 @@ final class RecipesSlideView: UIView {
         pageController.pageIndicatorTintColor = .lightGray
         pageController.currentPageIndicatorTintColor = .darkGray
         pageController.isUserInteractionEnabled = false
+        pageController.currentPage = self.stepNumber
         return pageController
+    }()
+    
+    private lazy var horizontalStack: UIStackView = {
+        let horizontalStack = UIStackView(arrangedSubviews: [starterView, doughView])
+        horizontalStack.axis = .horizontal
+        horizontalStack.distribution = .fillProportionally
+        horizontalStack.alignment = .top
+        horizontalStack.translatesAutoresizingMaskIntoConstraints = false
+        return horizontalStack
     }()
     
     init(viewModel: BreadCalculatorViewModel, header: String) {
@@ -54,16 +65,8 @@ final class RecipesSlideView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
 
-        let horizontalStack = UIStackView(arrangedSubviews: [starterView, doughView])
-        horizontalStack.axis = .horizontal
-        horizontalStack.distribution = .fillProportionally
-        horizontalStack.alignment = .top
-        horizontalStack.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(scrollView)
         scrollView.addSubview(horizontalStack)
-
-        pageController.currentPage = self.stepNumber
+        addSubview(scrollView)
         
         self.viewModel.$starterRecipe
             .sink { [weak self] starterRecipe in
@@ -89,8 +92,6 @@ final class RecipesSlideView: UIView {
             }
             .store(in: &subscriptions)
         
-        scrollView.delegate = self
-        
         let headerView = UIView.instantiateHeaderView(header: header)
         
         let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, stepLabel, pageController])
@@ -101,13 +102,12 @@ final class RecipesSlideView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
         
-        let doughHeight = doughView.frame.height
         NSLayoutConstraint.activate([
             horizontalStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             horizontalStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
             horizontalStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
-            scrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: doughHeight),
+            scrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: doughView.frame.height),
             
             starterView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20),
             doughView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20)
