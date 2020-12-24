@@ -4,27 +4,31 @@ final class HydrationInputView: UIView {
     
     private let viewModel: BreadCalculatorViewModel
 
-    private let wrapButton: UIButton
+    private lazy var wrapButton: UIButton = {
+        let wrapButton = UIButton()
+        wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let imageConfiguration = UIImage.SymbolConfiguration(scale: .large)
+        let buttonImage = UIImage(systemName: "chevron.down", withConfiguration: imageConfiguration)
+        wrapButton.setImage(buttonImage, for: .normal)
+        wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
+        return wrapButton
+    }()
+    
     private let starterInputView: HydrationPickerView
     private let doughInputView: HydrationPickerView
     
-    private let tapGestureRecognizer: UITapGestureRecognizer
+    private lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.addTarget(self, action: #selector(wrap))
+        tapGestureRecognizer.delegate = self
+        return tapGestureRecognizer
+    }()
     
     init(viewModel: BreadCalculatorViewModel, header: String) {
                 
         self.viewModel = viewModel
         
         let headerView = UIView.instantiateHeaderView(header: header)
-            
-        wrapButton = UIButton()
-        wrapButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        let imageConfiguration = UIImage.SymbolConfiguration(scale: .large)
-        let buttonImage = UIImage(systemName: "chevron.down", withConfiguration: imageConfiguration)
-        wrapButton.setImage(buttonImage, for: .normal)
-        
-        let footerView = UIView(frame: .zero)
-        footerView.addSubview(wrapButton)
-        wrapButton.pinEndgesToSuperview()
         
         starterInputView = HydrationPickerView(
             header: viewModel.starterHeader,
@@ -40,16 +44,18 @@ final class HydrationInputView: UIView {
             isWrapped: viewModel.isWrapped
         )
         
+        let footerView = UIView(frame: .zero)
+
         let stackView = UIStackView(arrangedSubviews: [headerView, starterInputView, doughInputView, footerView])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 5
         
-        tapGestureRecognizer = UITapGestureRecognizer()
-        
         super.init(frame: .zero)
         
-        wrapButton.addTarget(self, action: #selector(wrap), for: .touchUpInside)
+        footerView.addSubview(wrapButton)
+        wrapButton.pinEndgesToSuperview()
+        
         starterInputView.selectionHandler = { [weak self] hydration in
             guard let self = self else { assertionFailure("Could not set self"); return }
             self.viewModel.setStarterHydration(Double(hydration))
@@ -58,10 +64,8 @@ final class HydrationInputView: UIView {
             guard let self = self else { assertionFailure("Could not set self"); return }
             self.viewModel.setDoughHydration(Double(hydration))
         }
-        tapGestureRecognizer.addTarget(self, action: #selector(wrap))
-        tapGestureRecognizer.delegate = self
+
         addGestureRecognizer(tapGestureRecognizer)
-        
         addSubview(stackView)
         stackView.pinEndgesToSuperview(padding: 10)
         

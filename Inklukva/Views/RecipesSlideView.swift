@@ -5,55 +5,63 @@ final class RecipesSlideView: UIView {
     
     typealias Recipe = RecipeView.Recipe
     
-    @Published private var stepNumber: Int
+    @Published private var stepNumber: Int = 0
     
     private let viewModel: BreadCalculatorViewModel
     private var subscriptions = Set<AnyCancellable>()
     
-    private let scrollView: UIScrollView
-    private let starterView: RecipeView
-    private let doughView: RecipeView
-    private var stepLabel: UILabel
-    private let pageController: UIPageControl
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isPagingEnabled = true
+        scrollView.bounces = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var starterView: RecipeView = {
+        let starterView = RecipeView(header: viewModel.starterHeader, ingredients: viewModel.starterRecipe)
+        starterView.translatesAutoresizingMaskIntoConstraints = false
+        return starterView
+    }()
+    
+    private lazy var doughView: RecipeView = {
+        let doughView = RecipeView(header: viewModel.doughHeader, ingredients: viewModel.doughRecipe)
+        doughView.translatesAutoresizingMaskIntoConstraints = false
+        doughView.setNeedsLayout()
+        doughView.layoutIfNeeded()
+        return doughView
+    }()
+    
+    private lazy var stepLabel: UILabel = {
+        let stepLabel = UILabel()
+        stepLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        stepLabel.textAlignment = .center
+        return stepLabel
+    }()
+    
+    private lazy var pageController: UIPageControl = {
+        let pageController = UIPageControl()
+        pageController.numberOfPages = 2
+        pageController.pageIndicatorTintColor = .lightGray
+        pageController.currentPageIndicatorTintColor = .darkGray
+        pageController.isUserInteractionEnabled = false
+        return pageController
+    }()
     
     init(viewModel: BreadCalculatorViewModel, header: String) {
         
         self.viewModel = viewModel
-        
-        starterView = RecipeView(header: viewModel.starterHeader, ingredients: viewModel.starterRecipe)
-        starterView.translatesAutoresizingMaskIntoConstraints = false
-        
-        doughView = RecipeView(header: viewModel.doughHeader, ingredients: viewModel.doughRecipe)
-        doughView.translatesAutoresizingMaskIntoConstraints = false
-        doughView.setNeedsLayout()
-        doughView.layoutIfNeeded()
-        
+        super.init(frame: .zero)
+
         let horizontalStack = UIStackView(arrangedSubviews: [starterView, doughView])
         horizontalStack.axis = .horizontal
         horizontalStack.distribution = .fillProportionally
         horizontalStack.alignment = .top
         horizontalStack.translatesAutoresizingMaskIntoConstraints = false
-        
-        scrollView = UIScrollView()
-        scrollView.isPagingEnabled = true
-        scrollView.bounces = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(scrollView)
         scrollView.addSubview(horizontalStack)
-
-        self.stepNumber = 0
-        
-        stepLabel = UILabel()
-        stepLabel.font = UIFont.preferredFont(forTextStyle: .title3)
-        stepLabel.textAlignment = .center
-        
-        pageController = UIPageControl()
-        pageController.numberOfPages = 2
-        pageController.pageIndicatorTintColor = .lightGray
-        pageController.currentPageIndicatorTintColor = .darkGray
-        pageController.isUserInteractionEnabled = false
-
-        super.init(frame: .zero)
 
         pageController.currentPage = self.stepNumber
         

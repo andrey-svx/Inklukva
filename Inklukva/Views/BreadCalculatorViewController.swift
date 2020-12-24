@@ -4,47 +4,51 @@ final class BreadCalculatorViewController: UIViewController {
     
     private let viewModel: BreadCalculatorViewModel
     
-    private let hydrationInputView: HydrationInputView
-    private let flourInputView: FlourInputView
-    private let recipesSlideView: RecipesSlideView
-    
-    private let stackView: UIStackView
-    private let scrollView: UIScrollView
-    
-    private let linkView: LinkView
-    
-    init(viewModel: BreadCalculatorViewModel) {
-        
-        self.viewModel = viewModel
-        
-        hydrationInputView = HydrationInputView(
+    private lazy var hydrationInputView: HydrationInputView = {
+        let hydrationInputView = HydrationInputView(
             viewModel: viewModel,
             header: NSLocalizedString("calculator.hydration-title", comment: "")
         )
-        flourInputView = FlourInputView(
+        return hydrationInputView
+    }()
+    
+    private lazy var flourInputView: FlourInputView = {
+        let flourInputView = FlourInputView(
             viewModel: viewModel,
             header: NSLocalizedString("calculator.wheight-title", comment: "")
         )
-        recipesSlideView = RecipesSlideView(
+        return flourInputView
+    }()
+    
+    private lazy var recipesSlideView: RecipesSlideView = {
+        let recipesSlideView = RecipesSlideView(
             viewModel: viewModel,
             header: NSLocalizedString("calculator.ingredients-title", comment: "")
         )
-        
-        linkView = LinkView()
-        
-        stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView, linkView])
+        return recipesSlideView
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [hydrationInputView, flourInputView, recipesSlideView, linkView])
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 30, bottom: 20, right: 30)
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 20
-
-        scrollView = UIScrollView()
+        return stackView
+    }()
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
-        
-        
+        return scrollView
+    }()
+    
+    private let linkView = LinkView()
+    
+    init(viewModel: BreadCalculatorViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-
     }
     
     required init?(coder: NSCoder) {

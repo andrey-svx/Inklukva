@@ -5,7 +5,7 @@ class LinkView: UIView {
     lazy var button: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("inklukva.ru", for: .normal)
-        button.addTarget(self, action: #selector(gotoLink), for: .touchUpInside)
+        button.addTarget(self, action: #selector(openLink), for: .touchUpInside)
         return button
     }()
     
@@ -19,7 +19,7 @@ class LinkView: UIView {
         button.pinEndgesToSuperview(padding: 5.0)
     }
     
-    @objc func gotoLink() {
+    @objc func openLink() {
         guard let url = URL(string: "https://inklukva.ru") else { return }
         UIApplication.shared.open(url)
     }

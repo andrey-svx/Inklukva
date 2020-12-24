@@ -6,8 +6,22 @@ final class FlourInputView: UIView {
     private let viewModel: BreadCalculatorViewModel
     private var subscriptions = Set<AnyCancellable>()
     
-    private let massLabel: UILabel
-    private let stepper: UIStepper
+    private lazy var massLabel: UILabel = {
+        let massLabel = UILabel()
+        massLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        massLabel.text = "\(viewModel.flourMass)"
+        return massLabel
+    }()
+    
+    private lazy var stepper: UIStepper = {
+        let stepper = UIStepper()
+        stepper.minimumValue = 0
+        stepper.maximumValue = 1000
+        stepper.stepValue = 10
+        stepper.value = viewModel.flourMass
+        stepper.addTarget(self, action: #selector(setMass), for: .valueChanged)
+        return stepper
+    }()
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -16,26 +30,13 @@ final class FlourInputView: UIView {
     init(viewModel: BreadCalculatorViewModel, header: String) {
         
         self.viewModel = viewModel
-        
-        massLabel = UILabel()
-        massLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        massLabel.text = "\(viewModel.flourMass)"
-        
-        stepper = UIStepper()
-        stepper.minimumValue = 0
-        stepper.maximumValue = 1000
-        stepper.stepValue = 10
-        stepper.value = viewModel.flourMass
+        super.init(frame: .zero)
         
         let headerLabel = UIView.instantiateHeaderView(header: header)
         
         let stackView = UIStackView(arrangedSubviews: [headerLabel, massLabel, stepper])
         stackView.axis = .vertical
         stackView.alignment = .center
-            
-        super.init(frame: .zero)
-        
-        stepper.addTarget(self, action: #selector(setMass), for: .valueChanged)
         
         self.viewModel.$flourMass
             .sink { [weak self] value in
