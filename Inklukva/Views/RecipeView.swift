@@ -6,8 +6,6 @@ final class RecipeView: UIView {
     typealias Ingredient = IngredientView.Ingredient
     typealias Recipe = [Ingredient]
     
-    private let header: String
-    
     @Published var ingredients: [Ingredient]
     private var subscriptions = Set<AnyCancellable>()
     
@@ -16,7 +14,6 @@ final class RecipeView: UIView {
     
     init(header: String, ingredients: Recipe) {
         
-        self.header = header
         self.ingredients = ingredients
         
         headerView = UIView.instantiateHeaderView(header: header)

@@ -91,7 +91,9 @@ final class HydrationInputView: UIView {
 extension HydrationInputView: UIGestureRecognizerDelegate {
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        viewModel.isWrapped ? true : false
+        viewModel.isWrapped
+            ? true
+            : false
     }
     
 }
