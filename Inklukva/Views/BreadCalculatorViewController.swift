@@ -5,27 +5,24 @@ final class BreadCalculatorViewController: UIViewController {
     private let viewModel: BreadCalculatorViewModel
     
     private lazy var hydrationInputView: HydrationInputView = {
-        let hydrationInputView = HydrationInputView(
+        HydrationInputView(
             viewModel: viewModel,
             header: NSLocalizedString("calculator.hydration-title", comment: "")
         )
-        return hydrationInputView
     }()
     
     private lazy var flourInputView: FlourInputView = {
-        let flourInputView = FlourInputView(
+        FlourInputView(
             viewModel: viewModel,
             header: NSLocalizedString("calculator.wheight-title", comment: "")
         )
-        return flourInputView
     }()
     
     private lazy var recipesSlideView: RecipesSlideView = {
-        let recipesSlideView = RecipesSlideView(
+        RecipesSlideView(
             viewModel: viewModel,
             header: NSLocalizedString("calculator.ingredients-title", comment: "")
         )
-        return recipesSlideView
     }()
     
     private lazy var stackView: UIStackView = {
@@ -54,6 +51,10 @@ final class BreadCalculatorViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+extension BreadCalculatorViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
