@@ -71,7 +71,7 @@ extension BreadCalculatorViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        stackView.pinEndgesToSuperview()
+        stackView.pinEdgesToSuperview()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalTo: view.widthAnchor),
