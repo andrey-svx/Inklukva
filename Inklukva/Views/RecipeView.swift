@@ -37,7 +37,7 @@ final class RecipeView: UIView {
             .store(in: &subscriptions)
         
         addSubview(stackView)
-        stackView.pinEndgesToSuperview()
+        stackView.pinEdgesToSuperview()
     
     }
     

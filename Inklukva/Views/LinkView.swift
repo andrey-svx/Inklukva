@@ -16,7 +16,7 @@ class LinkView: UIView {
     init() {
         super.init(frame: .zero)
         addSubview(button)
-        button.pinEndgesToSuperview(padding: 5.0)
+        button.pinEdgesToSuperview(padding: 5.0)
     }
     
     @objc func openLink() {

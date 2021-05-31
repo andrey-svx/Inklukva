@@ -57,7 +57,7 @@ final class HydrationInputView: UIView {
         let headerView = UIView.instantiateHeaderView(header: header)
         let footerView = UIView(frame: .zero)
         footerView.addSubview(wrapButton)
-        wrapButton.pinEndgesToSuperview()
+        wrapButton.pinEdgesToSuperview()
 
         let stackView = UIStackView(arrangedSubviews: [headerView, starterInputView, doughInputView, footerView])
         stackView.axis = .vertical
@@ -67,7 +67,7 @@ final class HydrationInputView: UIView {
         addGestureRecognizer(tapGestureRecognizer)
         
         addSubview(stackView)
-        stackView.pinEndgesToSuperview(padding: 10)
+        stackView.pinEdgesToSuperview(padding: 10)
         
     }
     

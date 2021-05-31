@@ -30,7 +30,7 @@ final class IngredientView: UIView {
         nameLabel.text = ingredient.0
         amountLabel.text = String(format: "%.1f", ingredient.1)
         addSubview(stackView)
-        stackView.pinEndgesToSuperview()
+        stackView.pinEdgesToSuperview()
     
     }
     

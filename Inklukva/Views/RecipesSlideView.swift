@@ -112,7 +112,7 @@ final class RecipesSlideView: UIView {
             starterView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20),
             doughView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20)
         ])
-        stackView.pinEndgesToSuperview(padding: 10)
+        stackView.pinEdgesToSuperview(padding: 10)
         
     }
     

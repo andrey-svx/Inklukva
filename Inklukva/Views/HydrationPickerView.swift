@@ -59,7 +59,7 @@ final class HydrationPickerView: UIView {
         pickerView.selectRow(initialIndex, inComponent: 0, animated: false)
         
         addSubview(stackView)
-        stackView.pinEndgesToSuperview()
+        stackView.pinEdgesToSuperview()
         
         NSLayoutConstraint.activate([
             pickerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 4/5)

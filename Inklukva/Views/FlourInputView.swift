@@ -46,7 +46,7 @@ final class FlourInputView: UIView {
             .store(in: &subscriptions)
         
         addSubview(stackView)
-        stackView.pinEndgesToSuperview(padding: 10)
+        stackView.pinEdgesToSuperview(padding: 10)
         
     }
     
