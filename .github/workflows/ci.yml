@@ -43,5 +43,13 @@ jobs:
       run: pod install
       shell: bash
       
-    - name: Run unit tests
-      run: xcodebuild test -scheme Inklukva -project Inklukva/Inklukva.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.0' | xcpretty && exit ${PIPESTATUS[0]}
+    - name: Run tests
+      uses: sersoft-gmbh/xcodebuild-action@v1
+      with:
+        project: Inklukva.xcodeproj
+        scheme: Inklukva
+        destination: 'platform=iOS Simulator,name=iPhone 11,OS=14.0'
+        action: test
+      
+    #- name: Run unit tests
+     # run: xcodebuild test -scheme Inklukva -project Inklukva/Inklukva.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.0' | xcpretty && exit ${PIPESTATUS[0]}
