@@ -28,18 +28,6 @@ jobs:
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_12.app && /usr/bin/xcodebuild -version
       
-    - name: Cache Cocoapods
-      uses: actions/cache@v2
-      with:
-        path: Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-pods-
-          
-    - name: Install pods
-      run: pod install
-      shell: bash
-      
-    - name: Run unit tests
+    - name: Build and run unit tests
       run: xcodebuild test -scheme Inklukva -project Inklukva.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.0' | xcpretty && exit ${PIPESTATUS[0]}
       
