@@ -13,6 +13,8 @@
 		5A35981E254B3BD000EB94ED /* InklukvaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35981D254B3BD000EB94ED /* InklukvaTests.swift */; };
 		5A3692D4250809D20029C921 /* BreadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3692D3250809D20029C921 /* BreadCalculator.swift */; };
 		5A463B22252D08F70058F454 /* BreadCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A463B21252D08F70058F454 /* BreadCalculatorViewModel.swift */; };
+		5A5FA783266D39FB006367BD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5FA782266D39FB006367BD /* FirebaseAnalytics */; };
+		5A5FA785266D39FB006367BD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5FA784266D39FB006367BD /* FirebaseCrashlytics */; };
 		5A6CA74625191BE200374AC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74525191BE200374AC6 /* UIView.swift */; };
 		5A6CA74B2519436A00374AC6 /* FlourInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CA74A2519436A00374AC6 /* FlourInputView.swift */; };
 		5A79C55D25279F3B00DCD2D2 /* HydrationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A79C55C25279F3B00DCD2D2 /* HydrationPickerView.swift */; };
@@ -28,8 +30,6 @@
 		5AD9BAA6250012F700463757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */; };
 		5AFBFFD1251BACD400168007 /* Starter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBFFD0251BACD400168007 /* Starter.swift */; };
 		5AFBFFD4251BACEE00168007 /* Dough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBFFD3251BACEE00168007 /* Dough.swift */; };
-		EF746AC04489E02F8686ACA9 /* Pods_Inklukva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F17E06D61A44DBB382F585 /* Pods_Inklukva.framework */; };
-		FF300FCD08298BDE8B873C97 /* Pods_InklukvaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B385CC77546C625002FA2E /* Pods_InklukvaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,12 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16B6A9543F025C526C486FB8 /* Pods-InklukvaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InklukvaTests.release.xcconfig"; path = "Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests.release.xcconfig"; sourceTree = "<group>"; };
-		46B385CC77546C625002FA2E /* Pods_InklukvaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InklukvaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A02CCB725194E1D00C7D5EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A02CCBD25194E5600C7D5EA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A02CCC225194FDE00C7D5EA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		5A1129F09590DF74A3208CCA /* Pods-InklukvaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InklukvaTests.debug.xcconfig"; path = "Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A13B135251A48A9002C812D /* RecipesSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSlideView.swift; sourceTree = "<group>"; };
 		5A13B138251A53CD002C812D /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		5A35981B254B3BD000EB94ED /* InklukvaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InklukvaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,9 +70,6 @@
 		5AD9BAA7250012F700463757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AFBFFD0251BACD400168007 /* Starter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starter.swift; sourceTree = "<group>"; };
 		5AFBFFD3251BACEE00168007 /* Dough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dough.swift; sourceTree = "<group>"; };
-		61F17E06D61A44DBB382F585 /* Pods_Inklukva.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inklukva.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BA3A963658E969E35818607 /* Pods-Inklukva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inklukva.debug.xcconfig"; path = "Target Support Files/Pods-Inklukva/Pods-Inklukva.debug.xcconfig"; sourceTree = "<group>"; };
-		96025838C5029056D36798E0 /* Pods-Inklukva.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inklukva.release.xcconfig"; path = "Target Support Files/Pods-Inklukva/Pods-Inklukva.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF300FCD08298BDE8B873C97 /* Pods_InklukvaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF746AC04489E02F8686ACA9 /* Pods_Inklukva.framework in Frameworks */,
+				5A5FA783266D39FB006367BD /* FirebaseAnalytics in Frameworks */,
+				5A5FA785266D39FB006367BD /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +131,6 @@
 				5A35981C254B3BD000EB94ED /* InklukvaTests */,
 				5AD9BA97250012F600463757 /* Products */,
 				69FB13A0C3FFC2CB02B4CB4D /* Pods */,
-				87D00FAC6642E651F6E45D00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,21 +182,8 @@
 		69FB13A0C3FFC2CB02B4CB4D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8BA3A963658E969E35818607 /* Pods-Inklukva.debug.xcconfig */,
-				96025838C5029056D36798E0 /* Pods-Inklukva.release.xcconfig */,
-				5A1129F09590DF74A3208CCA /* Pods-InklukvaTests.debug.xcconfig */,
-				16B6A9543F025C526C486FB8 /* Pods-InklukvaTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		87D00FAC6642E651F6E45D00 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				61F17E06D61A44DBB382F585 /* Pods_Inklukva.framework */,
-				46B385CC77546C625002FA2E /* Pods_InklukvaTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,11 +193,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A359824254B3BD000EB94ED /* Build configuration list for PBXNativeTarget "InklukvaTests" */;
 			buildPhases = (
-				D5649B20C111B14B02A99A04 /* [CP] Check Pods Manifest.lock */,
 				5A359817254B3BD000EB94ED /* Sources */,
 				5A359818254B3BD000EB94ED /* Frameworks */,
 				5A359819254B3BD000EB94ED /* Resources */,
-				0D3E42B25EF3AFC7C11D0CA5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,17 +211,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5AD9BAAA250012F700463757 /* Build configuration list for PBXNativeTarget "Inklukva" */;
 			buildPhases = (
-				294A52D5D92ADCE73DD2AFEE /* [CP] Check Pods Manifest.lock */,
 				5AD9BA92250012F600463757 /* Sources */,
 				5AD9BA93250012F600463757 /* Frameworks */,
 				5AD9BA94250012F600463757 /* Resources */,
-				B57810C0C65431E432632EC9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Inklukva;
+			packageProductDependencies = (
+				5A5FA782266D39FB006367BD /* FirebaseAnalytics */,
+				5A5FA784266D39FB006367BD /* FirebaseCrashlytics */,
+			);
 			productName = Inklukva;
 			productReference = 5AD9BA96250012F600463757 /* Inklukva.app */;
 			productType = "com.apple.product-type.application";
@@ -277,6 +257,9 @@
 				ru,
 			);
 			mainGroup = 5AD9BA8D250012F600463757;
+			packageReferences = (
+				5A5FA781266D39FB006367BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 5AD9BA97250012F600463757 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -308,87 +291,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0D3E42B25EF3AFC7C11D0CA5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		294A52D5D92ADCE73DD2AFEE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Inklukva-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B57810C0C65431E432632EC9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inklukva/Pods-Inklukva-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inklukva/Pods-Inklukva-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inklukva/Pods-Inklukva-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5649B20C111B14B02A99A04 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-InklukvaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5A359817254B3BD000EB94ED /* Sources */ = {
@@ -456,7 +358,6 @@
 /* Begin XCBuildConfiguration section */
 		5A359822254B3BD000EB94ED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A1129F09590DF74A3208CCA /* Pods-InklukvaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +369,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = andrey.svx.InklukvaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -478,7 +380,6 @@
 		};
 		5A359823254B3BD000EB94ED /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16B6A9543F025C526C486FB8 /* Pods-InklukvaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -490,6 +391,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = andrey.svx.InklukvaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -618,7 +520,6 @@
 		};
 		5AD9BAAB250012F700463757 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BA3A963658E969E35818607 /* Pods-Inklukva.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -630,6 +531,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = andrey.svx.Inklukva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Andrey Isaev App Development";
@@ -640,7 +542,6 @@
 		};
 		5AD9BAAC250012F700463757 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96025838C5029056D36798E0 /* Pods-Inklukva.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -652,6 +553,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = andrey.svx.Inklukva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Andrey Isaev App Distribution";
@@ -691,6 +593,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A5FA781266D39FB006367BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A5FA782266D39FB006367BD /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A5FA781266D39FB006367BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5A5FA784266D39FB006367BD /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A5FA781266D39FB006367BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5AD9BA8E250012F600463757 /* Project object */;
 }
