@@ -3,14 +3,14 @@ platform :ios, '13.0'
 
 target 'Inklukva' do
   # Comment the next line if you don't want to use dynamic frameworks
-  pod 'Firebase/Analytics', :modular_headers => true
-
+  use_frameworks!
   # Pods for Inklukva
+  pod 'Firebase/Analytics'
 
   target 'InklukvaTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Firebase/Analytics', :modular_headers => true
+    pod 'Firebase/Analytics'
   end
 
   post_install do |installer|
