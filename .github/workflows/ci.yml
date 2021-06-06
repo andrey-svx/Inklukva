@@ -10,20 +10,17 @@ on:
     branches:
       - master
 jobs:
-#  SwiftLint:
- #   runs-on: ubuntu-latest
-  #  steps:
-   # - uses: actions/checkout@v1
-    #- name: GitHub Action for SwiftLint
-     # uses: norio-nomura/action-swiftlint@3.0.1
+  SwiftLint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: GitHub Action for SwiftLint
+      uses: norio-nomura/action-swiftlint@3.0.1
 
   Test:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
-    
-    - name: Install gpg
-      run: brew install gnupg
     
     - name: List available Xcode versions
       run: ls /Applications | grep Xcode
@@ -43,13 +40,6 @@ jobs:
       run: pod install
       shell: bash
       
-    #- name: Run tests
-     # uses: sersoft-gmbh/xcodebuild-action@v1
-      #with:
-       # project: Inklukva.xcodeproj
-        #scheme: Inklukva
-        #destination: 'platform=iOS Simulator,name=iPhone 11,OS=14.0'
-        #action: test
-      
     - name: Run unit tests
       run: xcodebuild test -scheme Inklukva -project Inklukva.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.0' | xcpretty && exit ${PIPESTATUS[0]}
+      
