@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A2A5D7B2201AA88F972327B /* Pods_InklukvaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AA726A0E83BE1459DFC763 /* Pods_InklukvaTests.framework */; };
+		554DCAE7EDB1964E58094D6A /* libPods-InklukvaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD120087AE103AB40010B671 /* libPods-InklukvaTests.a */; };
 		5A02CCBC25194E5600C7D5EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A02CCBE25194E5600C7D5EA /* Localizable.strings */; };
 		5A13B136251A48A9002C812D /* RecipesSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B135251A48A9002C812D /* RecipesSlideView.swift */; };
 		5A13B139251A53CD002C812D /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B138251A53CD002C812D /* RecipeView.swift */; };
@@ -29,7 +29,7 @@
 		5AD9BAA6250012F700463757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD9BAA4250012F700463757 /* LaunchScreen.storyboard */; };
 		5AFBFFD1251BACD400168007 /* Starter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBFFD0251BACD400168007 /* Starter.swift */; };
 		5AFBFFD4251BACEE00168007 /* Dough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBFFD3251BACEE00168007 /* Dough.swift */; };
-		F4FAC51758506AF28B2B5C07 /* Pods_Inklukva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BB3F0D0C8E5A2FC7CB4F82 /* Pods_Inklukva.framework */; };
+		6EB82541D60380A2745A7C13 /* libPods-Inklukva.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9561ACCA0667F7AD49658D /* libPods-Inklukva.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,10 +71,10 @@
 		5AD9BAA7250012F700463757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AFBFFD0251BACD400168007 /* Starter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starter.swift; sourceTree = "<group>"; };
 		5AFBFFD3251BACEE00168007 /* Dough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dough.swift; sourceTree = "<group>"; };
+		7E9561ACCA0667F7AD49658D /* libPods-Inklukva.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Inklukva.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C8ED6423285D20CF94813FD /* Pods-InklukvaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InklukvaTests.release.xcconfig"; path = "Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests.release.xcconfig"; sourceTree = "<group>"; };
 		A86BE36CA2E93BD0160BA866 /* Pods-Inklukva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inklukva.debug.xcconfig"; path = "Target Support Files/Pods-Inklukva/Pods-Inklukva.debug.xcconfig"; sourceTree = "<group>"; };
-		E3AA726A0E83BE1459DFC763 /* Pods_InklukvaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InklukvaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7BB3F0D0C8E5A2FC7CB4F82 /* Pods_Inklukva.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inklukva.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD120087AE103AB40010B671 /* libPods-InklukvaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InklukvaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE2B882445CDEACB0E3D1965 /* Pods-Inklukva.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inklukva.release.xcconfig"; path = "Target Support Files/Pods-Inklukva/Pods-Inklukva.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A2A5D7B2201AA88F972327B /* Pods_InklukvaTests.framework in Frameworks */,
+				554DCAE7EDB1964E58094D6A /* libPods-InklukvaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FAC51758506AF28B2B5C07 /* Pods_Inklukva.framework in Frameworks */,
+				6EB82541D60380A2745A7C13 /* libPods-Inklukva.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +200,8 @@
 		9DF1BE17A01B93D55BA3DAFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E7BB3F0D0C8E5A2FC7CB4F82 /* Pods_Inklukva.framework */,
-				E3AA726A0E83BE1459DFC763 /* Pods_InklukvaTests.framework */,
+				7E9561ACCA0667F7AD49658D /* libPods-Inklukva.a */,
+				AD120087AE103AB40010B671 /* libPods-InklukvaTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,7 +217,6 @@
 				5A359817254B3BD000EB94ED /* Sources */,
 				5A359818254B3BD000EB94ED /* Frameworks */,
 				5A359819254B3BD000EB94ED /* Resources */,
-				99ABC7CA1ECF8603CA685663 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,7 +236,6 @@
 				5AD9BA92250012F600463757 /* Sources */,
 				5AD9BA93250012F600463757 /* Frameworks */,
 				5AD9BA94250012F600463757 /* Resources */,
-				CEA107F0E388986AF5278501 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -332,23 +330,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		99ABC7CA1ECF8603CA685663 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InklukvaTests/Pods-InklukvaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9EA50DBD58B542A203394200 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,23 +350,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CEA107F0E388986AF5278501 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inklukva/Pods-Inklukva-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Inklukva/Pods-Inklukva-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Inklukva/Pods-Inklukva-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -462,7 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MXX32M3GG6;
 				INFOPLIST_FILE = InklukvaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MXX32M3GG6;
 				INFOPLIST_FILE = InklukvaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
