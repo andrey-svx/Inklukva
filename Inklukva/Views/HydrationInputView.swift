@@ -53,8 +53,14 @@ final class HydrationInputView: UIView {
                 
         self.viewModel = viewModel
         super.init(frame: .zero)
+
+        let headerView = UILabel()
+        headerView.textAlignment = .center
+        headerView.font = UIFont.preferredFont(forTextStyle: .title2)
+        headerView.adjustsFontSizeToFitWidth = true
+        headerView.minimumScaleFactor = 0.5
+        headerView.text = header
         
-        let headerView = UIView.instantiateHeaderView(header: header)
         let footerView = UIView(frame: .zero)
         footerView.addSubview(wrapButton)
         wrapButton.pinEdgesToSuperview()

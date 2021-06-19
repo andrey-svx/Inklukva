@@ -1,14 +1,15 @@
+"calculator.hydration-title" = "Select hydration level";
 "calculator.starter-label" = "Starter";
 "calculator.dough-label" = "Dough";
 "calculator.regular-starter-label" = "Regular";
 "calculator.levito-madre-starter-label" = "Levito-Madre";
 
+"calculator.wheight-title" = "Set flour wheight";
+
+"calculator.ingredients-title" = "Here are your ingredients";
 "calculator.flour-label" = "Flour";
 "calculator.water-label" = "Water";
 "calculator.inoculate-label" = "Inoculate";
 "calculator.salt-label" = "Salt";
-
-"calculator.hydration-title" = "Select hydration level";
-"calculator.wheight-title" = "Set flour wheight";
-"calculator.ingredients-title" = "Here are your ingredients";
 "calculator.step-number-title" = "step";
+
