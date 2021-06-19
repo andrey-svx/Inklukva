@@ -92,7 +92,12 @@ final class RecipesSlideView: UIView {
             }
             .store(in: &subscriptions)
         
-        let headerView = UIView.instantiateHeaderView(header: header)
+        let headerView = UILabel()
+        headerView.textAlignment = .center
+        headerView.font = UIFont.preferredFont(forTextStyle: .title2)
+        headerView.adjustsFontSizeToFitWidth = true
+        headerView.minimumScaleFactor = 0.5
+        headerView.text = header
         
         let stackView = UIStackView(arrangedSubviews: [headerView, scrollView, stepLabel, pageController])
         stackView.axis = .vertical

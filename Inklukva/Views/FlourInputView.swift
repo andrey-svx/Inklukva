@@ -32,7 +32,12 @@ final class FlourInputView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         
-        let headerLabel = UIView.instantiateHeaderView(header: header)
+        let headerLabel = UILabel()
+        headerLabel.textAlignment = .center
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        headerLabel.adjustsFontSizeToFitWidth = true
+        headerLabel.minimumScaleFactor = 0.5
+        headerLabel.text = header
         
         let stackView = UIStackView(arrangedSubviews: [headerLabel, massLabel, stepper])
         stackView.axis = .vertical
